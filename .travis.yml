@@ -1,0 +1,10 @@
+language: r
+sudo: required
+warnings_are_errors: false
+
+r_binary_packages:
+  - Rcpp
+  - testthat
+
+apt_packages:
+
