@@ -1,32 +1,35 @@
-#' Function to transform a parsed \code{date} variable into other date/time 
-#' variables in preparation for modelling with the \strong{normalweatherr} 
-#' package. 
+#' Function to prepare a data frame for modelling with \strong{metnormr}. 
 #' 
-#' \code{prepare_input_data} will check variable names, transform the parsed 
-#' \code{date} variable into other variables, impute missing data, and make 
-#' correct data types. 
+#' \code{met_prepare_data} will check if a \code{date} variable is present and 
+#' is of the correct data type, impute missing numeric and categorical values, 
+#' randomly split the input into training and testing sets, and rename the 
+#' dependant variable to \code{"value"}. 
 #' 
-#' @param df Data frame containing air quality data. 
+#' @param df Input data frame. 
 #' 
-#' @param impute Should missing values be imputed? Numeric variables will be 
-#' imputed with their median while categorical variables the mode will be used.
-#' 
-#' @return Data frame. 
+#' @param value Name of the dependent variable. Usually a pollutant, for example,
+#' \code{"no2"} or \code{"pm10"}. 
+#'
+#' @return Data frame, the input data transformed to a data frame ready for 
+#' modelling with \strong{metnormr}. 
 #' 
 #' @author Stuart K. Grange
+#' 
+#' @seealso \code{\link{met_calculate_model}}
 #' 
 #' @examples 
 #' \dontrun{
 #'
-#' # 
-#' 
+#' # Prepare data for modelling 
+#' data_for_modelling <- met_prepare_data(data_london, value = "no2")
 #' 
 #' }
 #' 
 #' @export
-met_prepare_data <- function(df, value) {
+met_prepare_data <- function(df, value = "value") {
   
   df %>% 
+    met_check_data(prepared = FALSE) %>% 
     add_date_variables() %>% 
     impute_values() %>% 
     split_into_sets() %>% 
@@ -39,12 +42,6 @@ add_date_variables <- function(df) {
   
   # Check variables
   names <- names(df)
-  
-  if (!any(grepl("date", names))) 
-    stop("Data must contain a `date` variable...", call. = FALSE)
-  
-  if (!any(grepl("POSIXct", class(df$date))))
-    stop("`date` variable needs to be a parsed date (POSIXct)...", call. = FALSE)
   
   # Add variables if they do not exist
   # Add date variables
@@ -114,5 +111,33 @@ split_into_sets <- function(df, fraction = 0.8) {
     arrange(date)
   
   return(df_split)
+  
+}
+
+
+met_check_data <- function(df, prepared) {
+  
+  # Get data names
+  names <- names(df)
+  
+  if (!any(grepl("date", names))) 
+    stop("Input must contain a `date` variable...", call. = FALSE)
+  
+  if (!grepl("POSIXct", class(df$date)[1]))
+    stop("`date` variable needs to be a parsed date (POSIXct)...", call. = FALSE)
+  
+  if (prepared) {
+    
+    if (!any(grepl("set", names))) 
+      stop("Input must contain a `set` variable...", call. = FALSE)
+    
+    # unique(df$set) %in% c("training", "testing")
+    
+    if (!any(grepl("value", names))) 
+      stop("Input must contain a `value` variable...", call. = FALSE)
+    
+  }
+
+  return(df)
   
 }

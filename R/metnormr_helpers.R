@@ -61,6 +61,6 @@ system_cpu_core_count <- function(logical_cores = TRUE)
   parallel::detectCores(logical = logical_cores)
 
 
-#' @importFrom openair timeAverage
-#' @export
-openair::timeAverage
+# #' @importFrom openair timeAverage
+# #' @export
+# openair::timeAverage

@@ -1,13 +1,50 @@
-#' Function to
+#' Function to calculate/grow/train a random forest model to predict (usually) 
+#' pollutant concentrations using meteorological and time variables. 
 #' 
+#' @param df Input data frame after preparation with 
+#' \code{\link{met_prepare_data}}. \code{df} has a number of constraints which 
+#' will be checked for before modelling. 
 #' 
+#' @param variables Explanatory variables used to predict \code{"value"}. 
+#' 
+#' @param trees Number of trees to grow to make up the forest. 
+#' 
+#' @param mtry Number of variables to possibly split at in each node. Default is 
+#' the (rounded down) square root of the number variables.
+#' 
+#' @param min_node_size Minimal node size. 
+#' 
+#' @param n_cores Number of CPU cores to use for the model calculation. 
+#' 
+#' @param verbose Should the function give messages? 
+#' 
+#' @author Stuart K. Grange
+#' 
+#' @return \code{ranger} object, a named list. 
+#' 
+#' @seealso \code{\link{met_prepare_data}}, 
+#' 
+#' @examples 
+#' 
+#' \dontrun{
+#' 
+#' # Calculate a model using common meteorological and time variables
+#' model <- met_calculate_model(
+#'   data_for_modelling,
+#'   variables = c(
+#'     "ws", "wd", "air_temp", "rh", "date_unix", "day_julian", "weekday", "hour"
+#'   )
+#' )
+#' 
+#' }
 #' 
 #' @export
 met_calculate_model <- function(df, variables, trees = 300, mtry = NULL,
                                 min_node_size = 5, n_cores = NULL, 
                                 verbose = FALSE) {
   
-  # Check input...
+  # Check input
+  df <- met_check_data(df, prepared = TRUE)
   
   # Filter and select input for modelling
   df <- df %>% 

@@ -1,5 +1,28 @@
+#' Functions to extract model statistics from a model calculated with
+#' \code{met_calculate_model}. 
+#' 
+#' @param model A ranger model object from \code{met_calculate_model}. 
+#' 
+#' @return Data frame. 
+#' 
+#' @author Stuart K. Grange
+#' 
+#' @examples
+#' 
+#' \dontrun{
+#'
+#' # Extract statistics from a model object
+#' met_model_statistics(model)
+#' 
+#' # Extract importances from a model object
+#' met_model_importance(model)
+#'  
+#' }
+#' 
 #' @export
 met_model_statistics <- function(model) {
+  
+  stopifnot(class(model) == "ranger")
   
   data.frame(
     mtry = model$mtry,
@@ -15,8 +38,12 @@ met_model_statistics <- function(model) {
 }
 
 
+#' @rdname met_model_statistics
+#' 
 #' @export
 met_model_importance <- function(model) {
+  
+  stopifnot(class(model) == "ranger")
   
   vector_importance <- ranger::importance(model)
   df <- data.frame(matrix(nrow = length(vector_importance), ncol = 2))
