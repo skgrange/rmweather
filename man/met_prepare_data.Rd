@@ -4,7 +4,13 @@
 \alias{met_prepare_data}
 \title{Function to prepare a data frame for modelling with \strong{metnormr}.}
 \usage{
-met_prepare_data(df, value)
+met_prepare_data(df, value = "value")
+}
+\arguments{
+\item{df}{Input data frame.}
+
+\item{value}{Name of the dependent variable. Usually a pollutant, for example,
+\code{"no2"} or \code{"pm10"}.}
 }
 \value{
 Data frame, the input data transformed to a data frame ready for 
@@ -12,7 +18,7 @@ modelling with \strong{metnormr}.
 }
 \description{
 \code{met_prepare_data} will check if a \code{date} variable is present and 
-is of the correct data type, impute missing numeric and catagorical values, 
+is of the correct data type, impute missing numeric and categorical values, 
 randomly split the input into training and testing sets, and rename the 
 dependant variable to \code{"value"}.
 }
@@ -24,6 +30,9 @@ data_for_modelling <- met_prepare_data(data_london, value = "no2")
 
 }
 
+}
+\seealso{
+\code{\link{met_calculate_model}}
 }
 \author{
 Stuart K. Grange

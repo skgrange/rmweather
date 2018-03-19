@@ -2,11 +2,55 @@
 % Please edit documentation in R/met_calculate_model.R
 \name{met_calculate_model}
 \alias{met_calculate_model}
-\title{Function to}
+\title{Function to calculate/grow/train a random forest model to predict (usually) 
+pollutant concentrations using meteorological and time variables.}
 \usage{
 met_calculate_model(df, variables, trees = 300, mtry = NULL,
   min_node_size = 5, n_cores = NULL, verbose = FALSE)
 }
+\arguments{
+\item{df}{Input data frame after preparation with 
+\code{\link{met_prepare_data}}. \code{df} has a number of constraints which 
+will be checked for before modelling.}
+
+\item{variables}{Explanatory variables used to predict \code{"value"}.}
+
+\item{trees}{Number of trees to grow to make up the forest.}
+
+\item{mtry}{Number of variables to possibly split at in each node. Default is 
+the (rounded down) square root of the number variables.}
+
+\item{min_node_size}{Minimal node size.}
+
+\item{n_cores}{Number of CPU cores to use for the model calculation.}
+
+\item{verbose}{Should the function give messages?}
+}
+\value{
+\code{ranger} object, a named list.
+}
 \description{
-Function to
+Function to calculate/grow/train a random forest model to predict (usually) 
+pollutant concentrations using meteorological and time variables.
+}
+\examples{
+
+\dontrun{
+
+# Calculate a model using common meteorological and time variables
+model <- met_calculate_model(
+  data_for_modelling,
+  variables = c(
+    "ws", "wd", "air_temp", "rh", "date_unix", "day_julian", "weekday", "hour"
+  )
+)
+
+}
+
+}
+\seealso{
+\code{\link{met_prepare_data}},
+}
+\author{
+Stuart K. Grange
 }
