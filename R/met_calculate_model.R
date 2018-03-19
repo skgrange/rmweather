@@ -3,9 +3,9 @@
 #' 
 #' 
 #' @export
-grow_random_forest <- function(df, variables, trees = 300, mtry = NULL,
-                               min_node_size = 5, n_cores = NULL, 
-                               verbose = TRUE) {
+met_calculate_model <- function(df, variables, trees = 300, mtry = NULL,
+                                min_node_size = 5, n_cores = NULL, 
+                                verbose = FALSE) {
   
   # Check input...
   
@@ -14,6 +14,8 @@ grow_random_forest <- function(df, variables, trees = 300, mtry = NULL,
     filter(set == "training") %>% 
     select(value,
            !!variables)
+  
+  if (verbose) message(str_date_formatted(), ": Growing the forest started...")
   
   model <- ranger::ranger(
     value ~ ., 

@@ -24,26 +24,38 @@
 #' }
 #' 
 #' @export
-add_date_variables <- function(df) {
+met_prepare_data <- function(df, value) {
   
-  # Check data frame input, df_tbl will not simplify when [, ] are used
-  if (any(grepl("tbl", class(df)))) df <- data.frame(df)
+  df %>% 
+    add_date_variables() %>% 
+    impute_values() %>% 
+    split_into_sets() %>% 
+    rename(value = !!value)
+  
+}
+
+
+add_date_variables <- function(df) {
   
   # Check variables
   names <- names(df)
   
   if (!any(grepl("date", names))) 
-    stop("Data must contain a `date` variable.", call. = FALSE)
+    stop("Data must contain a `date` variable...", call. = FALSE)
   
   if (!any(grepl("POSIXct", class(df$date))))
-    stop("`date` variable needs to be a parsed date (POSIXct).", call. = FALSE)
-  
-  # if (impute) 
+    stop("`date` variable needs to be a parsed date (POSIXct)...", call. = FALSE)
   
   # Add variables if they do not exist
   # Add date variables
   if (!any(grepl("date_unix", names))) 
     df[, "date_unix"] <- as.numeric(df[, "date"])
+  
+  if (!any(grepl("day_julian", names)))
+    df[, "day_julian"] <- lubridate::yday(df[, "date"])
+  
+  if (!any(grepl("month", names)))
+    df[, "month"] <- lubridate::month(df[, "date"])
   
   if (!any(grepl("week", names)))
     df[, "week"] <- lubridate::week(df[, "date"])
@@ -53,25 +65,12 @@ add_date_variables <- function(df) {
   
   if (!any(grepl("hour", names)))
     df[, "hour"] <- lubridate::hour(df[, "date"])
-  
-  if (!any(grepl("month", names)))
-    df[, "month"] <- lubridate::month(df[, "date"])
-  
-  if (!any(grepl("day_julian", names)))
-    df[, "day_julian"] <- lubridate::yday(df[, "date"])
-  
+
   return(df)
   
 }
 
 
-#' Function to
-#' 
-#' @author Stuart K. Grange
-#' 
-#' @return Data frame. 
-#' 
-#' @export
 impute_values <- function(df) {
   
   # Numeric variables
@@ -91,7 +90,6 @@ impute_values <- function(df) {
 }
 
 
-#' @export
 split_into_sets <- function(df, fraction = 0.8) {
   
   # Add row number

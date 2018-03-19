@@ -1,5 +1,5 @@
 #' @export
-random_forest_statistics <- function(model) {
+met_model_statistics <- function(model) {
   
   data.frame(
     mtry = model$mtry,
@@ -16,7 +16,7 @@ random_forest_statistics <- function(model) {
 
 
 #' @export
-random_forest_importances <- function(model) {
+met_model_importance <- function(model) {
   
   vector_importance <- ranger::importance(model)
   df <- data.frame(matrix(nrow = length(vector_importance), ncol = 2))

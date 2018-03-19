@@ -1,4 +1,4 @@
-Package: rmweather
+Package: metnormr
 Type: Package
 Title: An R package to conduct meteorological/weather normalisation on air 
     quality data
@@ -17,5 +17,6 @@ Imports:
     lubridate,
     dplyr,
     purrr,
-    ranger
+    ranger,
+    ggplot2
 RoxygenNote: 6.0.1
