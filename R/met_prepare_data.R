@@ -1,38 +1,54 @@
 #' Function to prepare a data frame for modelling with \strong{metnormr}. 
 #' 
+#' \code{met_prepare_data} will test and prepare a data frame for further use 
+#' with \strong{metnormr}.
+#' 
 #' \code{met_prepare_data} will check if a \code{date} variable is present and 
 #' is of the correct data type, impute missing numeric and categorical values, 
 #' randomly split the input into training and testing sets, and rename the 
-#' dependant variable to \code{"value"}. 
+#' dependant variable to \code{"value"}. The \code{date} variable will also be 
+#' used to calculate new variables such as \code{date_unix}, \code{day_julian}, 
+#' \code{weekday}, and \code{hour} which can be used as independent variables. 
+#' These attributes are needed for other \strong{metnormr} functions to operate. 
 #' 
-#' @param df Input data frame. 
+#' Use \code{set.seed} in an R session to keep results reproducible.  
+#' 
+#' @param df Input data frame. Generally a time series of air quality data with
+#' pollutant concentrations and meteorological variables. 
 #' 
 #' @param value Name of the dependent variable. Usually a pollutant, for example,
 #' \code{"no2"} or \code{"pm10"}. 
+#' 
+#' @param fraction Fraction of the observations to make up the training set. 
+#' Default is 0.8, 80 %.
 #'
-#' @return Data frame, the input data transformed to a data frame ready for 
-#' modelling with \strong{metnormr}. 
+#' @return Data frame, the input data transformed ready for modelling with 
+#' \strong{metnormr}. 
 #' 
 #' @author Stuart K. Grange
 #' 
-#' @seealso \code{\link{met_calculate_model}}
+#' @seealso \code{\link{set.seed}}, \code{\link{met_train_model}}, 
+#' \code{\link{met_normalise}}
 #' 
 #' @examples 
 #' \dontrun{
+#' 
+#' # Keep things reproducible
+#' set.seed(123)
 #'
 #' # Prepare data for modelling 
-#' data_for_modelling <- met_prepare_data(data_london, value = "no2")
+#' data_for_modelling <- met_prepare_data(data_swiss, value = "no2")
 #' 
 #' }
 #' 
 #' @export
-met_prepare_data <- function(df, value = "value") {
+met_prepare_data <- function(df, value = "value", fraction = 0.8) {
   
   df %>% 
     met_check_data(prepared = FALSE) %>% 
     add_date_variables() %>% 
     impute_values() %>% 
-    split_into_sets() %>% 
+    split_into_sets(fraction = fraction) %>% 
     rename(value = !!value)
   
 }
@@ -45,23 +61,18 @@ add_date_variables <- function(df) {
   
   # Add variables if they do not exist
   # Add date variables
-  if (!any(grepl("date_unix", names))) 
-    df[, "date_unix"] <- as.numeric(df[, "date"])
+  if (!"date_unix" %in% names) df$date_unix <- as.numeric(df$date)
   
-  if (!any(grepl("day_julian", names)))
-    df[, "day_julian"] <- lubridate::yday(df[, "date"])
+  if (!"day_julian" %in% names) df$day_julian <- lubridate::yday(df$date)
   
-  if (!any(grepl("month", names)))
-    df[, "month"] <- lubridate::month(df[, "date"])
+  if (!"month" %in% names) df$month <- lubridate::month(df$date)
   
-  if (!any(grepl("week", names)))
-    df[, "week"] <- lubridate::week(df[, "date"])
-  
-  if (!any(grepl("weekday", names)))
-    df[, "weekday"] <- wday_monday(df[, "date"], as.factor = TRUE)
-  
-  if (!any(grepl("hour", names)))
-    df[, "hour"] <- lubridate::hour(df[, "date"])
+  # if (!"week" %in% names) df$week <- lubridate::week(df$date)
+
+  # Own function  
+  if (!"weekday" %in% names) df$weekday <- wday_monday(df$date, as.factor = TRUE)
+
+  if (!"hour" %in% names) df$hour <- lubridate::hour(df$date)
 
   return(df)
   
@@ -87,7 +98,7 @@ impute_values <- function(df) {
 }
 
 
-split_into_sets <- function(df, fraction = 0.8) {
+split_into_sets <- function(df, fraction) {
   
   # Add row number
   df <- tibble::rowid_to_column(df) 
@@ -117,15 +128,13 @@ split_into_sets <- function(df, fraction = 0.8) {
 
 met_check_data <- function(df, prepared) {
   
-  # To-do change to true matches, not grep
-  
   # Get data names
   names <- names(df)
   
-  if (!any(grepl("date", names))) 
+  if (!"date" %in% names) 
     stop("Input must contain a `date` variable...", call. = FALSE)
   
-  if (!grepl("POSIXct", class(df$date)[1]))
+  if (!"POSIXct" %in% class(df$date)[1]) 
     stop("`date` variable needs to be a parsed date (POSIXct)...", call. = FALSE)
   
   if (anyNA(df$date)) stop("`date` must not contain missing (NA) values...", call. = FALSE)
@@ -133,16 +142,16 @@ met_check_data <- function(df, prepared) {
   # More checks
   if (prepared) {
     
-    if (!any(grepl("set", names))) 
+    if (!"set" %in% names) 
       stop("Input must contain a `set` variable...", call. = FALSE)
     
     if (!all(unique(df$set) %in% c("training", "testing")))
       stop("`set` can only take the values `training` and `testing`...", call. = FALSE)
     
-    if (!any(grepl("value", names))) 
+    if (!"value" %in% names) 
       stop("Input must contain a `value` variable...", call. = FALSE)
     
-    if (!any(grepl("date_unix", names))) 
+    if (!"date_unix" %in% names) 
       stop("Input must contain a `date_unix` variable...", call. = FALSE)
     
   }

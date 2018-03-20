@@ -26,6 +26,7 @@ met_predict <- function(model, df = NA, n_cores = NULL,
       model, 
       df, 
       num.threads = n_cores, 
+      seed = NULL,
       verbose = verbose
     )$predictions
     

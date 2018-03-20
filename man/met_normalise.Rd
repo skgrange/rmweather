@@ -10,7 +10,8 @@ met_normalise(model, df, variables = NA, n_samples = 300, replace = TRUE,
 \arguments{
 \item{model}{A ranger model object from \code{met_train_model}.}
 
-\item{df}{Input data used to calculate \code{model}.}
+\item{df}{Input data used to calculate \code{model} using 
+\code{\link{met_prepare_data}}.}
 
 \item{variables}{Variables to randomly sample. Default is all variables used
 for training the model with the exception of \code{date_unix}, the trend term.}

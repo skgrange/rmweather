@@ -4,35 +4,52 @@
 \alias{met_prepare_data}
 \title{Function to prepare a data frame for modelling with \strong{metnormr}.}
 \usage{
-met_prepare_data(df, value = "value")
+met_prepare_data(df, value = "value", fraction = 0.8)
 }
 \arguments{
-\item{df}{Input data frame.}
+\item{df}{Input data frame. Generally a time series of air quality data with
+pollutant concentrations and meteorological variables.}
 
 \item{value}{Name of the dependent variable. Usually a pollutant, for example,
 \code{"no2"} or \code{"pm10"}.}
+
+\item{fraction}{Fraction of the observations to make up the training set. 
+Default is 0.8, 80 %.}
 }
 \value{
-Data frame, the input data transformed to a data frame ready for 
-modelling with \strong{metnormr}.
+Data frame, the input data transformed ready for modelling with 
+\strong{metnormr}.
 }
 \description{
+\code{met_prepare_data} will test and prepare a data frame for further use 
+with \strong{metnormr}.
+}
+\details{
 \code{met_prepare_data} will check if a \code{date} variable is present and 
 is of the correct data type, impute missing numeric and categorical values, 
 randomly split the input into training and testing sets, and rename the 
-dependant variable to \code{"value"}.
+dependant variable to \code{"value"}. The \code{date} variable will also be 
+used to calculate new variables such as \code{date_unix}, \code{day_julian}, 
+\code{weekday}, and \code{hour} which can be used as independent variables. 
+These attributes are needed for other \strong{metnormr} functions to operate.
+
+Use \code{set.seed} in an R session to keep results reproducible.
 }
 \examples{
 \dontrun{
 
+# Keep things reproducible
+set.seed(123)
+
 # Prepare data for modelling 
-data_for_modelling <- met_prepare_data(data_london, value = "no2")
+data_for_modelling <- met_prepare_data(data_swiss, value = "no2")
 
 }
 
 }
 \seealso{
-\code{\link{met_calculate_model}}
+\code{\link{set.seed}}, \code{\link{met_train_model}}, 
+\code{\link{met_normalise}}
 }
 \author{
 Stuart K. Grange

@@ -2,7 +2,8 @@
 #' 
 #' @param model A ranger model object from \code{met_train_model}. 
 #' 
-#' @param df Input data used to calculate \code{model}. 
+#' @param df Input data used to calculate \code{model} using 
+#' \code{\link{met_prepare_data}}.
 #' 
 #' @param variables Variables to randomly sample. Default is all variables used
 #' for training the model with the exception of \code{date_unix}, the trend term. 
@@ -55,10 +56,6 @@ met_normalise <- function(model, df, variables = NA, n_samples = 300,
     # Drop trend component
     variables <- setdiff(variables, "date_unix")
     
-    # variables_message <- stringr::str_c("`", variables, "`")
-    # variables_message <- stringr::str_c(variables_message, collapse = ", ")
-    # if (verbose) message(str_date_formatted(), ": Using default variables...")
-    
   }
   
   # Sample the time series
@@ -66,15 +63,19 @@ met_normalise <- function(model, df, variables = NA, n_samples = 300,
     message(str_date_formatted(), ": Sampling and predicting ", n_samples, " times...")
   
   # Do
-  df <- purrr::rerun(n_samples) %>% 
-    purrr::map_dfr(~met_normalise_worker(
-      model = model,
-      df = df,
-      variables = variables,
-      replace = replace,
-      n_cores = n_cores
+  df <- seq_len(n_samples) %>% 
+    purrr:::map_dfr(
+      ~met_normalise_worker(
+        index = .x,
+        model = model,
+        df = df,
+        variables = variables,
+        replace = replace,
+        n_cores = n_cores,
+        n_samples = n_samples,
+        verbose = verbose
+      )
     )
-  )
   
   # Aggregate predictions
   if (verbose) message(str_date_formatted(), ": Aggregating predictions...")
@@ -90,7 +91,30 @@ met_normalise <- function(model, df, variables = NA, n_samples = 300,
 }
 
 
-met_normalise_worker <- function(model, df, variables, replace, n_cores) {
+met_normalise_worker <- function(index, model, df, variables, replace, n_cores, 
+                                 n_samples, verbose) {
+  
+  if (verbose) {
+    
+    # Calculate percent
+    message_precent <- round((index / n_samples) * 100, 2)
+    # Always have 2 dp
+    message_precent <- format(message_precent, nsmall = 1) 
+    message_precent <- stringr::str_c(message_precent, " %")
+    
+    # Print
+    message(
+      str_date_formatted(), 
+      ": Predicting ", 
+      index, 
+      " of ", 
+      n_samples, 
+      " times (", 
+      message_precent, 
+      ")..."
+    )
+    
+  }
   
   # Randomly sample observations
   n_rows <- nrow(df)

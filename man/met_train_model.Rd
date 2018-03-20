@@ -2,8 +2,8 @@
 % Please edit documentation in R/met_train_model.R
 \name{met_train_model}
 \alias{met_train_model}
-\title{Function to train/calculate/grow a random forest model to predict (usually) 
-pollutant concentrations using meteorological and time variables.}
+\title{Function to train a random forest model to predict (usually) pollutant
+concentrations using meteorological and time variables.}
 \usage{
 met_train_model(df, variables, trees = 300, mtry = NULL,
   min_node_size = 5, n_cores = NA, verbose = FALSE)
@@ -13,7 +13,8 @@ met_train_model(df, variables, trees = 300, mtry = NULL,
 \code{\link{met_prepare_data}}. \code{df} has a number of constraints which 
 will be checked for before modelling.}
 
-\item{variables}{Explanatory variables used to predict \code{"value"}.}
+\item{variables}{Independent/explainatorie variables used to predict 
+\code{"value"}.}
 
 \item{trees}{Number of trees to grow to make up the forest.}
 
@@ -28,29 +29,30 @@ is system's total minus one.}
 \item{verbose}{Should the function give messages?}
 }
 \value{
-\code{ranger} object, a named list.
+A \code{ranger} model object, a named list.
 }
 \description{
-Function to train/calculate/grow a random forest model to predict (usually) 
-pollutant concentrations using meteorological and time variables.
+Function to train a random forest model to predict (usually) pollutant
+concentrations using meteorological and time variables.
 }
 \examples{
 
 \dontrun{
 
 # Calculate a model using common meteorological and time variables
-model <- met_calculate_model(
+model <- met_train_model(
   data_for_modelling,
   variables = c(
     "ws", "wd", "air_temp", "rh", "date_unix", "day_julian", "weekday", "hour"
-  )
+  ),
+  trees = 300
 )
 
 }
 
 }
 \seealso{
-\code{\link{met_prepare_data}}
+\code{\link{met_prepare_data}}, \code{\link{met_normalise}}
 }
 \author{
 Stuart K. Grange

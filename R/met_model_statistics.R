@@ -82,7 +82,7 @@ met_plot_importance <- function(model) {
         yend = reorder(variable, importance))
     ) +
     ggplot2::theme_minimal() + 
-    ylab("Variable") + 
-    xlab("Variable importance (unit?)")
+    ggplot2::ylab("Variable") + 
+    ggplot2::xlab("Variable importance (unit?)")
   
 }

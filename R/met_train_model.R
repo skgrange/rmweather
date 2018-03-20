@@ -1,11 +1,12 @@
-#' Function to train/calculate/grow a random forest model to predict (usually) 
-#' pollutant concentrations using meteorological and time variables. 
+#' Function to train a random forest model to predict (usually) pollutant
+#' concentrations using meteorological and time variables. 
 #' 
 #' @param df Input data frame after preparation with 
 #' \code{\link{met_prepare_data}}. \code{df} has a number of constraints which 
 #' will be checked for before modelling. 
 #' 
-#' @param variables Explanatory variables used to predict \code{"value"}. 
+#' @param variables Independent/explainatorie variables used to predict 
+#' \code{"value"}. 
 #' 
 #' @param trees Number of trees to grow to make up the forest. 
 #' 
@@ -21,20 +22,21 @@
 #' 
 #' @author Stuart K. Grange
 #' 
-#' @return \code{ranger} object, a named list. 
+#' @return A \code{ranger} model object, a named list. 
 #' 
-#' @seealso \code{\link{met_prepare_data}}
+#' @seealso \code{\link{met_prepare_data}}, \code{\link{met_normalise}}
 #' 
 #' @examples 
 #' 
 #' \dontrun{
 #' 
 #' # Calculate a model using common meteorological and time variables
-#' model <- met_calculate_model(
+#' model <- met_train_model(
 #'   data_for_modelling,
 #'   variables = c(
 #'     "ws", "wd", "air_temp", "rh", "date_unix", "day_julian", "weekday", "hour"
-#'   )
+#'   ),
+#'   trees = 300
 #' )
 #' 
 #' }
