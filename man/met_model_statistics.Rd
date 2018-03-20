@@ -3,12 +3,15 @@
 \name{met_model_statistics}
 \alias{met_model_statistics}
 \alias{met_model_importance}
+\alias{met_plot_importance}
 \title{Functions to extract model statistics from a model calculated with
 \code{met_calculate_model}.}
 \usage{
 met_model_statistics(model)
 
 met_model_importance(model)
+
+met_plot_importance(model)
 }
 \arguments{
 \item{model}{A ranger model object from \code{met_calculate_model}.}

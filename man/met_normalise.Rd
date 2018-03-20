@@ -4,25 +4,25 @@
 \alias{met_normalise}
 \title{Function to normalise a variable for "average" meteorological conditions.}
 \usage{
-met_normalise(model, df, n_samples = 300, replace = TRUE, n_cores = NULL,
-  verbose = FALSE)
+met_normalise(model, df, variables = NA, n_samples = 300, replace = TRUE,
+  n_cores = NA, verbose = FALSE)
 }
 \arguments{
-\item{model}{A ranger model object from \code{met_calculate_model}.}
+\item{model}{A ranger model object from \code{met_train_model}.}
 
 \item{df}{Input data used to calculate \code{model}.}
+
+\item{variables}{Variables to randomly sample. Default is all variables used
+for training the model with the exception of \code{date_unix}, the trend term.}
 
 \item{n_samples}{Number of times to sample \code{df} and then predict?}
 
 \item{replace}{Should \code{variables} be sampled with replacement?}
 
-\item{n_cores}{Number of CPU cores to use for the model calculation.}
+\item{n_cores}{Number of CPU cores to use for the model predictions. Default
+is system's total minus one.}
 
 \item{verbose}{Should the function give messages?}
-
-\item{variables}{Variables to randomly sample. \code{variables} will be all
-variables used for calculating the model in \code{met_calculate_model} with
-the exception of \code{date_unix}, the trend term.}
 }
 \value{
 Data frame.
@@ -38,7 +38,6 @@ data_normalised <- met_normalise(
   model, 
   data_for_modelling, 
   n_samples = 300,
-  n_cores = 7, 
   verbose = TRUE
 )
 
@@ -46,7 +45,7 @@ data_normalised <- met_normalise(
 
 }
 \seealso{
-\code{\link{met_prepare_data}}, \code{\link{met_calculate_model}}
+\code{\link{met_prepare_data}}, \code{\link{met_train_model}}
 }
 \author{
 Stuart K. Grange

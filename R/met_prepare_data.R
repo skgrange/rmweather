@@ -117,6 +117,8 @@ split_into_sets <- function(df, fraction = 0.8) {
 
 met_check_data <- function(df, prepared) {
   
+  # To-do change to true matches, not grep
+  
   # Get data names
   names <- names(df)
   
@@ -126,15 +128,22 @@ met_check_data <- function(df, prepared) {
   if (!grepl("POSIXct", class(df$date)[1]))
     stop("`date` variable needs to be a parsed date (POSIXct)...", call. = FALSE)
   
+  if (anyNA(df$date)) stop("`date` must not contain missing (NA) values...", call. = FALSE)
+  
+  # More checks
   if (prepared) {
     
     if (!any(grepl("set", names))) 
       stop("Input must contain a `set` variable...", call. = FALSE)
     
-    # unique(df$set) %in% c("training", "testing")
+    if (!all(unique(df$set) %in% c("training", "testing")))
+      stop("`set` can only take the values `training` and `testing`...", call. = FALSE)
     
     if (!any(grepl("value", names))) 
       stop("Input must contain a `value` variable...", call. = FALSE)
+    
+    if (!any(grepl("date_unix", names))) 
+      stop("Input must contain a `date_unix` variable...", call. = FALSE)
     
   }
 

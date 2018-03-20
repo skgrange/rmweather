@@ -1,4 +1,4 @@
-#' Function to calculate/grow/train a random forest model to predict (usually) 
+#' Function to train/calculate/grow a random forest model to predict (usually) 
 #' pollutant concentrations using meteorological and time variables. 
 #' 
 #' @param df Input data frame after preparation with 
@@ -14,7 +14,8 @@
 #' 
 #' @param min_node_size Minimal node size. 
 #' 
-#' @param n_cores Number of CPU cores to use for the model calculation. 
+#' @param n_cores Number of CPU cores to use for the model calculation. Default
+#' is system's total minus one. 
 #' 
 #' @param verbose Should the function give messages? 
 #' 
@@ -22,7 +23,7 @@
 #' 
 #' @return \code{ranger} object, a named list. 
 #' 
-#' @seealso \code{\link{met_prepare_data}}, 
+#' @seealso \code{\link{met_prepare_data}}
 #' 
 #' @examples 
 #' 
@@ -39,9 +40,8 @@
 #' }
 #' 
 #' @export
-met_calculate_model <- function(df, variables, trees = 300, mtry = NULL,
-                                min_node_size = 5, n_cores = NULL, 
-                                verbose = FALSE) {
+met_train_model <- function(df, variables, trees = 300, mtry = NULL,
+                            min_node_size = 5, n_cores = NA, verbose = FALSE) {
   
   # Check input
   df <- met_check_data(df, prepared = TRUE)
@@ -52,7 +52,10 @@ met_calculate_model <- function(df, variables, trees = 300, mtry = NULL,
     select(value,
            !!variables)
   
-  if (verbose) message(str_date_formatted(), ": Growing the forest started...")
+  # Default logic
+  n_cores <- ifelse(is.na(n_cores), system_cpu_core_count() - 1, n_cores)
+  
+  if (verbose) message(str_date_formatted(), ": Model training started...")
   
   model <- ranger::ranger(
     value ~ ., 
