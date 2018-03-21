@@ -44,10 +44,14 @@
 #' @export
 met_prepare_data <- function(df, value = "value", fraction = 0.8) {
   
+  # Check
+  if (!value %in% names(df))
+    stop("`value` is not within input data frame...", call. = FALSE)
+  
   df %>% 
     met_check_data(prepared = FALSE) %>% 
-    add_date_variables() %>% 
     impute_values() %>% 
+    add_date_variables() %>% 
     split_into_sets(fraction = fraction) %>% 
     rename(value = !!value)
   
@@ -65,7 +69,7 @@ add_date_variables <- function(df) {
   
   if (!"day_julian" %in% names) df$day_julian <- lubridate::yday(df$date)
   
-  if (!"month" %in% names) df$month <- lubridate::month(df$date)
+  # if (!"month" %in% names) df$month <- lubridate::month(df$date)
   
   # if (!"week" %in% names) df$week <- lubridate::week(df$date)
 
@@ -139,7 +143,7 @@ met_check_data <- function(df, prepared) {
   
   if (anyNA(df$date)) stop("`date` must not contain missing (NA) values...", call. = FALSE)
   
-  # More checks
+  # More checks for prepared data
   if (prepared) {
     
     if (!"set" %in% names) 

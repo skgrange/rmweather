@@ -46,6 +46,16 @@ met_train_model <- function(df, variables, trees = 300, mtry = NULL,
                             min_node_size = 5, n_cores = NA, verbose = FALSE) {
   
   # Check input
+  if (verbose) message(str_date_formatted(), ": Checking input data...")
+  
+  # Extra checks
+  if (anyDuplicated(variables) != 0) 
+    stop("`variables` contains duplicate elements...", call. = FALSE)
+  
+  if (!all(variables %in% names(df))) 
+    stop("`variables` given are not within input data frame...", call. = FALSE)
+  
+  # Standard checks
   df <- met_check_data(df, prepared = TRUE)
   
   # Filter and select input for modelling
