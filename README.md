@@ -26,5 +26,3 @@ The lightweight **ghit** package can also be used for installation:
 # Install metmormr
 ghit::install_github("skgrange/metnormr")
 ```
-
-

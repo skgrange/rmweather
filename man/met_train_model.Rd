@@ -13,7 +13,7 @@ met_train_model(df, variables, trees = 300, mtry = NULL,
 \code{\link{met_prepare_data}}. \code{df} has a number of constraints which 
 will be checked for before modelling.}
 
-\item{variables}{Independent/explainatorie variables used to predict 
+\item{variables}{Independent/explanatory variables used to predict 
 \code{"value"}.}
 
 \item{trees}{Number of trees to grow to make up the forest.}

@@ -2,7 +2,7 @@ Package: metnormr
 Type: Package
 Title: An R package to conduct meteorological/weather normalisation on air 
     quality data
-Version: 0.0.6
+Version: 0.0.7
 Date: 2018-03-20
 Authors@R: person("Stuart", "Grange", email = "stuart.grange@york.ac.uk", 
     role = c("cre", "aut"))
@@ -24,4 +24,3 @@ Suggests:
     openair,
     pdp
 RoxygenNote: 6.0.1
-

@@ -14,7 +14,7 @@ pollutant concentrations and meteorological variables.}
 \code{"no2"} or \code{"pm10"}.}
 
 \item{fraction}{Fraction of the observations to make up the training set. 
-Default is 0.8, 80 %.}
+Default is 0.8, 80 \%.}
 }
 \value{
 Data frame, the input data transformed ready for modelling with 

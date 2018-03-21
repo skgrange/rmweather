@@ -5,7 +5,7 @@
 #' \code{\link{met_prepare_data}}. \code{df} has a number of constraints which 
 #' will be checked for before modelling. 
 #' 
-#' @param variables Independent/explainatorie variables used to predict 
+#' @param variables Independent/explanatory variables used to predict 
 #' \code{"value"}. 
 #' 
 #' @param trees Number of trees to grow to make up the forest. 

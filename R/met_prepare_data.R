@@ -20,7 +20,7 @@
 #' \code{"no2"} or \code{"pm10"}. 
 #' 
 #' @param fraction Fraction of the observations to make up the training set. 
-#' Default is 0.8, 80 %.
+#' Default is 0.8, 80 \%.
 #'
 #' @return Data frame, the input data transformed ready for modelling with 
 #' \strong{metnormr}. 
