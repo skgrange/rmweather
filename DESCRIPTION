@@ -19,8 +19,8 @@ Imports:
     purrr,
     ranger,
     ggplot2,
-    viridis
-Suggests:
-    openair,
+    viridis,
     pdp
+Suggests:
+    openair
 RoxygenNote: 6.0.1
