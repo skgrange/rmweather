@@ -73,7 +73,10 @@ met_plot_importance <- function(model) {
   df <- met_model_importance(model)
   
   # Plot
-  ggplot2::ggplot(df, ggplot2::aes(importance, reorder(variable, importance))) + 
+  plot <- ggplot2::ggplot(
+    df, 
+    ggplot2::aes(importance, reorder(variable, importance))
+  ) + 
     ggplot2::geom_point(size = 5) + 
     ggplot2::geom_segment(
       ggplot2::aes(
@@ -84,5 +87,7 @@ met_plot_importance <- function(model) {
     ggplot2::theme_minimal() + 
     ggplot2::ylab("Variable") + 
     ggplot2::xlab("Variable importance (unit?)")
+  
+  return(plot)
   
 }

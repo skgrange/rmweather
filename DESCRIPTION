@@ -2,8 +2,8 @@ Package: metnormr
 Type: Package
 Title: An R package to conduct meteorological/weather normalisation on air 
     quality data
-Version: 0.0.9
-Date: 2018-03-21
+Version: 0.0.11
+Date: 2018-03-22
 Authors@R: person("Stuart", "Grange", email = "stuart.grange@york.ac.uk", 
     role = c("cre", "aut"))
 Maintainer: Stuart K. Grange <stuart.grange@york.ac.uk>
