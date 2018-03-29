@@ -1,18 +1,47 @@
-#' Function to 
+#' Function to calculate partial dependencies after training with 
+#' \strong{metnormr}. 
 #' 
+#' @param model A ranger model object from \code{\link{met_train_model}}. 
 #' 
-#' @param df Input data frame. 
+#' @param df Input data frame after preparation with 
+#' \code{\link{met_prepare_data}}.
 #' 
+#' @param variable Vector of variables to calculate partial dependencies for. 
 #' 
+#' @param n_cores Number of CPU cores to use for the model calculation. Default
+#' is system's total minus one. 
 #' 
+#' @param verbose Should the function give messages? 
 #' 
 #' @return Data frame. 
 #' 
 #' @author Stuart K. Grange
 #' 
+#' @examples 
+#' 
+#' \dontrun{
+#' 
+#' # Calculate partial dependencies for wind speed
+#' data_partial <- met_partial_dependencies(
+#'   model = model, 
+#'   df = data_for_modelling,
+#'   variable = "ws", 
+#'   verbose = TRUE
+#' )
+#' 
+#' # Calculate partial dependencies for all independent variables used in model
+#' data_partial <- met_partial_dependencies(
+#'   model = model, 
+#'   df = data_for_modelling,
+#'   variable = NA, 
+#'   verbose = TRUE
+#' )
+#' 
+#' }
+#' 
 #' @export
-met_partial_dependencies <- function(model, df, variable = NA, two_way = FALSE, 
-                                     n_cores = NA, verbose = FALSE) {
+met_partial_dependencies <- function(model, df, variable, n_cores = NA, 
+                                     verbose = FALSE) {
   
   if (!"package:ranger" %in% search())
     stop("The ranger package is not loaded...", call. = FALSE)

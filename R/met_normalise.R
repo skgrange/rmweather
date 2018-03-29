@@ -1,6 +1,6 @@
 #' Function to normalise a variable for "average" meteorological conditions. 
 #' 
-#' @param model A ranger model object from \code{met_train_model}. 
+#' @param model A ranger model object from \code{\link{met_train_model}}. 
 #' 
 #' @param df Input data used to calculate \code{model} using 
 #' \code{\link{met_prepare_data}}.

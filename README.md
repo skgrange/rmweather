@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/skgrange/metnormr.svg?branch=master)](https://travis-ci.org/skgrange/metnormr)
 
-![](inst/extdata/images/icon_small.png)
-
 ## Introduction
 
 **metnormr** is an R package to conduct meteorological/weather normalisation on air quality so trends and interventions can be investigated in a robust way. 
@@ -20,7 +18,7 @@ library(devtools)
 install_github("skgrange/metnormr")
 ```
 
-The lightweight **ghit** package can also be used for installation: 
+The lightweight **ghit** package can also be used for installation if you prefer: 
 
 ```
 # Install metmormr

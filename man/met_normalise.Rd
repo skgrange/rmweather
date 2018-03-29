@@ -8,7 +8,7 @@ met_normalise(model, df, variables = NA, n_samples = 300, replace = TRUE,
   n_cores = NA, verbose = FALSE)
 }
 \arguments{
-\item{model}{A ranger model object from \code{met_train_model}.}
+\item{model}{A ranger model object from \code{\link{met_train_model}}.}
 
 \item{df}{Input data used to calculate \code{model} using 
 \code{\link{met_prepare_data}}.}

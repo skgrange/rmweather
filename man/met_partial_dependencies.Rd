@@ -2,19 +2,53 @@
 % Please edit documentation in R/met_partial_dependencies.R
 \name{met_partial_dependencies}
 \alias{met_partial_dependencies}
-\title{Function to}
+\title{Function to calculate partial dependencies after training with 
+\strong{metnormr}.}
 \usage{
-met_partial_dependencies(model, df, variable = NA, two_way = FALSE,
-  n_cores = NA, verbose = FALSE)
+met_partial_dependencies(model, df, variable, n_cores = NA, verbose = FALSE)
 }
 \arguments{
-\item{df}{Input data frame.}
+\item{model}{A ranger model object from \code{\link{met_train_model}}.}
+
+\item{df}{Input data frame after preparation with 
+\code{\link{met_prepare_data}}.}
+
+\item{variable}{Vector of variables to calculate partial dependencies for.}
+
+\item{n_cores}{Number of CPU cores to use for the model calculation. Default
+is system's total minus one.}
+
+\item{verbose}{Should the function give messages?}
 }
 \value{
 Data frame.
 }
 \description{
-Function to
+Function to calculate partial dependencies after training with 
+\strong{metnormr}.
+}
+\examples{
+
+\dontrun{
+
+# Calculate partial dependencies for wind speed
+data_partial <- met_partial_dependencies(
+  model = model, 
+  df = data_for_modelling,
+  variable = "ws", 
+  verbose = TRUE
+)
+
+# Calculate partial dependencies for all independent variables used in model
+data_partial <- met_partial_dependencies(
+  model = model, 
+  df = data_for_modelling,
+  variable = NA, 
+  verbose = TRUE
+)
+
+}
+
 }
 \author{
 Stuart K. Grange

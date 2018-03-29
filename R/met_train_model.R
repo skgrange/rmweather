@@ -8,7 +8,7 @@
 #' @param variables Independent/explanatory variables used to predict 
 #' \code{"value"}. 
 #' 
-#' @param trees Number of trees to grow to make up the forest. 
+#' @param n_trees Number of trees to grow to make up the forest. 
 #' 
 #' @param mtry Number of variables to possibly split at in each node. Default is 
 #' the (rounded down) square root of the number variables.
@@ -36,13 +36,13 @@
 #'   variables = c(
 #'     "ws", "wd", "air_temp", "rh", "date_unix", "day_julian", "weekday", "hour"
 #'   ),
-#'   trees = 300
+#'   n_trees = 300
 #' )
 #' 
 #' }
 #' 
 #' @export
-met_train_model <- function(df, variables, trees = 300, mtry = NULL,
+met_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
                             min_node_size = 5, n_cores = NA, verbose = FALSE) {
   
   # Check input
@@ -75,7 +75,7 @@ met_train_model <- function(df, variables, trees = 300, mtry = NULL,
     write.forest = TRUE,
     importance = "impurity",
     verbose = verbose,
-    num.trees = trees,
+    num.trees = n_trees,
     mtry = mtry,
     min.node.size = min_node_size,
     num.threads = n_cores
