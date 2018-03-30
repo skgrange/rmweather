@@ -1,9 +1,9 @@
 #' Function to normalise a variable for "average" meteorological conditions. 
 #' 
-#' @param model A ranger model object from \code{\link{met_train_model}}. 
+#' @param model A ranger model object from \code{\link{rmw_train_model}}. 
 #' 
 #' @param df Input data used to calculate \code{model} using 
-#' \code{\link{met_prepare_data}}.
+#' \code{\link{rmw_prepare_data}}.
 #' 
 #' @param variables Variables to randomly sample. Default is all variables used
 #' for training the model with the exception of \code{date_unix}, the trend term. 
@@ -21,13 +21,13 @@
 #' 
 #' @return Data frame. 
 #' 
-#' @seealso \code{\link{met_prepare_data}}, \code{\link{met_train_model}}
+#' @seealso \code{\link{rmw_prepare_data}}, \code{\link{rmw_train_model}}
 #' 
 #' @examples 
 #' \dontrun{
 #' 
 #' # Normalise a time series
-#' data_normalised <- met_normalise(
+#' data_normalised <- rmw_normalise(
 #'   model, 
 #'   data_for_modelling, 
 #'   n_samples = 300,
@@ -37,11 +37,11 @@
 #' }
 #' 
 #' @export
-met_normalise <- function(model, df, variables = NA, n_samples = 300, 
+rmw_normalise <- function(model, df, variables = NA, n_samples = 300, 
                           replace = TRUE, n_cores = NA, verbose = FALSE) {
   
-  # Check input
-  df <- met_check_data(df, prepared = TRUE)
+  # Check inputs
+  df <- rmw_check_data(df, prepared = TRUE)
   stopifnot(class(model) == "ranger")
   
   # Default logic for cpu cores
@@ -65,7 +65,7 @@ met_normalise <- function(model, df, variables = NA, n_samples = 300,
   # Do
   df <- seq_len(n_samples) %>% 
     purrr:::map_dfr(
-      ~met_normalise_worker(
+      ~rmw_normalise_worker(
         index = .x,
         model = model,
         df = df,
@@ -91,7 +91,7 @@ met_normalise <- function(model, df, variables = NA, n_samples = 300,
 }
 
 
-met_normalise_worker <- function(index, model, df, variables, replace, n_cores, 
+rmw_normalise_worker <- function(index, model, df, variables, replace, n_cores, 
                                  n_samples, verbose) {
   
   if (verbose) {

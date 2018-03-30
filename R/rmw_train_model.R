@@ -2,7 +2,7 @@
 #' concentrations using meteorological and time variables. 
 #' 
 #' @param df Input data frame after preparation with 
-#' \code{\link{met_prepare_data}}. \code{df} has a number of constraints which 
+#' \code{\link{rmw_prepare_data}}. \code{df} has a number of constraints which 
 #' will be checked for before modelling. 
 #' 
 #' @param variables Independent/explanatory variables used to predict 
@@ -22,16 +22,16 @@
 #' 
 #' @author Stuart K. Grange
 #' 
-#' @return A \code{ranger} model object, a named list. 
+#' @return A \strong{ranger} model object, a named list. 
 #' 
-#' @seealso \code{\link{met_prepare_data}}, \code{\link{met_normalise}}
+#' @seealso \code{\link{rmw_prepare_data}}, \code{\link{rmw_normalise}}
 #' 
 #' @examples 
 #' 
 #' \dontrun{
 #' 
 #' # Calculate a model using common meteorological and time variables
-#' model <- met_train_model(
+#' model <- rmw_train_model(
 #'   data_for_modelling,
 #'   variables = c(
 #'     "ws", "wd", "air_temp", "rh", "date_unix", "day_julian", "weekday", "hour"
@@ -42,7 +42,7 @@
 #' }
 #' 
 #' @export
-met_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
+rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
                             min_node_size = 5, n_cores = NA, verbose = FALSE) {
   
   # Check input
@@ -56,7 +56,7 @@ met_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
     stop("`variables` given are not within input data frame...", call. = FALSE)
   
   # Standard checks
-  df <- met_check_data(df, prepared = TRUE)
+  df <- rmw_check_data(df, prepared = TRUE)
   
   # Filter and select input for modelling
   df <- df %>% 

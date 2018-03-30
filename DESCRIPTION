@@ -1,23 +1,24 @@
-Package: metnormr
+Package: rmweather
 Type: Package
 Title: An R package to conduct meteorological/weather normalisation on air 
     quality data
-Version: 0.0.12
-Date: 2018-03-29
+Version: 0.0.13
+Date: 2018-03-30
 Authors@R: person("Stuart", "Grange", email = "stuart.grange@york.ac.uk", 
     role = c("cre", "aut"))
 Maintainer: Stuart K. Grange <stuart.grange@york.ac.uk>
 Description: An R package to conduct meteorological/weather normalisation on air 
     quality data.
-URL: https://github.com/skgrange/metnormr
+URL: https://github.com/skgrange/rmweather
 License: GPL (>= 2)
 ByteCompile: true
+Depends: 
+    ranger
 Imports:
     stringr,
     lubridate,
     dplyr,
     purrr,
-    ranger,
     ggplot2,
     viridis,
     pdp

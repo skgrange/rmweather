@@ -1,15 +1,15 @@
-#' Function to prepare a data frame for modelling with \strong{metnormr}. 
+#' Function to prepare a data frame for modelling with \strong{rmweather}. 
 #' 
-#' \code{met_prepare_data} will test and prepare a data frame for further use 
-#' with \strong{metnormr}.
+#' \code{rmw_prepare_data} will test and prepare a data frame for further use 
+#' with \strong{rmweather}.
 #' 
-#' \code{met_prepare_data} will check if a \code{date} variable is present and 
+#' \code{rmw_prepare_data} will check if a \code{date} variable is present and 
 #' is of the correct data type, impute missing numeric and categorical values, 
 #' randomly split the input into training and testing sets, and rename the 
 #' dependant variable to \code{"value"}. The \code{date} variable will also be 
 #' used to calculate new variables such as \code{date_unix}, \code{day_julian}, 
 #' \code{weekday}, and \code{hour} which can be used as independent variables. 
-#' These attributes are needed for other \strong{metnormr} functions to operate. 
+#' These attributes are needed for other \strong{rmweather} functions to operate. 
 #' 
 #' Use \code{set.seed} in an R session to keep results reproducible.  
 #' 
@@ -23,12 +23,12 @@
 #' Default is 0.8, 80 \%.
 #'
 #' @return Data frame, the input data transformed ready for modelling with 
-#' \strong{metnormr}. 
+#' \strong{rmweather}. 
 #' 
 #' @author Stuart K. Grange
 #' 
-#' @seealso \code{\link{set.seed}}, \code{\link{met_train_model}}, 
-#' \code{\link{met_normalise}}
+#' @seealso \code{\link{set.seed}}, \code{\link{rmw_train_model}}, 
+#' \code{\link{rmw_normalise}}
 #' 
 #' @examples 
 #' \dontrun{
@@ -37,19 +37,19 @@
 #' set.seed(123)
 #'
 #' # Prepare data for modelling 
-#' data_for_modelling <- met_prepare_data(data_swiss, value = "no2")
+#' data_for_modelling <- rmw_prepare_data(data_swiss, value = "no2")
 #' 
 #' }
 #' 
 #' @export
-met_prepare_data <- function(df, value = "value", fraction = 0.8) {
+rmw_prepare_data <- function(df, value = "value", fraction = 0.8) {
   
   # Check
   if (!value %in% names(df))
     stop("`value` is not within input data frame...", call. = FALSE)
   
   df %>% 
-    met_check_data(prepared = FALSE) %>% 
+    rmw_check_data(prepared = FALSE) %>% 
     impute_values() %>% 
     add_date_variables() %>% 
     split_into_sets(fraction = fraction) %>% 
@@ -130,7 +130,7 @@ split_into_sets <- function(df, fraction) {
 }
 
 
-met_check_data <- function(df, prepared) {
+rmw_check_data <- function(df, prepared) {
   
   # Get data names
   names <- names(df)

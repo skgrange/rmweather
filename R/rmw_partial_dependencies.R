@@ -1,10 +1,10 @@
 #' Function to calculate partial dependencies after training with 
-#' \strong{metnormr}. 
+#' \strong{rmweather}. 
 #' 
-#' @param model A ranger model object from \code{\link{met_train_model}}. 
+#' @param model A ranger model object from \code{\link{rmw_train_model}}. 
 #' 
 #' @param df Input data frame after preparation with 
-#' \code{\link{met_prepare_data}}.
+#' \code{\link{rmw_prepare_data}}.
 #' 
 #' @param variable Vector of variables to calculate partial dependencies for. 
 #' 
@@ -22,7 +22,7 @@
 #' \dontrun{
 #' 
 #' # Calculate partial dependencies for wind speed
-#' data_partial <- met_partial_dependencies(
+#' data_partial <- rmw_partial_dependencies(
 #'   model = model, 
 #'   df = data_for_modelling,
 #'   variable = "ws", 
@@ -30,7 +30,7 @@
 #' )
 #' 
 #' # Calculate partial dependencies for all independent variables used in model
-#' data_partial <- met_partial_dependencies(
+#' data_partial <- rmw_partial_dependencies(
 #'   model = model, 
 #'   df = data_for_modelling,
 #'   variable = NA, 
@@ -40,14 +40,14 @@
 #' }
 #' 
 #' @export
-met_partial_dependencies <- function(model, df, variable, n_cores = NA, 
+rmw_partial_dependencies <- function(model, df, variable, n_cores = NA, 
                                      verbose = FALSE) {
   
   if (!"package:ranger" %in% search())
     stop("The ranger package is not loaded...", call. = FALSE)
     
   # Check inputs
-  df <- met_check_data(df, prepared = TRUE)
+  df <- rmw_check_data(df, prepared = TRUE)
   stopifnot(class(model) == "ranger")
   
   # Default logic for cpu cores
@@ -58,7 +58,7 @@ met_partial_dependencies <- function(model, df, variable, n_cores = NA,
   
   df_predict <- purrr:::map_dfr(
     variable, 
-    ~met_partial_dependencies_worker(
+    ~rmw_partial_dependencies_worker(
       model = model,
       df = df, 
       variable = .x,
@@ -72,7 +72,7 @@ met_partial_dependencies <- function(model, df, variable, n_cores = NA,
 }
 
 
-met_partial_dependencies_worker <- function(model, df, variable, n_cores, 
+rmw_partial_dependencies_worker <- function(model, df, variable, n_cores, 
                                             verbose) {
   
   if (verbose) message(str_date_formatted(), ": Predicting `", variable, "`...")

@@ -1,6 +1,6 @@
-#' Function to predict. 
+#' Function to predict using a \strong{ranger} random forest.
 #' 
-#' @param model A ranger model object from \code{met_train_model}. 
+#' @param model A \strong{ranger} model object from \code{rmw_train_model}. 
 #' 
 #' @param df Input data to be used for predictions. 
 #' 
@@ -13,7 +13,7 @@
 #' @return Numeric vector. 
 #' 
 #' @export
-met_predict <- function(model, df = NA, n_cores = NULL, 
+rmw_predict <- function(model, df = NA, n_cores = NULL, 
                         verbose = FALSE) {
   
   if (class(df) != "data.frame" && is.na(df[1])) {

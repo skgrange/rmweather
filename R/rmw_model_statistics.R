@@ -1,7 +1,7 @@
 #' Functions to extract model statistics from a model calculated with
-#' \code{met_calculate_model}. 
+#' \code{rmw_calculate_model}. 
 #' 
-#' @param model A ranger model object from \code{met_calculate_model}. 
+#' @param model A ranger model object from \code{rmw_calculate_model}. 
 #' 
 #' @return Data frame. 
 #' 
@@ -12,15 +12,15 @@
 #' \dontrun{
 #'
 #' # Extract statistics from a model object
-#' met_model_statistics(model)
+#' rmw_model_statistics(model)
 #' 
 #' # Extract importances from a model object
-#' met_model_importance(model)
+#' rmw_model_importance(model)
 #'  
 #' }
 #' 
 #' @export
-met_model_statistics <- function(model) {
+rmw_model_statistics <- function(model) {
   
   stopifnot(class(model) == "ranger")
   
@@ -42,10 +42,10 @@ met_model_statistics <- function(model) {
 }
 
 
-#' @rdname met_model_statistics
+#' @rdname rmw_model_statistics
 #' 
 #' @export
-met_model_importance <- function(model) {
+rmw_model_importance <- function(model) {
   
   stopifnot(class(model) == "ranger")
   
@@ -60,34 +60,5 @@ met_model_importance <- function(model) {
   df <- tibble::rowid_to_column(df, "rank")
   
   return(df)
-  
-}
-
-
-#' @rdname met_model_statistics
-#' 
-#' @export
-met_plot_importance <- function(model) {
-  
-  # Get importances
-  df <- met_model_importance(model)
-  
-  # Plot
-  plot <- ggplot2::ggplot(
-    df, 
-    ggplot2::aes(importance, reorder(variable, importance))
-  ) + 
-    ggplot2::geom_point(size = 5) + 
-    ggplot2::geom_segment(
-      ggplot2::aes(
-        x = 0, y = reorder(variable, importance), 
-        xend = importance, 
-        yend = reorder(variable, importance))
-    ) +
-    ggplot2::theme_minimal() + 
-    ggplot2::ylab("Variable") + 
-    ggplot2::xlab("Variable importance (unit?)")
-  
-  return(plot)
   
 }
