@@ -124,7 +124,7 @@ rmw_normalise_worker <- function(index, model, df, variables, replace, n_cores,
   df[variables] <- lapply(df[variables], function(x) x[index_rows])
   
   # Use model to predict
-  value_predict <- met_predict(model, df, n_cores = n_cores)
+  value_predict <- rmw_predict(model, df, n_cores = n_cores)
   
   # Build data frame of predictions
   df <- data.frame(
