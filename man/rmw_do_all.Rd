@@ -37,9 +37,8 @@ is system's total minus one.}
 Named list.
 }
 \description{
-Function to train a random forest model to predict (usually) pollutant
-concentrations using meteorological and time variables and then immediately
-normalise a variable for "average" meteorological conditions.
+\code{rmw_do_all} is a user-level function to conduct the meteorological 
+normalisation process in one step.
 }
 \seealso{
 \code{\link{rmw_prepare_data}}, \code{\link{rmw_normalise}}

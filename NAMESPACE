@@ -2,6 +2,7 @@
 
 export("%>%")
 export(rmw_do_all)
+export(rmw_example_data)
 export(rmw_model_importance)
 export(rmw_model_statistics)
 export(rmw_normalise)
