@@ -75,9 +75,11 @@ rmw_do_all <- function(df, variables, n_trees = 300, min_node_size = 5,
   
   # Build timing data frame
   df_times <- data.frame(
+    hostname = as.character(Sys.info()["nodename"]),
     date_start,
     date_post_training,
-    date_post_normalise
+    date_post_normalise,
+    stringsAsFactors = FALSE
   ) %>% 
     mutate(time_elasped_training = date_post_training - date_start,
            time_elapsed_normalising = date_post_normalise - date_post_training,
