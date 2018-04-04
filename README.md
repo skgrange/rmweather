@@ -4,7 +4,7 @@
 
 ## Introduction
 
-**rmweather** is an R package to conduct meteorological/weather normalisation on air quality so trends and interventions can be investigated in a robust way. 
+**rmweather** is an R package to conduct meteorological/weather normalisation on air quality so trends and interventions can be investigated in a robust way. **rmweather** is the "Mk.II" package to [**normalweatherr**](https://github.com/skgrange/normalweatherr). **rmweather** does less than **normalweatherr**, but it is much faster and easier to use. 
 
 ## Installation
 
@@ -18,9 +18,59 @@ library(devtools)
 install_github("skgrange/rmweather")
 ```
 
-The lightweight **ghit** package can also be used for installation if you prefer: 
+The lightweight [**ghit**](https://github.com/cloudyr/ghit) package (soon to be replaced with [**remotes**](https://github.com/r-lib/remotes)) can also be used for installation if you prefer: 
 
 ```
 # Install metmormr
 ghit::install_github("skgrange/rmweather")
+```
+
+## Example usage
+
+**rmweather** contains example data from London which can be used to show the meteorological normalisation procedure. The example data are daily means of NO~2~ and NO~x~ observations at London Marylebone Road. The accompanying surface meterological data are from London Heathrow, a major airport located about 23 km west of Central London. 
+
+All of **rmweather**'s functions begin with `rmw_` so are easy to track and find help for. In this example, we have used **dplyr** and the pipe (`%>%`) for clarity. The example take about three minutes on my (laptop) system and the model has an *R^2* value of 79 %. 
+
+```
+# Load packages
+library(dplyr)
+library(rmweather)
+
+# Load rmweather's example data, from london
+data_example <- rmw_example_data()
+
+# Prepare data for modelling
+# Only use data with valid wind speeds, no2 will become the dependent variable
+data_example_prepared <- data_example %>% 
+  filter(!is.na(ws)) %>% 
+  rename(value = no2) %>% 
+  rmw_prepare_data()
+
+# Grow/train a random forest model and then create a meteorological normalised trend 
+list_normalised <- rmw_do_all(
+  data_example_prepared,
+  variables = c(
+    "date_unix", "day_julian", "weekday", "hour", "air_temp", "rh", "wd", "ws",
+    "atmospheric_pressure"
+  ),
+  n_trees = 300,
+  n_samples = 1000,
+  verbose = TRUE
+)
+
+# Check model object's performance
+rmw_model_statistics(list_normalised$model)
+
+# Check if model has suffered from overfitting
+rmw_predict_the_test_set(
+  model = list_normalised$model,
+  df = list_normalised$observations
+) %>% 
+  rmw_plot_test_prediction()
+
+# How long did the process take? 
+list_normalised$elapsed_times
+
+# Plot normalised trend
+plot(value_predict ~ date, data = list_normalised$normalised, type = "l")
 ```

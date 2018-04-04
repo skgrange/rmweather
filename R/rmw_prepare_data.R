@@ -70,7 +70,6 @@ add_date_variables <- function(df) {
   if (!"day_julian" %in% names) df$day_julian <- lubridate::yday(df$date)
   
   # if (!"month" %in% names) df$month <- lubridate::month(df$date)
-  
   # if (!"week" %in% names) df$week <- lubridate::week(df$date)
 
   # Own function  

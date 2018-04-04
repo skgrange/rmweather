@@ -1,6 +1,8 @@
 #' Function to calculate partial dependencies after training with 
 #' \strong{rmweather}. 
 #' 
+#' \code{rmw_plot_partial_dependencies} is rather slow. 
+#' 
 #' @param model A ranger model object from \code{\link{rmw_train_model}}. 
 #' 
 #' @param df Input data frame after preparation with 
@@ -43,6 +45,7 @@
 rmw_partial_dependencies <- function(model, df, variable, n_cores = NA, 
                                      verbose = FALSE) {
   
+  # Check, predict is a generic function and needs to be loaded
   if (!"package:ranger" %in% search())
     stop("The ranger package is not loaded...", call. = FALSE)
     
@@ -93,7 +96,7 @@ rmw_partial_dependencies_worker <- function(model, df, variable, n_cores,
            value, 
            partial_dependency)
   
-  # Catch factors, weekday
+  # Catch factors, usually weekday
   if ("factor" %in% class(df_predict$value)) 
     df_predict$value <- as.integer(df_predict$value)
   
