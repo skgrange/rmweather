@@ -24,8 +24,7 @@ is system's total minus one.}
 Data frame.
 }
 \description{
-Function to calculate partial dependencies after training with 
-\strong{rmweather}.
+\code{rmw_plot_partial_dependencies} is rather slow.
 }
 \examples{
 

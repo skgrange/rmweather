@@ -18,10 +18,12 @@ Imports:
     stringr,
     lubridate,
     dplyr,
+    magrittr,
     purrr,
     ggplot2,
     viridis,
-    pdp
+    pdp,
+    testthat
 Suggests:
     openair
 RoxygenNote: 6.0.1
