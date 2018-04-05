@@ -29,12 +29,15 @@ ghit::install_github("skgrange/rmweather")
 
 **rmweather** contains example data from London which can be used to show the meteorological normalisation procedure. The example data are daily means of NO<sub>2</sub> and NO<sub>x</sub> observations at London Marylebone Road. The accompanying surface meterological data are from London Heathrow, a major airport located about 23 km west of Central London. 
 
-All of **rmweather**'s functions begin with `rmw_` so are easy to track and find help for. In this example, we have used **dplyr** and the pipe (`%>%`) for clarity. The example take about three minutes on my (laptop) system and the model has an *R<sup>2</sup>* value of 79 %. 
+All of **rmweather**'s functions begin with `rmw_` so are easy to track and find help for. In this example, we have used **dplyr** and the pipe (`%>%`) for clarity. The example take about a minute on my (laptop) system and the model has an *R<sup>2</sup>* value of 79 %. 
 
 ```
 # Load packages
 library(dplyr)
 library(rmweather)
+
+# Make results reproducible
+set.seed(123)
 
 # Load rmweather's example data, from london
 data_example <- rmw_example_data()
@@ -54,7 +57,7 @@ list_normalised <- rmw_do_all(
     "atmospheric_pressure"
   ),
   n_trees = 300,
-  n_samples = 1000,
+  n_samples = 300,
   verbose = TRUE
 )
 

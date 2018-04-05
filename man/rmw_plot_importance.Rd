@@ -11,7 +11,7 @@ rmw_plot_importance(df)
 \item{df}{Data frame created by \code{\link{rmw_model_importance}}.}
 }
 \value{
-ggplot2 plot.
+ggplot2 plot with point and segment geometries.
 }
 \description{
 Function to plot random forest imporantances after training by 

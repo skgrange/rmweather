@@ -5,13 +5,16 @@
 \title{Function to plot the test set and predicted set after
 \code{\link{rmw_predict_the_test_set}}.}
 \usage{
-rmw_plot_test_prediction(df)
+rmw_plot_test_prediction(df, bins = 30)
 }
 \arguments{
 \item{df}{Data frame created by \code{\link{rmw_predict_the_test_set}}.}
+
+\item{bins}{Numeric vector giving number of bins in both vertical and 
+horizontal directions.}
 }
 \value{
-ggplot2 plot.
+ggplot2 plot with a hex geometry.
 }
 \description{
 Function to plot the test set and predicted set after

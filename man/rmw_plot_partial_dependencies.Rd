@@ -11,7 +11,7 @@ rmw_plot_partial_dependencies(df)
 \item{df}{Data frame created by \code{\link{rmw_partial_dependencies}}.}
 }
 \value{
-ggplot2 plot.
+ggplot2 plot with a point geometry.
 }
 \description{
 Function to plot partial dependencies after calculation by 
