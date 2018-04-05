@@ -27,9 +27,9 @@ ghit::install_github("skgrange/rmweather")
 
 ## Example usage
 
-**rmweather** contains example data from London which can be used to show the meteorological normalisation procedure. The example data are daily means of NO~2~ and NO~x~ observations at London Marylebone Road. The accompanying surface meterological data are from London Heathrow, a major airport located about 23 km west of Central London. 
+**rmweather** contains example data from London which can be used to show the meteorological normalisation procedure. The example data are daily means of NO<sub>2</sub> and NO<sub>x</sub> observations at London Marylebone Road. The accompanying surface meterological data are from London Heathrow, a major airport located about 23 km west of Central London. 
 
-All of **rmweather**'s functions begin with `rmw_` so are easy to track and find help for. In this example, we have used **dplyr** and the pipe (`%>%`) for clarity. The example take about three minutes on my (laptop) system and the model has an *R^2* value of 79 %. 
+All of **rmweather**'s functions begin with `rmw_` so are easy to track and find help for. In this example, we have used **dplyr** and the pipe (`%>%`) for clarity. The example take about three minutes on my (laptop) system and the model has an *R<sup>2</sup>* value of 79 %. 
 
 ```
 # Load packages
@@ -74,3 +74,11 @@ list_normalised$elapsed_times
 # Plot normalised trend
 plot(value_predict ~ date, data = list_normalised$normalised, type = "l")
 ```
+
+## See also
+
+  - [**ranger**](https://github.com/imbs-hl/ranger)
+  
+  - [**normalweatherr**](https://github.com/skgrange/normalweatherr)
+  
+  - [**deweather**](https://github.com/davidcarslaw/deweather)
