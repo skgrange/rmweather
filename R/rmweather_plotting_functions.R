@@ -26,9 +26,9 @@ rmw_plot_partial_dependencies <- function(df) {
 
 
 #' Function to plot random forest imporantances after training by 
-#' \code{\link{rmw_train_model}}. 
+#' \code{\link{rmw_train_model}}.
 #' 
-#' @param df Data frame created by \code{\link{rmw_train_model}}. 
+#' @param df Data frame created by \code{\link{rmw_model_importance}}. 
 #' 
 #' @author Stuart K. Grange
 #' 
@@ -37,8 +37,7 @@ rmw_plot_partial_dependencies <- function(df) {
 #' @export
 rmw_plot_importance <- function(df) {
   
-  # Check variable names
-  
+  # To-do: check variable names
   
   # Plot
   plot <- ggplot2::ggplot(

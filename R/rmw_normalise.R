@@ -84,7 +84,7 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
     group_by(date) %>% 
     summarise(value_predict = mean(value_predict, na.rm = TRUE)) %>% 
     ungroup() %>% 
-    mutate(n_samples = n_samples)
+    data.frame()
   
   return(df)
   

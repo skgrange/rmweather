@@ -108,7 +108,7 @@ split_into_sets <- function(df, fraction) {
   
   # Sample to get training set
   df_training <- df %>% 
-    sample_frac(fraction) %>% 
+    dplyr::sample_frac(fraction) %>% 
     mutate(set = "training")
   
   # Remove training set from input to get testing set

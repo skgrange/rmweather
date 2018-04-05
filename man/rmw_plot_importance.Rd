@@ -8,7 +8,7 @@
 rmw_plot_importance(df)
 }
 \arguments{
-\item{df}{Data frame created by \code{\link{rmw_train_model}}.}
+\item{df}{Data frame created by \code{\link{rmw_model_importance}}.}
 }
 \value{
 ggplot2 plot.
