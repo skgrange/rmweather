@@ -14,15 +14,24 @@ To install the development version the [**devtools**](https://github.com/hadley/
 # Load helper package
 library(devtools)
 
-# Install metnormr
+# Install rmweather
 install_github("skgrange/rmweather")
 ```
 
 The lightweight [**ghit**](https://github.com/cloudyr/ghit) package (soon to be replaced with [**remotes**](https://github.com/r-lib/remotes)) can also be used for installation if you prefer: 
 
 ```
-# Install metmormr
-ghit::install_github("skgrange/rmweather")
+# Install rmweather
+ghit::install_github("skgrange/rmweather", INSTALL_opts = "--install-tests")
+```
+
+### Unit testing
+
+After installation, you may want to perform the package's unit tests:
+
+```
+# Conduct all unit tests
+testthat::test_package("rmweather")
 ```
 
 ## Example usage
@@ -75,7 +84,7 @@ rmw_predict_the_test_set(
 list_normalised$elapsed_times
 
 # Plot normalised trend
-plot(value_predict ~ date, data = list_normalised$normalised, type = "l")
+rmw_plot_normalised(list_normalised$normalised)
 ```
 
 ## See also
