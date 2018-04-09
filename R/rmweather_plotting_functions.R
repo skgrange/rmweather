@@ -111,7 +111,7 @@ rmw_plot_test_prediction <- function(df, bins = 30) {
 rmw_plot_normalised <- function(df, colour = "#6B186EFF") {
   
   plot <- ggplot2::ggplot() + 
-    ggplot2::geom_line(data = df, aes(date, value_predict), colour = colour) + 
+    ggplot2::geom_line(data = df, ggplot2::aes(date, value_predict), colour = colour) + 
     ggplot2::theme_minimal() +
     ggplot2::ylab("Meteorologically normalised value") + 
     ggplot2::xlab("Date")
