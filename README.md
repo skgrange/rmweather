@@ -4,7 +4,7 @@
 
 ## Introduction
 
-**rmweather** is an R package to conduct meteorological/weather normalisation on air quality so trends and interventions can be investigated in a robust way. **rmweather** is the "Mk.II" package to [**normalweatherr**](https://github.com/skgrange/normalweatherr). **rmweather** does less than **normalweatherr**, but it is much faster and easier to use. 
+**rmweather** is an R package to conduct meteorological/weather normalisation on air quality so trends and interventions can be investigated in a robust way. For those who are aware of my previous research, **rmweather** is the "Mk.II" package of [**normalweatherr**](https://github.com/skgrange/normalweatherr). **rmweather** does less than **normalweatherr**, but it is much faster and easier to use. 
 
 ## Installation
 
@@ -27,7 +27,7 @@ ghit::install_github("skgrange/rmweather", INSTALL_opts = "--install-tests")
 
 ### Unit testing
 
-After installation, you may want to perform the package's unit tests:
+After installation, you may want to perform the package's unit tests to ensure everything is behaving as expected:
 
 ```
 # Conduct all unit tests
@@ -36,17 +36,14 @@ testthat::test_package("rmweather")
 
 ## Example usage
 
-**rmweather** contains example data from London which can be used to show the meteorological normalisation procedure. The example data are daily means of NO<sub>2</sub> and NO<sub>x</sub> observations at London Marylebone Road. The accompanying surface meterological data are from London Heathrow, a major airport located about 23 km west of Central London. 
+**rmweather** contains example data from London which can be used to show the meteorological normalisation procedure. The example data are daily means of NO<sub>2</sub> and NO<sub>x</sub> observations at London Marylebone Road. The accompanying surface meteorological data are from London Heathrow, a major airport located 23 km west of Central London. 
 
-All of **rmweather**'s functions begin with `rmw_` so are easy to track and find help for. In this example, we have used **dplyr** and the pipe (`%>%`) for clarity. The example take about a minute on my (laptop) system and the model has an *R<sup>2</sup>* value of 79 %. 
+Most of **rmweather**'s functions begin with `rmw_` so are easy to track and find help for. In this example, we have used **dplyr** and the pipe (`%>%`) for clarity. The example take about a minute on my (laptop) system and the model has an *R<sup>2</sup>* value of 79 %. 
 
 ```
 # Load packages
 library(dplyr)
 library(rmweather)
-
-# Make results reproducible
-set.seed(123)
 
 # Load rmweather's example data, from london
 data_example <- rmw_example_data()
@@ -62,7 +59,7 @@ data_example_prepared <- data_example %>%
 list_normalised <- rmw_do_all(
   data_example_prepared,
   variables = c(
-    "date_unix", "day_julian", "weekday", "hour", "air_temp", "rh", "wd", "ws",
+    "date_unix", "day_julian", "weekday", "air_temp", "rh", "wd", "ws",
     "atmospheric_pressure"
   ),
   n_trees = 300,
@@ -70,8 +67,16 @@ list_normalised <- rmw_do_all(
   verbose = TRUE
 )
 
+# What units are in the list? 
+names(list_normalised)
+
 # Check model object's performance
 rmw_model_statistics(list_normalised$model)
+
+# Plot variable importances
+list_normalised$model %>% 
+  rmw_model_importance() %>% 
+  rmw_plot_importance()
 
 # Check if model has suffered from overfitting
 rmw_predict_the_test_set(
@@ -85,7 +90,23 @@ list_normalised$elapsed_times
 
 # Plot normalised trend
 rmw_plot_normalised(list_normalised$normalised)
+
+# Investigate partial dependencies, if variable is NA, predict all
+data_pd <- rmw_partial_dependencies(
+  model = list_normalised$model, 
+  df = list_normalised$observations,
+  variable = NA
+)
+
+# Plot partial dependencies
+data_pd %>% 
+  filter(variable != "date_unix") %>% 
+  rmw_plot_partial_dependencies()
 ```
+
+The meteorological normalised trend produced is below: 
+
+![](inst/extdata/images/normalised_no2_example.png)
 
 ## See also
 
