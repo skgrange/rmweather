@@ -38,7 +38,7 @@ testthat::test_package("rmweather")
 
 **rmweather** contains example data from London which can be used to show the meteorological normalisation procedure. The example data are daily means of NO<sub>2</sub> and NO<sub>x</sub> observations at London Marylebone Road. The accompanying surface meteorological data are from London Heathrow, a major airport located 23 km west of Central London. 
 
-Most of **rmweather**'s functions begin with `rmw_` so are easy to track and find help for. In this example, we have used **dplyr** and the pipe (`%>%`) for clarity. The example take about a minute on my (laptop) system and the model has an *R<sup>2</sup>* value of 79 %. 
+Most of **rmweather**'s functions begin with `rmw_` so are easy to track and find help for. In this example, we have used **dplyr** and the pipe (`%>%` and pronounced as "then") for clarity. The example takes about a minute on my (laptop) system and the model has an *R<sup>2</sup>* value of 79 %. 
 
 ```
 # Load packages
@@ -104,7 +104,7 @@ data_pd %>%
   rmw_plot_partial_dependencies()
 ```
 
-The meteorologically normalised trend produced is below: 
+The meteorologically normalised trend produced is below and is explained in a paper which is in preparation. 
 
 ![](inst/extdata/images/normalised_no2_example.png)
 
