@@ -104,7 +104,7 @@ data_pd %>%
   rmw_plot_partial_dependencies()
 ```
 
-The meteorological normalised trend produced is below: 
+The meteorologically normalised trend produced is below: 
 
 ![](inst/extdata/images/normalised_no2_example.png)
 
