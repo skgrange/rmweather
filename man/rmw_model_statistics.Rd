@@ -8,10 +8,13 @@
 \usage{
 rmw_model_statistics(model)
 
-rmw_model_importance(model)
+rmw_model_importance(model, date_unix = TRUE)
 }
 \arguments{
 \item{model}{A ranger model object from \code{rmw_calculate_model}.}
+
+\item{date_unix}{Should the \code{date_unix} variable be included in the 
+return?}
 }
 \value{
 Data frame.

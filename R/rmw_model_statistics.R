@@ -3,6 +3,9 @@
 #' 
 #' @param model A ranger model object from \code{rmw_calculate_model}. 
 #' 
+#' @param date_unix Should the \code{date_unix} variable be included in the 
+#' return? 
+#' 
 #' @return Data frame. 
 #' 
 #' @author Stuart K. Grange
@@ -25,6 +28,7 @@ rmw_model_statistics <- function(model) {
   stopifnot(class(model) == "ranger")
   
   data.frame(
+    n_trees = model$num.trees,
     mtry = model$mtry,
     min_node_size = model$min.node.size,
     importance_mode = model$importance.mode,
@@ -39,13 +43,15 @@ rmw_model_statistics <- function(model) {
     stringsAsFactors = FALSE
   )
   
+  
+  
 }
 
 
 #' @rdname rmw_model_statistics
 #' 
 #' @export
-rmw_model_importance <- function(model) {
+rmw_model_importance <- function(model, date_unix = TRUE) {
   
   stopifnot(class(model) == "ranger")
   
@@ -55,6 +61,9 @@ rmw_model_importance <- function(model) {
   df[, 1] <- names(vector_importance)
   df[, 2] <- vector_importance
   df <- arrange(df, -importance)
+  
+  # Drop date_unix before ranking
+  if (!date_unix) df <- filter(df, variable != "date_unix")
   
   # Add ranking
   df <- tibble::rowid_to_column(df, "rank")
