@@ -38,7 +38,7 @@ rmw_model_statistics <- function(model) {
       collapse = "; "
     ), 
     count_samples = model$num.samples,
-    prediction_error = model$prediction.error,
+    prediction_error_mse = model$prediction.error,
     r_squared = model$r.squared,
     stringsAsFactors = FALSE
   )

@@ -64,7 +64,7 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
   
   # Do
   df <- seq_len(n_samples) %>% 
-    purrr:::map_dfr(
+    purrr::map_dfr(
       ~rmw_normalise_worker(
         index = .x,
         model = model,

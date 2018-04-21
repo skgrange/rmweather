@@ -59,7 +59,7 @@ rmw_partial_dependencies <- function(model, df, variable, n_cores = NA,
   # Predict all variables if not given
   if (is.na(variable[1])) variable <- model$forest$independent.variable.names
   
-  df_predict <- purrr:::map_dfr(
+  df_predict <- purrr::map_dfr(
     variable, 
     ~rmw_partial_dependencies_worker(
       model = model,
