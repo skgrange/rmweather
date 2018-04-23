@@ -30,7 +30,7 @@ data_normalised_clipped <- rmw_clip(data_normalised)
 
 }
 \seealso{
-\code{\link{rmw_normalise}}, \code{\link{rmw_plot_normalised()}}
+\code{\link{rmw_normalise}}, \code{\link{rmw_plot_normalised}}
 }
 \author{
 Stuart K. Grange

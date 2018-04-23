@@ -13,7 +13,7 @@
 #' 
 #' @return Data frame. 
 #' 
-#' @seealso \code{\link{rmw_normalise}}, \code{\link{rmw_plot_normalised()}}
+#' @seealso \code{\link{rmw_normalise}}, \code{\link{rmw_plot_normalised}}
 #' 
 #' @examples 
 #' \dontrun{
