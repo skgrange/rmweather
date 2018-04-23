@@ -148,3 +148,34 @@ test_that("Test `rmw_do_all` function", {
   )
   
 })
+
+
+test_that("Test `rmw_clip` function", {
+  
+  # Keep it reproducible
+  set.seed(123)
+  
+  # Get data
+  df <- rmw_example_data() %>% 
+    rename(value = no2) %>% 
+    rmw_prepare_data()
+  
+  # Do
+  list_normalised <- rmw_do_all(
+    df = df,
+    variables = c(
+      "air_temp", "atmospheric_pressure", "rh", "wd", "ws", "date_unix", 
+      "day_julian", "weekday"
+    ),
+    n_trees = 1,
+    n_samples = 2,
+    n_cores = 1
+  )
+  
+  # Do
+  df <- rmw_clip(list_normalised$normalised)
+  
+  # Check
+  expect_identical(class(df), "data.frame")
+  
+})
