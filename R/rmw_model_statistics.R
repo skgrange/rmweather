@@ -25,8 +25,10 @@
 #' @export
 rmw_model_statistics <- function(model) {
   
+  # Check
   stopifnot(class(model) == "ranger")
   
+  # Build data frame
   data.frame(
     n_trees = model$num.trees,
     mtry = model$mtry,
@@ -43,16 +45,19 @@ rmw_model_statistics <- function(model) {
     stringsAsFactors = FALSE
   )
   
-  
-  
 }
 
 
 #' @rdname rmw_model_statistics
 #' 
+#' @details The variable importances are defined as: the permutation importance 
+#' differences of predictions errors. This measure is unitless and the values are
+#' not useful when comparing among data sets.
+#' 
 #' @export
 rmw_model_importance <- function(model, date_unix = TRUE) {
   
+  # Check
   stopifnot(class(model) == "ranger")
   
   vector_importance <- ranger::importance(model)

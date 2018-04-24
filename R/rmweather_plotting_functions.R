@@ -25,7 +25,7 @@ rmw_plot_partial_dependencies <- function(df) {
 }
 
 
-#' Function to plot random forest imporantances after training by 
+#' Function to plot random forest variable importances after training by 
 #' \code{\link{rmw_train_model}}.
 #' 
 #' @param df Data frame created by \code{\link{rmw_model_importance}}. 
@@ -34,10 +34,20 @@ rmw_plot_partial_dependencies <- function(df) {
 #' 
 #' @return ggplot2 plot with point and segment geometries.
 #' 
+#' @seealso \code{\link{rmw_train_model}}, \code{\link{rmw_model_importance}}
+#' 
 #' @export
 rmw_plot_importance <- function(df) {
   
-  # To-do: check variable names
+  # Check input
+  if (!all(c("rank", "variable", "importance") %in% names(df))) {
+    
+    stop(
+      "Data frame must contain `rank`, `variable`, and `importance` variables...", 
+      call. = FALSE
+    )
+    
+  }
   
   # Plot
   plot <- ggplot2::ggplot(
@@ -53,7 +63,7 @@ rmw_plot_importance <- function(df) {
     ) +
     ggplot2::theme_minimal() + 
     ggplot2::ylab("Variable") + 
-    ggplot2::xlab("Variable importance (unit?)")
+    ggplot2::xlab("Variable importance (permutation diff.)")
   
   return(plot)
   
@@ -75,9 +85,11 @@ rmw_plot_importance <- function(df) {
 #' @export
 rmw_plot_test_prediction <- function(df, bins = 30) {
   
+  # Get axes limits
   min_values <- min(c(df$value, df$value_predict), na.rm = TRUE)
   max_values <- max(c(df$value, df$value_predict), na.rm = TRUE)
   
+  # Plot
   plot <- ggplot2::ggplot(df, ggplot2::aes(value, value_predict)) + 
     ggplot2::geom_hex(bins = bins) +
     ggplot2::geom_abline(slope = 1, intercept = 0) + 

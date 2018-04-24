@@ -73,11 +73,13 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
     value ~ ., 
     data = df,
     write.forest = TRUE,
-    importance = "impurity",
+    importance = "permutation",
     verbose = verbose,
     num.trees = n_trees,
     mtry = mtry,
     min.node.size = min_node_size,
+    splitrule = "variance", 
+    seed = NULL,
     num.threads = n_cores
   )
   

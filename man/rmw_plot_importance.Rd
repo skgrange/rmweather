@@ -2,7 +2,7 @@
 % Please edit documentation in R/rmweather_plotting_functions.R
 \name{rmw_plot_importance}
 \alias{rmw_plot_importance}
-\title{Function to plot random forest imporantances after training by 
+\title{Function to plot random forest variable importances after training by 
 \code{\link{rmw_train_model}}.}
 \usage{
 rmw_plot_importance(df)
@@ -14,8 +14,11 @@ rmw_plot_importance(df)
 ggplot2 plot with point and segment geometries.
 }
 \description{
-Function to plot random forest imporantances after training by 
+Function to plot random forest variable importances after training by 
 \code{\link{rmw_train_model}}.
+}
+\seealso{
+\code{\link{rmw_train_model}}, \code{\link{rmw_model_importance}}
 }
 \author{
 Stuart K. Grange
