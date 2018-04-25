@@ -65,7 +65,7 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
            !!variables)
   
   # Default logic
-  n_cores <- ifelse(is.na(n_cores), system_cpu_core_count() - 1, n_cores)
+  n_cores <- ifelse(is.na(n_cores), n_cores_default(), n_cores)
   
   if (verbose) message(str_date_formatted(), ": Model training started...")
   
@@ -86,3 +86,6 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
   return(model)
   
 }
+
+
+

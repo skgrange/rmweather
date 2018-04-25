@@ -61,6 +61,27 @@ system_cpu_core_count <- function(logical_cores = TRUE)
   parallel::detectCores(logical = logical_cores)
 
 
+n_cores_default <- function() {
+  
+  # Get core count
+  x <- system_cpu_core_count()
+  
+  # Different logic for well resourced systems
+  if (x < 16) {
+    
+    x <- x - 1L
+    
+  } else {
+    
+    x <- 16L
+    
+  }
+  
+  return(x)
+  
+}
+
+
 # #' @importFrom openair timeAverage
 # #' @export
 # openair::timeAverage

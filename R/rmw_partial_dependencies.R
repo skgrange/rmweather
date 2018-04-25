@@ -54,7 +54,7 @@ rmw_partial_dependencies <- function(model, df, variable, n_cores = NA,
   stopifnot(class(model) == "ranger")
   
   # Default logic for cpu cores
-  n_cores <- ifelse(is.na(n_cores), system_cpu_core_count() - 1, n_cores)
+  n_cores <- ifelse(is.na(n_cores), n_cores_default(), n_cores)
   
   # Predict all variables if not given
   if (is.na(variable[1])) variable <- model$forest$independent.variable.names

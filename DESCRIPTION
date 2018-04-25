@@ -2,8 +2,8 @@ Package: rmweather
 Type: Package
 Title: An R package to conduct meteorological/weather normalisation on air 
     quality data
-Version: 0.0.21
-Date: 2018-04-24
+Version: 0.0.22
+Date: 2018-04-25
 Authors@R: person("Stuart", "Grange", email = "stuart.grange@york.ac.uk", 
     role = c("cre", "aut"))
 Maintainer: Stuart K. Grange <stuart.grange@york.ac.uk>

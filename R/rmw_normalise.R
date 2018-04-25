@@ -45,7 +45,7 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
   stopifnot(class(model) == "ranger")
   
   # Default logic for cpu cores
-  n_cores <- ifelse(is.na(n_cores), system_cpu_core_count() - 1, n_cores)
+  n_cores <- ifelse(is.na(n_cores), n_cores_default(), n_cores)
   
   # Use all variables except the trend term
   if (is.na(variables[1])) {
