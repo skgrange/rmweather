@@ -3,9 +3,7 @@ sudo: required
 warnings_are_errors: true
 cache: packages
 
-r_binary_packages:
-  - Rcpp
-  - testthat
+r_packages:
+  - devtools
 
-apt_packages:
 
