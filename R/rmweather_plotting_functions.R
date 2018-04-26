@@ -63,7 +63,7 @@ rmw_plot_importance <- function(df) {
     ) +
     ggplot2::theme_minimal() + 
     ggplot2::ylab("Variable") + 
-    ggplot2::xlab("Variable importance (permutation diff.)")
+    ggplot2::xlab("Variable importance (permutation difference)")
   
   return(plot)
   

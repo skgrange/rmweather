@@ -44,6 +44,7 @@ Most of **rmweather**'s functions begin with `rmw_` so are easy to track and fin
 # Load packages
 library(dplyr)
 library(rmweather)
+library(ranger)
 
 # Load rmweather's example data, from london
 data_example <- rmw_example_data()

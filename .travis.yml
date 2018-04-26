@@ -6,4 +6,3 @@ cache: packages
 r_packages:
   - devtools
 
-
