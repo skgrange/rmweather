@@ -60,6 +60,7 @@ rmw_model_importance <- function(model, date_unix = TRUE) {
   # Check
   stopifnot(class(model) == "ranger")
   
+  # Get vector and clean
   vector_importance <- ranger::importance(model)
   df <- data.frame(matrix(nrow = length(vector_importance), ncol = 2))
   df <- setNames(df, c("variable", "importance"))

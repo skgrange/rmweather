@@ -10,7 +10,15 @@
 #' 
 #' @author Stuart K. Grange
 #' 
-#' @return Numeric vector. 
+#' @return Numeric vector.
+#' 
+#' @examples 
+#' \dontrun{
+#' 
+#' # Make a prediction with a ranger random forest model
+#' vector_predict <- rmw_prefict(model, df = data_observations)
+#' 
+#' }
 #' 
 #' @export
 rmw_predict <- function(model, df = NA, n_cores = NULL, 

@@ -1,2 +1,8 @@
-## Ignore travis config file
+# Ignore travis config file
 ^\.travis\.yml$
+
+# Comments for CRAN submission
+cran_comments.md
+
+# 
+news.md

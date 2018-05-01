@@ -12,6 +12,18 @@ Data frame.
 \description{
 Function to load example data for the \strong{rmweather} package.
 }
+\details{
+These example data are daily means of NO2 and NOx observations at 
+London Marylebone Road. The accompanying surface meteorological data are from
+London Heathrow, a major airport located 23 km west of Central London.
+}
+\examples{
+
+# Load rmweather's example data
+data_london <- rmw_example_data()
+
+
+}
 \author{
 Stuart K. Grange
 }

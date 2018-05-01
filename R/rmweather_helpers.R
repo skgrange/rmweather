@@ -80,8 +80,3 @@ n_cores_default <- function() {
   return(x)
   
 }
-
-
-# #' @importFrom openair timeAverage
-# #' @export
-# openair::timeAverage

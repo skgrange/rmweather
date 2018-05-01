@@ -2,7 +2,7 @@
 #' based approach.
 #' 
 #' \code{rmw_find_breakpoints} will generally be applied to a data frame after
-#' \code{\link{rmw_normalise}}. 
+#' \code{\link{rmw_normalise}}. \code{rmw_find_breakpoints} is rather slow.
 #' 
 #' @author Stuart K. Grange
 #' 
@@ -18,6 +18,14 @@
 #' 
 #' @return Data frame with a \code{date} variable indicating where the 
 #' breakpoints are. 
+#' 
+#' @examples 
+#' \dontrun{
+#' 
+#' # Test for breakpoints in a normalised time series
+#' data_breakpoints <- rmw_find_breakpoints(data_normalised)
+#' 
+#' }
 #' 
 #' @export
 rmw_find_breakpoints <- function(df, h = 0.15, n = NULL) {

@@ -69,6 +69,7 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
   
   if (verbose) message(str_date_formatted(), ": Model training started...")
   
+  # Train the model/grow the forest
   model <- ranger::ranger(
     value ~ ., 
     data = df,
@@ -86,6 +87,3 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
   return(model)
   
 }
-
-
-
