@@ -6,3 +6,7 @@ cran_comments.md
 
 # 
 news.md
+
+# Image directory used for github readme
+inst/inst/images
+
