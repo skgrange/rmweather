@@ -10,7 +10,7 @@ Description: A integrated tool set to allow data users to conduct meteorological
     normalisation on air quality data. 
 URL: https://github.com/skgrange/rmweather
 BugReports: https://github.com/skgrange/rmweather/issues
-License: GPL (>= 2)
+License: GPL-3 | file LICENSE
 ByteCompile: true
 Depends: 
     R (>= 3.2.0)
