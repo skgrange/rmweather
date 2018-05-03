@@ -2,7 +2,7 @@
 ^\.travis\.yml$
 
 # Comments for CRAN submission
-cran_comments.md
+cran-comments.md
 
 # 
 ^README\.Rmd$
