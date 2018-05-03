@@ -8,11 +8,7 @@
 
 ## R CMD check results
 
-`0 errors | 0 warnings | 0 notes`
-
-### win-builder only
-
-There was one note:
+No errors or warnings, but one note. 
 
   - `checking CRAN incoming feasibility ... NOTE`
   
@@ -24,4 +20,4 @@ This is a new pacakge and therefore has it has no downstream dependencies.
 
 ## Other comments
 
-This is a new package. I have followed the instructions outlined by Hadley Wickham's R packages book and have used the **devtools** pacakge. 
+This is a new package. I have followed the instructions outlined by Hadley Wickham's R packages book and have used the **devtools** pacakge.
