@@ -31,15 +31,13 @@
 #' \code{\link{rmw_normalise}}
 #' 
 #' @examples 
-#' \dontrun{
 #' 
 #' # Keep things reproducible
 #' set.seed(123)
 #'
-#' # Prepare data for modelling 
-#' data_for_modelling <- rmw_prepare_data(data_swiss, value = "no2")
+#' # Prepare example data for modelling 
+#' data_london_prepared <- rmw_prepare_data(data_london, value = "no2")
 #' 
-#' }
 #' 
 #' @export
 rmw_prepare_data <- function(df, value = "value", fraction = 0.8) {

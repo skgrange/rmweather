@@ -3,11 +3,11 @@ context("Utility functions")
 test_that("Example data", {
   
   # Load example data
-  df <- rmw_example_data()
+  df <- data_london
   
   # Test data frame
   expect_identical(class(df), "data.frame")
-  expect_identical(ncol(df), 14L)
+  expect_identical(ncol(df), 11L)
   expect_identical(class(df$date)[1], "POSIXct")
 
 })

@@ -46,19 +46,19 @@ library(dplyr)
 library(rmweather)
 library(ranger)
 
-# Load rmweather's example data, from london
-data_example <- rmw_example_data()
+# Have a look at rmweather's example data, from london
+head(data_london)
 
 # Prepare data for modelling
 # Only use data with valid wind speeds, no2 will become the dependent variable
-data_example_prepared <- data_example %>% 
+data_london_prepared <- data_london %>% 
   filter(!is.na(ws)) %>% 
   rename(value = no2) %>% 
   rmw_prepare_data()
 
 # Grow/train a random forest model and then create a meteorological normalised trend 
 list_normalised <- rmw_do_all(
-  data_example_prepared,
+  data_london_prepared,
   variables = c(
     "date_unix", "day_julian", "weekday", "air_temp", "rh", "wd", "ws",
     "atmospheric_pressure"

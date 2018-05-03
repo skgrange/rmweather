@@ -3,7 +3,7 @@ context("`rmw_*` functions")
 test_that("Test data preparation function", {
   
   # Load example data
-  df <- rmw_example_data()
+  df <- data_london
     
   # No "value" in data frame
   expect_error(rmw_prepare_data(df))
@@ -14,7 +14,7 @@ test_that("Test data preparation function", {
   
   # Test data frame
   expect_identical(class(df), "data.frame")
-  expect_identical(ncol(df), 19L)
+  expect_identical(ncol(df), 16L)
   expect_identical(class(df$date)[1], "POSIXct")
   
   # Check set variable
@@ -33,7 +33,7 @@ test_that("Test training function", {
   set.seed(123)
   
   # Get data
-  df <- rmw_example_data() %>% 
+  df <- data_london %>% 
     rename(value = no2) %>% 
     rmw_prepare_data()
   
@@ -82,7 +82,7 @@ test_that("Test normalising function", {
   set.seed(123)
   
   # Get data
-  df <- rmw_example_data() %>% 
+  df <- data_london %>% 
     rename(value = no2) %>% 
     rmw_prepare_data()
   
@@ -122,7 +122,7 @@ test_that("Test `rmw_do_all` function", {
   set.seed(123)
   
   # Get data
-  df <- rmw_example_data() %>% 
+  df <- data_london %>% 
     rename(value = no2) %>% 
     rmw_prepare_data()
   
@@ -156,7 +156,7 @@ test_that("Test `rmw_clip` function", {
   set.seed(123)
   
   # Get data
-  df <- rmw_example_data() %>% 
+  df <- data_london %>% 
     rename(value = no2) %>% 
     rmw_prepare_data()
   

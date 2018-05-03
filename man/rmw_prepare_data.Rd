@@ -36,15 +36,13 @@ These attributes are needed for other \strong{rmweather} functions to operate.
 Use \code{set.seed} in an R session to keep results reproducible.
 }
 \examples{
-\dontrun{
 
 # Keep things reproducible
 set.seed(123)
 
-# Prepare data for modelling 
-data_for_modelling <- rmw_prepare_data(data_swiss, value = "no2")
+# Prepare example data for modelling 
+data_london_prepared <- rmw_prepare_data(data_london, value = "no2")
 
-}
 
 }
 \seealso{

@@ -3,7 +3,6 @@
 export("%>%")
 export(rmw_clip)
 export(rmw_do_all)
-export(rmw_example_data)
 export(rmw_find_breakpoints)
 export(rmw_model_importance)
 export(rmw_model_statistics)
