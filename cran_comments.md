@@ -16,11 +16,11 @@ There was one note:
 
   - `checking CRAN incoming feasibility ... NOTE`
   
-    - This is the first submission of pacakage
+    - This is the first submission of this pacakage
 
 ## Downstream dependencies
 
-This is a new pacakge and therefore has no downstream dependencies.
+This is a new pacakge and therefore has it has no downstream dependencies.
 
 ## Other comments
 

@@ -2,12 +2,12 @@
 % Please edit documentation in R/release_questions.R
 \name{release_questions}
 \alias{release_questions}
-\title{Function to print messages before CRAN release.}
+\title{Function to print messages before a CRAN submission.}
 \usage{
 release_questions()
 }
 \description{
-Function to print messages before CRAN release.
+Function to print messages before a CRAN submission.
 }
 \details{
 Not to be exported.

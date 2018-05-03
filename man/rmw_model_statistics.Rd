@@ -25,7 +25,7 @@ Functions to extract model statistics from a model calculated with
 }
 \details{
 The variable importances are defined as: the permutation importance 
-differences of predictions errors. This measure is unitless and the values are
+differences of predictions errors. This measure is unit-less and the values are
 not useful when comparing among data sets.
 }
 \examples{

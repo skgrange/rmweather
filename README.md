@@ -107,7 +107,7 @@ data_pd %>%
 
 The meteorologically normalised trend produced is below and is explained in a paper which is in preparation. 
 
-![](inst/extdata/images/normalised_no2_example.png)
+![](man/figures/normalised_no2_example.png)
 
 ## See also
 

@@ -1,4 +1,4 @@
-#' Function to print messages before CRAN release. 
+#' Function to print messages before a CRAN submission. 
 #' 
 #' @details Not to be exported. 
 #' 
