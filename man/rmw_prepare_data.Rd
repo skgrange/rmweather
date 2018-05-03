@@ -28,7 +28,7 @@ with \strong{rmweather}.
 \code{rmw_prepare_data} will check if a \code{date} variable is present and 
 is of the correct data type, impute missing numeric and categorical values, 
 randomly split the input into training and testing sets, and rename the 
-dependant variable to \code{"value"}. The \code{date} variable will also be 
+dependent variable to \code{"value"}. The \code{date} variable will also be 
 used to calculate new variables such as \code{date_unix}, \code{day_julian}, 
 \code{weekday}, and \code{hour} which can be used as independent variables. 
 These attributes are needed for other \strong{rmweather} functions to operate.
