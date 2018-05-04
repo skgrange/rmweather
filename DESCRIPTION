@@ -7,7 +7,11 @@ Authors@R: person("Stuart K.", "Grange", email = "stuart.grange@york.ac.uk",
     role = c("cre", "aut"))
 Maintainer: Stuart K. Grange <stuart.grange@york.ac.uk>
 Description: An integrated set of tools to allow data users to conduct 
-    meteorological normalisation on air quality data. 
+    meteorological normalisation on air quality data. The meteorological 
+    normalisation technique uses predictive random forest models to remove 
+    variation of pollutant concentrations so trends and interventions can be 
+    explored in a robust way. For an example see, Grange et al. (2018) 
+    <doi:10.5194/acp-18-6223-2018>. 
 URL: https://github.com/skgrange/rmweather
 BugReports: https://github.com/skgrange/rmweather/issues
 License: GPL-3 | file LICENSE
