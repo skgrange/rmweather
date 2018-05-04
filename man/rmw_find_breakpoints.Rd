@@ -27,7 +27,8 @@ breakpoints are.
 \code{\link{rmw_normalise}}. \code{rmw_find_breakpoints} is rather slow.
 }
 \examples{
-\dontrun{
+
+\donttest{
 
 # Test for breakpoints in a normalised time series
 data_breakpoints <- rmw_find_breakpoints(data_normalised)

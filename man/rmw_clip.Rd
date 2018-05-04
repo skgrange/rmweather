@@ -21,7 +21,8 @@ Data frame.
 beginning and end of the time series during prediction.
 }
 \examples{
-\dontrun{
+
+\donttest{
 
 # Clip the edges of a time series, default is half a year
 data_normalised_clipped <- rmw_clip(data_normalised)

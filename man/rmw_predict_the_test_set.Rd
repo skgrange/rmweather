@@ -21,7 +21,7 @@ model and therefore can be used for investigating overfitting.
 }
 \examples{
 
-\dontrun{
+\donttest{
 
 # Use the test set for prediction
 rmw_predict_the_test_set(model, data_for_modelling)

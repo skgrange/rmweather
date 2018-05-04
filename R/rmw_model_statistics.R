@@ -12,7 +12,7 @@
 #' 
 #' @examples
 #' 
-#' \dontrun{
+#' \donttest{
 #'
 #' # Extract statistics from a model object
 #' rmw_model_statistics(model)

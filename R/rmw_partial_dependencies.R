@@ -21,7 +21,7 @@
 #' 
 #' @examples 
 #' 
-#' \dontrun{
+#' \donttest{
 #' 
 #' # Calculate partial dependencies for wind speed
 #' data_partial <- rmw_partial_dependencies(

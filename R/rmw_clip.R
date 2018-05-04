@@ -16,7 +16,8 @@
 #' @seealso \code{\link{rmw_normalise}}, \code{\link{rmw_plot_normalised}}
 #' 
 #' @examples 
-#' \dontrun{
+#' 
+#' \donttest{
 #' 
 #' # Clip the edges of a time series, default is half a year
 #' data_normalised_clipped <- rmw_clip(data_normalised)

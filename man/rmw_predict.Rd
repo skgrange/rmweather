@@ -22,7 +22,7 @@ Numeric vector.
 Function to predict using a \strong{ranger} random forest.
 }
 \examples{
-\dontrun{
+\donttest{
 
 # Make a prediction with a ranger random forest model
 vector_predict <- rmw_prefict(model, df = data_observations)

@@ -32,7 +32,8 @@ Data frame.
 Function to normalise a variable for "average" meteorological conditions.
 }
 \examples{
-\dontrun{
+
+\donttest{
 
 # Normalise a time series
 data_normalised <- rmw_normalise(

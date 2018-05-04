@@ -24,7 +24,8 @@
 #' @seealso \code{\link{rmw_prepare_data}}, \code{\link{rmw_train_model}}
 #' 
 #' @examples 
-#' \dontrun{
+#' 
+#' \donttest{
 #' 
 #' # Normalise a time series
 #' data_normalised <- rmw_normalise(

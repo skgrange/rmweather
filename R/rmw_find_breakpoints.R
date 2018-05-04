@@ -20,7 +20,8 @@
 #' breakpoints are. 
 #' 
 #' @examples 
-#' \dontrun{
+#' 
+#' \donttest{
 #' 
 #' # Test for breakpoints in a normalised time series
 #' data_breakpoints <- rmw_find_breakpoints(data_normalised)

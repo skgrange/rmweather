@@ -28,7 +28,7 @@
 #' 
 #' @examples 
 #' 
-#' \dontrun{
+#' \donttest{
 #' 
 #' # Calculate a model using common meteorological and time variables
 #' model <- rmw_train_model(
