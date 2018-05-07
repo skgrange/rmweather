@@ -24,8 +24,8 @@ beginning and end of the time series during prediction.
 
 \donttest{
 
-# Clip the edges of a time series, default is half a year
-data_normalised_clipped <- rmw_clip(data_normalised)
+# Clip the edges of a normalised time series, default is half a year
+data_normalised_clipped <- rmw_clip(data_london_normalised)
 
 }
 

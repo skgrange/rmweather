@@ -38,7 +38,6 @@
 #' # Prepare example data for modelling 
 #' data_london_prepared <- rmw_prepare_data(data_london, value = "no2")
 #' 
-#' 
 #' @export
 rmw_prepare_data <- function(df, value = "value", fraction = 0.8) {
   

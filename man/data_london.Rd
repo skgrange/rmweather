@@ -3,7 +3,7 @@
 \docType{data}
 \name{data_london}
 \alias{data_london}
-\title{Example data for the \strong{rmweather} package.}
+\title{Example observational data for the \strong{rmweather} package.}
 \format{Data frame with 7108 observations and 11 variables. The variables are:
 \code{date}, \code{date_end}, \code{site}, \code{site_name}, \code{no2}, 
 \code{nox}, \code{air_temp}, \code{atmospheric_pressure}, \code{rh}, 

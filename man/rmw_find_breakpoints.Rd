@@ -30,8 +30,8 @@ breakpoints are.
 
 \donttest{
 
-# Test for breakpoints in a normalised time series
-data_breakpoints <- rmw_find_breakpoints(data_normalised)
+# Test for breakpoints in an example normalised time series
+data_breakpoints <- rmw_find_breakpoints(data_london_normalised)
 
 }
 

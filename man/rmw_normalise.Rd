@@ -35,10 +35,10 @@ Function to normalise a variable for "average" meteorological conditions.
 
 \donttest{
 
-# Normalise a time series
+# Normalise the example no2 data
 data_normalised <- rmw_normalise(
-  model, 
-  data_for_modelling, 
+  model_london, 
+  df = rmw_prepare_data(data_london, value = "no2"), 
   n_samples = 300,
   verbose = TRUE
 )

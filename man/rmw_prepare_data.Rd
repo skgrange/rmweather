@@ -43,7 +43,6 @@ set.seed(123)
 # Prepare example data for modelling 
 data_london_prepared <- rmw_prepare_data(data_london, value = "no2")
 
-
 }
 \seealso{
 \code{\link{set.seed}}, \code{\link{rmw_train_model}}, 

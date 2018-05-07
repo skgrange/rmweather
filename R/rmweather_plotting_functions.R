@@ -119,6 +119,11 @@ rmw_plot_test_prediction <- function(df, bins = 30) {
 #' 
 #' @return ggplot2 plot with a line geometry. 
 #' 
+#' @examples 
+#' 
+#' # Plot normalised example data
+#' rmw_plot_normalised(data_london_normalised)
+#' 
 #' @export
 rmw_plot_normalised <- function(df, colour = "#6B186EFF") {
   

@@ -13,12 +13,12 @@
 #' @return Numeric vector.
 #' 
 #' @examples 
-#' \donttest{
 #' 
-#' # Make a prediction with a ranger random forest model
-#' vector_predict <- rmw_prefict(model, df = data_observations)
-#' 
-#' }
+#' # Make a prediction with the example data and random forest model
+#' vector_prediction <- rmw_predict(
+#'   model_london, 
+#'   df = rmw_prepare_data(data_london, value = "no2")
+#' )
 #' 
 #' @export
 rmw_predict <- function(model, df = NA, n_cores = NULL, 

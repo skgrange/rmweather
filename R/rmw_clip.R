@@ -17,12 +17,8 @@
 #' 
 #' @examples 
 #' 
-#' \donttest{
-#' 
-#' # Clip the edges of a time series, default is half a year
-#' data_normalised_clipped <- rmw_clip(data_normalised)
-#' 
-#' }
+#' # Clip the edges of a normalised time series, default is half a year
+#' data_normalised_clipped <- rmw_clip(data_london_normalised)
 #'
 #' @export
 rmw_clip <- function(df, seconds = 31536000 / 2) {

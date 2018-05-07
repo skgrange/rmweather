@@ -32,7 +32,31 @@
 #' 
 #' @return Named list. 
 #' 
-#' @seealso \code{\link{rmw_prepare_data}}, \code{\link{rmw_normalise}}
+#' @seealso \code{\link{rmw_prepare_data}},  \code{\link{rmw_train_model}}, 
+#' \code{\link{rmw_normalise}}
+#' 
+#' @examples 
+#' 
+#' \donttest{
+#' 
+#' # Keep things reproducible
+#' set.seed(123)
+#' 
+#' # Prepare example data
+#' data_london_prepared <- rmw_prepare_data(data_london, value = "no2")
+#' 
+#' # Use the example data to conduct the steps needed for meteorological
+#' # normalisation
+#' list_normalised <- rmw_do_all(
+#'   df = data_london_prepared,
+#'   variables = c(
+#'     "ws", "wd", "air_temp", "rh", "date_unix", "day_julian", "weekday", "hour"
+#'   ),
+#'   n_trees = 300,
+#'   n_samples = 300
+#' )
+#' 
+#' }
 #' 
 #' @export
 rmw_do_all <- function(df, variables, n_trees = 300, min_node_size = 5, 

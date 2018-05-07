@@ -1,6 +1,6 @@
 context("Utility functions")
 
-test_that("Example data", {
+test_that("Example observational data", {
   
   # Load example data
   df <- data_london
@@ -10,6 +10,35 @@ test_that("Example data", {
   expect_identical(ncol(df), 11L)
   expect_identical(class(df$date)[1], "POSIXct")
 
+})
+
+
+test_that("Example normalised data", {
+  
+  # Load example data
+  df <- data_london_normalised
+  
+  # Test data frame
+  expect_identical(class(df), "data.frame")
+  expect_identical(ncol(df), 5L)
+  
+  expect_true(names(df)[1] == "date")
+  expect_identical(class(df$date)[1], "POSIXct")
+  
+  expect_true(names(df)[5] == "value_predict")
+  
+})
+
+
+test_that("Example ranger object", {
+  
+  # Load example
+  model <- model_london
+  
+  # Test data frame
+  expect_identical(class(model), "ranger")
+  expect_identical(length(model), 15L)
+  
 })
 
 

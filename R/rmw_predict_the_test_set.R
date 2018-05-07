@@ -14,16 +14,18 @@
 #' 
 #' @examples
 #' 
-#' \donttest{
-#'
 #' # Use the test set for prediction
-#' rmw_predict_the_test_set(model, data_for_modelling)
+#' rmw_predict_the_test_set(
+#'   model_london, 
+#'   df = rmw_prepare_data(data_london, value = "no2")
+#' )
 #' 
-#' # Produce a hex plot of the predictions
-#' rmw_predict_the_test_set(model, data_for_modelling) %>% 
+#' # Predict, then produce a hex plot of the predictions
+#' rmw_predict_the_test_set(
+#'   model_london, 
+#'   df = rmw_prepare_data(data_london, value = "no2")
+#' ) %>% 
 #'   rmw_plot_test_prediction()
-#'  
-#' }
 #' 
 #' @export
 rmw_predict_the_test_set <- function(model, df) {

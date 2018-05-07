@@ -32,11 +32,11 @@ not useful when comparing among data sets.
 
 \donttest{
 
-# Extract statistics from a model object
-rmw_model_statistics(model)
+# Extract statistics from the example random forest model
+rmw_model_statistics(model_london)
 
 # Extract importances from a model object
-rmw_model_importance(model)
+rmw_model_importance(model_london)
  
 }
 

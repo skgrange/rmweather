@@ -19,6 +19,12 @@ ggplot2 plot with a line geometry.
 Function to plot the meteorologically normalised time series after
 \code{\link{rmw_normalise}}.
 }
+\examples{
+
+# Plot normalised example data
+rmw_plot_normalised(data_london_normalised)
+
+}
 \author{
 Stuart K. Grange
 }

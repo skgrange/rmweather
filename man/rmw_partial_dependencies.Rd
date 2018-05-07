@@ -30,18 +30,21 @@ Data frame.
 
 \donttest{
 
+# Ranger package needs to be loaded here
+library(ranger)
+
 # Calculate partial dependencies for wind speed
 data_partial <- rmw_partial_dependencies(
-  model = model, 
-  df = data_for_modelling,
+  model = model_london, 
+  df = rmw_prepare_data(data_london, value = "no2"), 
   variable = "ws", 
   verbose = TRUE
 )
 
 # Calculate partial dependencies for all independent variables used in model
 data_partial <- rmw_partial_dependencies(
-  model = model, 
-  df = data_for_modelling,
+  model = model_london, 
+  df = rmw_prepare_data(data_london, value = "no2"), 
   variable = NA, 
   verbose = TRUE
 )

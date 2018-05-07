@@ -1,4 +1,4 @@
-#' Example data for the \strong{rmweather} package.
+#' Example observational data for the \strong{rmweather} package.
 #' 
 #' These example data are daily means of NO2 and NOx observations at London 
 #' Marylebone Road. The accompanying surface meteorological data are from
