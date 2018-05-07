@@ -1,4 +1,4 @@
-#' Squash the global variable notes when building package. 
+#' Squash the global variable notes when building a package. 
 #' 
 if (getRversion() >= "2.15.1") {
   
@@ -8,7 +8,7 @@ if (getRversion() >= "2.15.1") {
     "partial_dependency", "rowid"
   )
   
-  # Squash the note
+  # Squash the notes
   utils::globalVariables(variables)
   
 }

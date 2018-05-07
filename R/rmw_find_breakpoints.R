@@ -21,12 +21,8 @@
 #' 
 #' @examples 
 #' 
-#' \donttest{
-#' 
 #' # Test for breakpoints in an example normalised time series
 #' data_breakpoints <- rmw_find_breakpoints(data_london_normalised)
-#' 
-#' }
 #' 
 #' @export
 rmw_find_breakpoints <- function(df, h = 0.15, n = NULL) {

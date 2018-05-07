@@ -23,7 +23,7 @@ Function to predict using a \strong{ranger} random forest.
 }
 \examples{
 
-# Make a prediction with the example data and random forest model
+# Make a prediction with the examples
 vector_prediction <- rmw_predict(
   model_london, 
   df = rmw_prepare_data(data_london, value = "no2")

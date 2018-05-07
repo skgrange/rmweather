@@ -30,7 +30,7 @@ Data frame.
 
 \donttest{
 
-# Ranger package needs to be loaded here
+# Ranger package needs to be loaded
 library(ranger)
 
 # Calculate partial dependencies for wind speed

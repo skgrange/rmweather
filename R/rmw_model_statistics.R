@@ -11,16 +11,12 @@
 #' @author Stuart K. Grange
 #' 
 #' @examples
-#' 
-#' \donttest{
 #'
 #' # Extract statistics from the example random forest model
 #' rmw_model_statistics(model_london)
 #' 
 #' # Extract importances from a model object
 #' rmw_model_importance(model_london)
-#'  
-#' }
 #' 
 #' @export
 rmw_model_statistics <- function(model) {
@@ -50,9 +46,9 @@ rmw_model_statistics <- function(model) {
 
 #' @rdname rmw_model_statistics
 #' 
-#' @details The variable importances are defined as: the permutation importance 
-#' differences of predictions errors. This measure is unit-less and the values are
-#' not useful when comparing among data sets.
+#' @details The variable importances are defined as "the permutation importance 
+#' differences of predictions errors". This measure is unit-less and the values 
+#' are not useful when comparing among data sets.
 #' 
 #' @export
 rmw_model_importance <- function(model, date_unix = TRUE) {

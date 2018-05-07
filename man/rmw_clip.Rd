@@ -22,12 +22,8 @@ beginning and end of the time series during prediction.
 }
 \examples{
 
-\donttest{
-
 # Clip the edges of a normalised time series, default is half a year
 data_normalised_clipped <- rmw_clip(data_london_normalised)
-
-}
 
 }
 \seealso{
