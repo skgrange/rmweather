@@ -1,10 +1,12 @@
 ## Resubmission
 
-This is a resubmission to address failure of the manual CRAN checks. I have: 
+This is a resubmission to address failure of manual CRAN checks. I have: 
 
-  - Expanded the package's description and added a reference which uses the method to conduct an analysis (https://doi.org/10.5194/acp-18-6223-2018)
+  - Expanded the package's "Description" field to describe the method and added a reference which uses the method to conduct an example analysis (https://doi.org/10.5194/acp-18-6223-2018)
   
-  - Replaced \dontrun{} with \donttest{} for examples. Most examples cannot be run because they will take minutes rather than seconds. 
+  - Added two new data objects so all examples are valid, executable code. 
+  
+  - Removed all uses of \dontrun{} in preference for \donttest{} in the examples. This change required the inclusion of the extra data objects. There are examples which will take longer than five seconds to run. However, because they are surrounded by \donttest, they will not be run unless non-standard options are used. 
 
 ## Test environments
 

@@ -25,15 +25,6 @@ The lightweight [**ghit**](https://github.com/cloudyr/ghit) package (soon to be 
 ghit::install_github("skgrange/rmweather", INSTALL_opts = "--install-tests")
 ```
 
-### Unit testing
-
-After installation, you may want to perform the package's unit tests to ensure everything is behaving as expected:
-
-```
-# Conduct all unit tests
-testthat::test_package("rmweather")
-```
-
 ## Example usage
 
 **rmweather** contains example data from London which can be used to show the meteorological normalisation procedure. The example data are daily means of NO<sub>2</sub> and NO<sub>x</sub> observations at London Marylebone Road. The accompanying surface meteorological data are from London Heathrow, a major airport located 23 km west of Central London. 
