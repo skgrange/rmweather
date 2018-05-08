@@ -8,7 +8,16 @@
 
 ## Installation
 
-To install the development version the [**devtools**](https://github.com/hadley/devtools) package will need to be installed first. Then:
+**rmweather** is aviable from CRAN and can be installed in the normal way: 
+
+```
+# Install rmweather from CRAN
+install.packages("rmweather")
+```
+
+## Development version
+
+To install the development version of **rmweather**, the [**devtools**](https://github.com/hadley/devtools) package will need to be installed first. Then:
 
 ```
 # Load helper package
@@ -84,7 +93,7 @@ list_normalised$elapsed_times
 rmw_plot_normalised(list_normalised$normalised)
 
 # Investigate partial dependencies, if variable is NA, predict all
-data_pd <- rmw_partial_dependencies(
+data_pd <- rmw_partial_dependencies(**rmweather**
   model = list_normalised$model, 
   df = list_normalised$observations,
   variable = NA
