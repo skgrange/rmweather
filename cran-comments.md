@@ -2,7 +2,7 @@
 
 This is a resubmission to address failure of manual CRAN checks. I have: 
 
-  - Expanded the package's "Description" field to describe the method and added a reference which uses the method to conduct an example analysis (https://doi.org/10.5194/acp-18-6223-2018)
+  - Expanded the package's "Description" field to describe the method and added a reference which uses the method to conduct an example analysis (https://doi.org/10.5194/acp-18-6223-2018). This reference will be replaced with a true citation of the method when it is available, this work is in preparation. 
   
   - Added two new data objects so all examples are valid, executable code. 
   
