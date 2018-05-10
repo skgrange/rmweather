@@ -1,6 +1,8 @@
 # **rmweather**
 
 [![Build Status](https://travis-ci.org/skgrange/rmweather.svg?branch=master)](https://travis-ci.org/skgrange/rmweather)
+[![CRAN status](http://www.r-pkg.org/badges/version/rmweather)](https://cran.r-project.org/package=rmweather)
+[![CRAN log](https://cranlogs.r-pkg.org/badges/last-week/rmweather?color=brightgreen)](https://cran.r-project.org/package=rmweather)
 
 ## Introduction
 
