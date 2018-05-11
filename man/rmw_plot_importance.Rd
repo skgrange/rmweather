@@ -5,10 +5,12 @@
 \title{Function to plot random forest variable importances after training by 
 \code{\link{rmw_train_model}}.}
 \usage{
-rmw_plot_importance(df)
+rmw_plot_importance(df, colour = "black")
 }
 \arguments{
 \item{df}{Data frame created by \code{\link{rmw_model_importance}}.}
+
+\item{colour}{Colour of point and segment geometries.}
 }
 \value{
 ggplot2 plot with point and segment geometries.

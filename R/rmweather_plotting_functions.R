@@ -30,6 +30,8 @@ rmw_plot_partial_dependencies <- function(df) {
 #' 
 #' @param df Data frame created by \code{\link{rmw_model_importance}}. 
 #' 
+#' @param colour Colour of point and segment geometries.
+#' 
 #' @author Stuart K. Grange
 #' 
 #' @return ggplot2 plot with point and segment geometries.
@@ -37,7 +39,7 @@ rmw_plot_partial_dependencies <- function(df) {
 #' @seealso \code{\link{rmw_train_model}}, \code{\link{rmw_model_importance}}
 #' 
 #' @export
-rmw_plot_importance <- function(df) {
+rmw_plot_importance <- function(df, colour = "black") {
   
   # Check input
   if (!all(c("rank", "variable", "importance") %in% names(df))) {
@@ -54,12 +56,14 @@ rmw_plot_importance <- function(df) {
     df, 
     ggplot2::aes(importance, reorder(variable, importance))
   ) + 
-    ggplot2::geom_point(size = 5) + 
+    ggplot2::geom_point(size = 5, colour = colour) + 
     ggplot2::geom_segment(
       ggplot2::aes(
         x = 0, y = reorder(variable, importance), 
         xend = importance, 
-        yend = reorder(variable, importance))
+        yend = reorder(variable, importance)
+      ),
+      colour = colour
     ) +
     ggplot2::theme_minimal() + 
     ggplot2::ylab("Variable") + 
