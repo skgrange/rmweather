@@ -27,6 +27,8 @@
 #' The standard error method is the "infinitesimal jackknife for bagging" and 
 #' will slow down the predictions significantly. 
 #' 
+#' @param aggregate Should all the \code{n_samples} predictions be aggregated?
+#' 
 #' @param n_cores Number of CPU cores to use for the model calculation. Default
 #' is system's total minus one. 
 #' 
@@ -65,7 +67,7 @@
 #' @export
 rmw_do_all <- function(df, variables, n_trees = 300, min_node_size = 5, 
                        mtry = NULL, n_samples = 300, replace = TRUE, se = FALSE,
-                       n_cores = NA, verbose = FALSE) {
+                       aggregate = TRUE, n_cores = NA, verbose = FALSE) {
   
   # Get date
   date_start <- as.numeric(lubridate::now())
@@ -95,6 +97,7 @@ rmw_do_all <- function(df, variables, n_trees = 300, min_node_size = 5,
     n_samples = n_samples,
     replace = replace,
     se = se,
+    aggregate = aggregate,
     n_cores = n_cores,
     verbose = verbose
   )

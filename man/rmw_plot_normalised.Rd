@@ -13,11 +13,11 @@ rmw_plot_normalised(df, colour = "#6B186EFF")
 \item{colour}{Colour for line geometry.}
 }
 \value{
-ggplot2 plot with a line geometry.
+ggplot2 plot with a line and ribbon geometries.
 }
 \description{
-Function to plot the meteorologically normalised time series after
-\code{\link{rmw_normalise}}.
+If the input data contains a standard error variable named \code{"se"}, 
+this will be plotted as a ribbon (+ and -) around the mean.
 }
 \examples{
 

@@ -115,13 +115,16 @@ rmw_plot_test_prediction <- function(df, bins = 30) {
 #' Function to plot the meteorologically normalised time series after
 #' \code{\link{rmw_normalise}}. 
 #' 
+#' If the input data contains a standard error variable named \code{"se"}, 
+#' this will be plotted as a ribbon (+ and -) around the mean. 
+#' 
 #' @param df Data frame created by \code{\link{rmw_normalise}}. 
 #' 
 #' @param colour Colour for line geometry. 
 #' 
 #' @author Stuart K. Grange
 #' 
-#' @return ggplot2 plot with a line geometry. 
+#' @return ggplot2 plot with a line and ribbon geometries. 
 #' 
 #' @examples 
 #' 
@@ -131,8 +134,27 @@ rmw_plot_test_prediction <- function(df, bins = 30) {
 #' @export
 rmw_plot_normalised <- function(df, colour = "#6B186EFF") {
   
-  plot <- ggplot2::ggplot() + 
-    ggplot2::geom_line(data = df, ggplot2::aes(date, value_predict), colour = colour) + 
+  # Create plot
+  plot <- ggplot2::ggplot(data = df)
+  
+  # Add se if present in data frame too
+  if ("se" %in% names(df)) {
+    
+    # Plot the ribbon geom first
+    plot <- plot + 
+      ggplot2::geom_ribbon(
+        ggplot2::aes(x = date, ymin = value_predict - se, ymax = value_predict + se), 
+        alpha = 0.3,
+        fill = "grey"
+      )
+    
+  }
+  
+  # Overlay line  
+  plot <- plot + 
+    ggplot2::geom_line(
+      ggplot2::aes(date, value_predict), colour = colour
+    ) + 
     ggplot2::theme_minimal() +
     ggplot2::ylab("Meteorologically normalised value") + 
     ggplot2::xlab("Date")
