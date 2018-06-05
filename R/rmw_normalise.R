@@ -12,6 +12,12 @@
 #' 
 #' @param replace Should \code{variables} be sampled with replacement? 
 #' 
+#' @param se Should the standard error of the predictions be calculated too? 
+#' The standard error method is the "infinitesimal jackknife for bagging" and 
+#' will slow down the predictions significantly. 
+#' 
+#' @param aggregate Should all the \code{n_samples} predictions be aggregated? 
+#' 
 #' @param n_cores Number of CPU cores to use for the model predictions. Default
 #' is system's total minus one. 
 #' 
@@ -39,7 +45,8 @@
 #' 
 #' @export
 rmw_normalise <- function(model, df, variables = NA, n_samples = 300, 
-                          replace = TRUE, n_cores = NA, verbose = FALSE) {
+                          replace = TRUE, se = FALSE, aggregate = TRUE, 
+                          n_cores = NA, verbose = FALSE) {
   
   # Check inputs
   df <- rmw_check_data(df, prepared = TRUE)
@@ -72,30 +79,37 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
         df = df,
         variables = variables,
         replace = replace,
+        se = se,
         n_cores = n_cores,
         n_samples = n_samples,
         verbose = verbose
-      )
+      ),
+      .id = "n_sample"
     )
   
   # Aggregate predictions
-  if (verbose) message(str_date_formatted(), ": Aggregating predictions...")
-  
-  df <- df %>% 
-    group_by(date) %>% 
-    summarise(value_predict = mean(value_predict, na.rm = TRUE)) %>% 
-    ungroup() %>% 
-    data.frame()
+  if (aggregate) {
+    
+    if (verbose) message(str_date_formatted(), ": Aggregating predictions...")
+    
+    df <- df %>% 
+      group_by(date) %>% 
+      dplyr::summarise_if(is.numeric, dplyr::funs(mean(., na.rm = TRUE))) %>% 
+      ungroup() %>% 
+      data.frame()
+    
+  }
   
   return(df)
   
 }
 
 
-rmw_normalise_worker <- function(index, model, df, variables, replace, n_cores, 
-                                 n_samples, verbose) {
+rmw_normalise_worker <- function(index, model, df, variables, replace, 
+                                 n_samples, se, n_cores, verbose) {
   
-  if (verbose) {
+  # Only every fifth prediction message
+  if (verbose && index %% 5 == 0) {
     
     # Calculate percent
     message_precent <- round((index / n_samples) * 100, 2)
@@ -125,14 +139,29 @@ rmw_normalise_worker <- function(index, model, df, variables, replace, n_cores,
   df[variables] <- lapply(df[variables], function(x) x[index_rows])
   
   # Use model to predict
-  value_predict <- rmw_predict(model, df, n_cores = n_cores)
+  value_predict <- rmw_predict(model, df, se = se, n_cores = n_cores)
   
   # Build data frame of predictions
-  df <- data.frame(
-    date = df$date,
-    value_predict = value_predict,
-    stringsAsFactors = FALSE
-  )
+  if (identical(class(value_predict), "list")) {
+    
+    # With se
+    df <- data.frame(
+      date = df$date,
+      value_predict = value_predict$predictions,
+      se = value_predict$se,
+      stringsAsFactors = FALSE
+    )
+    
+  } else {
+    
+    # Without se
+    df <- data.frame(
+      date = df$date,
+      value_predict = value_predict,
+      stringsAsFactors = FALSE
+    )
+    
+  }
   
   return(df)
   

@@ -37,7 +37,7 @@ test_that("Example ranger object", {
   
   # Test data frame
   expect_identical(class(model), "ranger")
-  expect_identical(length(model), 15L)
+  expect_identical(length(model), 16L)
   
 })
 

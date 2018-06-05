@@ -4,19 +4,23 @@
 \alias{rmw_predict}
 \title{Function to predict using a \strong{ranger} random forest.}
 \usage{
-rmw_predict(model, df = NA, n_cores = NULL, verbose = FALSE)
+rmw_predict(model, df = NA, se = FALSE, n_cores = NULL, verbose = FALSE)
 }
 \arguments{
 \item{model}{A \strong{ranger} model object from \code{rmw_train_model}.}
 
 \item{df}{Input data to be used for predictions.}
 
+\item{se}{If \code{df} is supplied, should the standard error of the 
+prediction be calculated too? The standard error method is the "infinitesimal
+jackknife for bagging" and will slow down the predictions significantly.}
+
 \item{n_cores}{Number of CPU cores to use for the model predictions.}
 
 \item{verbose}{Should the function give messages?}
 }
 \value{
-Numeric vector.
+Numeric vector or a named list containing two numeric vectors.
 }
 \description{
 Function to predict using a \strong{ranger} random forest.
@@ -29,6 +33,14 @@ vector_prediction <- rmw_predict(
   df = rmw_prepare_data(data_london, value = "no2")
 )
 
+
+# Make a prediction with standard errors too
+list_prediction <- rmw_predict(
+  model_london, 
+  df = rmw_prepare_data(data_london, value = "no2"),
+  se = TRUE
+)
+ 
 }
 \author{
 Stuart K. Grange

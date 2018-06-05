@@ -5,7 +5,7 @@
 \title{Function to normalise a variable for "average" meteorological conditions.}
 \usage{
 rmw_normalise(model, df, variables = NA, n_samples = 300, replace = TRUE,
-  n_cores = NA, verbose = FALSE)
+  se = FALSE, aggregate = TRUE, n_cores = NA, verbose = FALSE)
 }
 \arguments{
 \item{model}{A ranger model object from \code{\link{rmw_train_model}}.}
@@ -19,6 +19,12 @@ for training the model with the exception of \code{date_unix}, the trend term.}
 \item{n_samples}{Number of times to sample \code{df} and then predict?}
 
 \item{replace}{Should \code{variables} be sampled with replacement?}
+
+\item{se}{Should the standard error of the predictions be calculated too? 
+The standard error method is the "infinitesimal jackknife for bagging" and 
+will slow down the predictions significantly.}
+
+\item{aggregate}{Should all the \code{n_samples} predictions be aggregated?}
 
 \item{n_cores}{Number of CPU cores to use for the model predictions. Default
 is system's total minus one.}
