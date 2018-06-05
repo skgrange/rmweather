@@ -1,8 +1,8 @@
 Package: rmweather
 Type: Package
 Title: Tools to Conduct Meteorological Normalisation on Air Quality Data
-Version: 0.1.2
-Date: 2018-05-12
+Version: 0.1.2999
+Date: 2018-06-05
 Authors@R: person("Stuart K.", "Grange", email = "stuart.grange@york.ac.uk", 
     role = c("cre", "aut"))
 Maintainer: Stuart K. Grange <stuart.grange@york.ac.uk>

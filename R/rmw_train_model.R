@@ -87,6 +87,7 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
     min.node.size = min_node_size,
     splitrule = "variance", 
     seed = NULL,
+    keep.inbag = TRUE,
     num.threads = n_cores
   )
   
