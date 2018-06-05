@@ -94,6 +94,7 @@ rmw_do_all <- function(df, variables, n_trees = 300, min_node_size = 5,
     variables = NA,
     n_samples = n_samples,
     replace = replace,
+    se = se,
     n_cores = n_cores,
     verbose = verbose
   )
