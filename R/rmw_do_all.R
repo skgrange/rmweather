@@ -23,6 +23,10 @@
 #' 
 #' @param replace Should \code{variables} be sampled with replacement? 
 #' 
+#' @param se Should the standard error of the predictions be calculated too? 
+#' The standard error method is the "infinitesimal jackknife for bagging" and 
+#' will slow down the predictions significantly. 
+#' 
 #' @param n_cores Number of CPU cores to use for the model calculation. Default
 #' is system's total minus one. 
 #' 
@@ -60,7 +64,7 @@
 #' 
 #' @export
 rmw_do_all <- function(df, variables, n_trees = 300, min_node_size = 5, 
-                       mtry = NULL, n_samples = 300, replace = TRUE, 
+                       mtry = NULL, n_samples = 300, replace = TRUE, se = FALSE,
                        n_cores = NA, verbose = FALSE) {
   
   # Get date

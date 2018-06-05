@@ -116,6 +116,47 @@ test_that("Test normalising function", {
 })
 
 
+test_that("Test normalising function with standar error calculation", {
+  
+  # Keep it reproducible
+  set.seed(123)
+  
+  # Get data
+  df <- data_london %>% 
+    rename(value = no2) %>% 
+    rmw_prepare_data()
+  
+  # Use standard variables but minimal defaults, testing execution, not performance...
+  model <- rmw_train_model(
+    df,
+    variables = c(
+      "air_temp", "atmospheric_pressure", "rh", "wd", "ws", "date_unix", 
+      "day_julian", "weekday"
+    ),
+    n_trees = 5,
+    n_cores = 1
+  )
+  
+  # Test prediction function
+  expect_identical(class(rmw_predict(model, df, se = TRUE, n_cores = 1)), "list")
+  
+  # Now normalise
+  df_normalise <- rmw_normalise(
+    model = model, 
+    df = df,
+    se = TRUE,
+    n_samples = 2,
+    n_cores = 1
+  )
+  
+  # Check 
+  expect_identical(class(df_normalise), "data.frame")
+  expect_identical(names(df_normalise), c("date", "value_predict", "se"))
+  expect_identical(class(df$date)[1], "POSIXct")
+  
+})
+
+
 test_that("Test `rmw_do_all` function", {
   
   # Keep it reproducible
