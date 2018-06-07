@@ -95,7 +95,7 @@ list_normalised$elapsed_times
 rmw_plot_normalised(list_normalised$normalised)
 
 # Investigate partial dependencies, if variable is NA, predict all
-data_pd <- rmw_partial_dependencies(**rmweather**
+data_pd <- rmw_partial_dependencies(
   model = list_normalised$model, 
   df = list_normalised$observations,
   variable = NA
