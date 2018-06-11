@@ -46,7 +46,7 @@ rmw_predict <- function(model, df = NA, se = FALSE, n_cores = NULL,
       
       x <- predict(
         model, 
-        df, 
+        df,
         type = "se", 
         se.method = "infjack",
         num.threads = n_cores, 

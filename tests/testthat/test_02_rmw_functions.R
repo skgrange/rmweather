@@ -116,7 +116,7 @@ test_that("Test normalising function", {
 })
 
 
-test_that("Test normalising function with standar error calculation", {
+test_that("Test normalising function with standard error calculation", {
   
   # Keep it reproducible
   set.seed(123)
