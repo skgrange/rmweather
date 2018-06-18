@@ -7,6 +7,8 @@
   - Normalised predictions can now be returned without being aggregated
   
   - Add `na.rm` argument to data preparing function to avoid imputing of the dependent variable
+  
+  - Add `replace` argument to data preparing function so generated variables replace existing variables of the same name if they exist
 
 # rmweather 0.1.1
 

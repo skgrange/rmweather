@@ -27,6 +27,21 @@ test_that("Test data preparation function", {
 })
 
 
+test_that("Test data preparation function with custom arguments", {
+  
+  expect_identical(
+    class(rmw_prepare_data(data_london, value = "nox", na.rm = TRUE)), 
+    "data.frame"
+  )
+  
+  expect_identical(
+    class(rmw_prepare_data(data_london, value = "nox", replace = TRUE)), 
+    "data.frame"
+  )
+  
+})
+
+
 test_that("Test training function", {
   
   # Keep it reproducible

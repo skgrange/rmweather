@@ -21,6 +21,9 @@
 #' 
 #' @param na.rm Should missing values (\code{NA}) be removed from \code{value}? 
 #' 
+#' @param replace When adding the date variables to the set, should they replace
+#' the versions already contained in the data frame if they exist? 
+#' 
 #' @param fraction Fraction of the observations to make up the training set. 
 #' Default is 0.8, 80 \%.
 #'
@@ -41,18 +44,19 @@
 #' data_london_prepared <- rmw_prepare_data(data_london, value = "no2")
 #' 
 #' @export
-rmw_prepare_data <- function(df, value = "value", na.rm = FALSE, fraction = 0.8) {
+rmw_prepare_data <- function(df, value = "value", na.rm = FALSE, replace = FALSE,
+                             fraction = 0.8) {
   
   # Check
   if (!value %in% names(df))
     stop("`value` is not within input data frame...", call. = FALSE)
   
   df <- df %>% 
+    rename(value = !!value) %>% 
     rmw_check_data(prepared = FALSE) %>% 
     impute_values(na.rm = na.rm) %>% 
-    add_date_variables() %>% 
-    split_into_sets(fraction = fraction) %>% 
-    rename(value = !!value)
+    add_date_variables(replace = replace) %>% 
+    split_into_sets(fraction = fraction)
   
   # Drop the tibble formatting, useful when groups are left over
   if ("tbl" %in% class(df)) class(df) <- "data.frame"
@@ -62,24 +66,37 @@ rmw_prepare_data <- function(df, value = "value", na.rm = FALSE, fraction = 0.8)
 }
 
 
-add_date_variables <- function(df) {
+add_date_variables <- function(df, replace) {
   
   # Check variables
   names <- names(df)
   
-  # Add variables if they do not exist
-  # Add date variables
-  if (!"date_unix" %in% names) df$date_unix <- as.numeric(df$date)
-  
-  if (!"day_julian" %in% names) df$day_julian <- lubridate::yday(df$date)
-  
-  # if (!"month" %in% names) df$month <- lubridate::month(df$date)
-  # if (!"week" %in% names) df$week <- lubridate::week(df$date)
-
-  # Own function  
-  if (!"weekday" %in% names) df$weekday <- wday_monday(df$date, as.factor = TRUE)
-
-  if (!"hour" %in% names) df$hour <- lubridate::hour(df$date)
+  if (replace) {
+    
+    # Will replace if variables exist
+    df$date_unix <- as.numeric(df$date)
+    df$day_julian <- lubridate::yday(df$date)
+    df$weekday <- wday_monday(df$date, as.factor = TRUE)
+    df$hour <- lubridate::hour(df$date)
+    
+  } else {
+    
+    # Add variables if they do not exist
+    # Add date variables
+    if (!"date_unix" %in% names) df$date_unix <- as.numeric(df$date)
+    
+    if (!"day_julian" %in% names) df$day_julian <- lubridate::yday(df$date)
+    
+    # if (!"month" %in% names) df$month <- lubridate::month(df$date)
+    # if (!"week" %in% names) df$week <- lubridate::week(df$date)
+    
+    # Own function  
+    if (!"weekday" %in% names) 
+      df$weekday <- wday_monday(df$date, as.factor = TRUE)
+    
+    if (!"hour" %in% names) df$hour <- lubridate::hour(df$date)
+    
+  }
 
   return(df)
   

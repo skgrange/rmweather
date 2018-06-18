@@ -4,7 +4,8 @@
 \alias{rmw_prepare_data}
 \title{Function to prepare a data frame for modelling with \strong{rmweather}.}
 \usage{
-rmw_prepare_data(df, value = "value", na.rm = FALSE, fraction = 0.8)
+rmw_prepare_data(df, value = "value", na.rm = FALSE, replace = FALSE,
+  fraction = 0.8)
 }
 \arguments{
 \item{df}{Input data frame. Generally a time series of air quality data with
@@ -14,6 +15,9 @@ pollutant concentrations and meteorological variables.}
 \code{"no2"} or \code{"pm10"}.}
 
 \item{na.rm}{Should missing values (\code{NA}) be removed from \code{value}?}
+
+\item{replace}{When adding the date variables to the set, should they replace
+the versions already contained in the data frame if they exist?}
 
 \item{fraction}{Fraction of the observations to make up the training set. 
 Default is 0.8, 80 \%.}
