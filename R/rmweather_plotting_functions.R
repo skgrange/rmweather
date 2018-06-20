@@ -105,7 +105,9 @@ rmw_plot_test_prediction <- function(df, bins = 30) {
       option = "inferno",
       begin = 0.3,
       end = 0.8
-    )
+    ) + 
+    ggplot2::xlab("Observed") + 
+    ggplot2::ylab("Predicted")
   
   return(plot)
   
