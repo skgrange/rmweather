@@ -200,7 +200,7 @@ test_that("Test `rmw_do_all` function", {
   # Check types
   expect_identical(
     unname(purrr::map_chr(list_normalised, class)),
-    c("data.frame", "ranger", "data.frame", "data.frame")
+    c("data.frame", "ranger", "integer", "data.frame", "data.frame")
   )
   
 })

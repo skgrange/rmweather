@@ -121,6 +121,7 @@ rmw_do_all <- function(df, variables, n_trees = 300, min_node_size = 5,
   list_normalisation <- list(
     observations = df,
     model = model,
+    n_samples = as.integer(n_samples),
     normalised = df_normalised,
     elapsed_times = df_times
   )
