@@ -12,6 +12,11 @@
 #' @param variables Independent/explanatory variables used to predict 
 #' \code{"value"}. 
 #' 
+#' @param variables_sample Variables to use for the normalisation step. If not 
+#' used, the default of all variables used for training the model with the 
+#' exception of \code{date_unix}, the trend term (see 
+#' \code{\link{rmw_normalise}}).
+#' 
 #' @param n_trees Number of trees to grow to make up the forest. 
 #' 
 #' @param min_node_size Minimal node size. 
@@ -65,9 +70,10 @@
 #' }
 #' 
 #' @export
-rmw_do_all <- function(df, variables, n_trees = 300, min_node_size = 5, 
-                       mtry = NULL, n_samples = 300, replace = TRUE, se = FALSE,
-                       aggregate = TRUE, n_cores = NA, verbose = FALSE) {
+rmw_do_all <- function(df, variables, variables_sample = NA, n_trees = 300, 
+                       min_node_size = 5, mtry = NULL, n_samples = 300, 
+                       replace = TRUE, se = FALSE, aggregate = TRUE, 
+                       n_cores = NA, verbose = FALSE) {
   
   # Get date
   date_start <- as.numeric(lubridate::now())
@@ -93,7 +99,7 @@ rmw_do_all <- function(df, variables, n_trees = 300, min_node_size = 5,
   df_normalised <- rmw_normalise(
     model, 
     df, 
-    variables = NA,
+    variables = variables_sample,
     n_samples = n_samples,
     replace = replace,
     se = se,

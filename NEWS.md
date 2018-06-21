@@ -9,6 +9,8 @@
   - Add `na.rm` argument to data preparing function to avoid imputing of the dependent variable
   
   - Add `replace` argument to data preparing function so generated variables replace existing variables of the same name if they exist
+  
+  - Add `variables_sample` argument to `rmw_do_all` to allow for a user to choose which variables to be sampled for the normalisation step
 
 # rmweather 0.1.1
 

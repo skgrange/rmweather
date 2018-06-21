@@ -206,6 +206,46 @@ test_that("Test `rmw_do_all` function", {
 })
 
 
+test_that("Test `rmw_do_all` function and use varable_sample argument", {
+  
+  # Keep it reproducible
+  set.seed(123)
+  
+  # Get data, use nox to be different
+  df <- data_london %>% 
+    rename(value = nox) %>% 
+    rmw_prepare_data()
+  
+  variables <- c(
+    "air_temp", "atmospheric_pressure", "rh", "wd", "ws", "date_unix", 
+    "day_julian", "weekday"
+  )
+  
+  # Drop
+  variables_sample <- setdiff(variables, c("date_unix", "wd"))
+  
+  # Do
+  list_normalised <- rmw_do_all(
+    df = df,
+    variables = variables,
+    variables_sample = variables_sample,
+    n_trees = 1,
+    n_samples = 2,
+    n_cores = 1
+  )
+  
+  # Check types
+  expect_identical(class(list_normalised), "list")
+  
+  # Check types
+  expect_identical(
+    unname(purrr::map_chr(list_normalised, class)),
+    c("data.frame", "ranger", "integer", "data.frame", "data.frame")
+  )
+  
+})
+
+
 test_that("Test `rmw_clip` function", {
   
   # Keep it reproducible
