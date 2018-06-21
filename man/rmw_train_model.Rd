@@ -6,7 +6,7 @@
 concentrations using meteorological and time variables.}
 \usage{
 rmw_train_model(df, variables, n_trees = 300, mtry = NULL,
-  min_node_size = 5, n_cores = NA, verbose = FALSE)
+  min_node_size = 5, keep_inbag = TRUE, n_cores = NA, verbose = FALSE)
 }
 \arguments{
 \item{df}{Input data frame after preparation with 
@@ -22,6 +22,10 @@ will be checked for before modelling.}
 the (rounded down) square root of the number variables.}
 
 \item{min_node_size}{Minimal node size.}
+
+\item{keep_inbag}{Should in-bag data be kept in the \strong{ranger} model 
+object? This needs to be \code{TRUE} if standard errors are to be calculated
+when predicting with the model.}
 
 \item{n_cores}{Number of CPU cores to use for the model calculation. Default
 is system's total minus one.}

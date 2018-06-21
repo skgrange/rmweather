@@ -15,6 +15,10 @@
 #' 
 #' @param min_node_size Minimal node size. 
 #' 
+#' @param keep_inbag Should in-bag data be kept in the \strong{ranger} model 
+#' object? This needs to be \code{TRUE} if standard errors are to be calculated
+#' when predicting with the model. 
+#' 
 #' @param n_cores Number of CPU cores to use for the model calculation. Default
 #' is system's total minus one. 
 #' 
@@ -49,7 +53,8 @@
 #' 
 #' @export
 rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
-                            min_node_size = 5, n_cores = NA, verbose = FALSE) {
+                            min_node_size = 5, keep_inbag = TRUE, n_cores = NA, 
+                            verbose = FALSE) {
   
   # Check input
   if (verbose) message(str_date_formatted(), ": Checking input data...")
@@ -87,7 +92,7 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
     min.node.size = min_node_size,
     splitrule = "variance", 
     seed = NULL,
-    keep.inbag = TRUE,
+    keep.inbag = keep_inbag,
     num.threads = n_cores
   )
   

@@ -24,6 +24,10 @@
 #' @param mtry Number of variables to possibly split at in each node. Default is 
 #' the (rounded down) square root of the number variables.
 #' 
+#' @param keep_inbag Should in-bag data be kept in the \strong{ranger} model 
+#' object? This needs to be \code{TRUE} if standard errors are to be calculated
+#' when predicting with the model. 
+#' 
 #' @param n_samples Number of times to sample \code{df} and then predict? 
 #' 
 #' @param replace Should \code{variables} be sampled with replacement? 
@@ -71,9 +75,19 @@
 #' 
 #' @export
 rmw_do_all <- function(df, variables, variables_sample = NA, n_trees = 300, 
-                       min_node_size = 5, mtry = NULL, n_samples = 300, 
-                       replace = TRUE, se = FALSE, aggregate = TRUE, 
-                       n_cores = NA, verbose = FALSE) {
+                       min_node_size = 5, mtry = NULL, keep_inbag = TRUE,
+                       n_samples = 300, replace = TRUE, se = FALSE, 
+                       aggregate = TRUE, n_cores = NA, verbose = FALSE) {
+  
+  # Check inputs
+  if (se && !keep_inbag) {
+    
+    stop(
+      "To calculate standard errors, `keep_inbag` needs to be `TRUE`...", 
+      call. = FALSE
+    )
+    
+  }
   
   # Get date
   date_start <- as.numeric(lubridate::now())
@@ -85,6 +99,7 @@ rmw_do_all <- function(df, variables, variables_sample = NA, n_trees = 300,
     n_trees = n_trees,
     mtry = mtry,
     min_node_size = min_node_size,
+    keep_inbag = keep_inbag,
     n_cores = n_cores,
     verbose = verbose
   )

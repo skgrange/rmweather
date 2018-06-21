@@ -7,8 +7,9 @@ concentrations using meteorological and time variables and then immediately
 normalise a variable for "average" meteorological conditions.}
 \usage{
 rmw_do_all(df, variables, variables_sample = NA, n_trees = 300,
-  min_node_size = 5, mtry = NULL, n_samples = 300, replace = TRUE,
-  se = FALSE, aggregate = TRUE, n_cores = NA, verbose = FALSE)
+  min_node_size = 5, mtry = NULL, keep_inbag = TRUE, n_samples = 300,
+  replace = TRUE, se = FALSE, aggregate = TRUE, n_cores = NA,
+  verbose = FALSE)
 }
 \arguments{
 \item{df}{Input data frame after preparation with 
@@ -29,6 +30,10 @@ exception of \code{date_unix}, the trend term (see
 
 \item{mtry}{Number of variables to possibly split at in each node. Default is 
 the (rounded down) square root of the number variables.}
+
+\item{keep_inbag}{Should in-bag data be kept in the \strong{ranger} model 
+object? This needs to be \code{TRUE} if standard errors are to be calculated
+when predicting with the model.}
 
 \item{n_samples}{Number of times to sample \code{df} and then predict?}
 
