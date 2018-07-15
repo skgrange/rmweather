@@ -65,7 +65,7 @@ test_that("Test training function", {
   
   # Test model return
   expect_identical(class(model), "ranger")
-  expect_equal(model$r.squared, 0.4184627)
+  expect_equal(model$r.squared, 0.4184627, tolerance = 0.1)
   
   # Extract things from model
   df_importance <- rmw_model_importance(model)
