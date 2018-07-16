@@ -12,9 +12,8 @@ This is a general update for the package with some additional functionality but 
 
 ## R CMD check results
 
-No errors or warnings, but one note. 
+`0 errors | 0 warnings | 0 notes`
 
 ## Downstream dependencies
 
 This package has has no downstream dependencies.
-
