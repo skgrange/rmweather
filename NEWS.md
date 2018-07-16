@@ -1,6 +1,6 @@
 # rmweather 0.1.2
 
-  - Add tolerance to an R2 unit test for some flavours of Linux used on the CRAN networks
+  - Add tolerance to an R^2 unit test for some flavours of Linux used on the CRAN networks
 
   - The enhancement of a number of functions to allow for the estimation of uncertainty/errors of predictions
   

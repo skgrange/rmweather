@@ -1,16 +1,10 @@
-## Resubmission
+## New package version
 
-This is a resubmission to address failure of manual CRAN checks. I have: 
-
-  - Expanded the package's "Description" field to describe the method and added a reference which uses the method to conduct an example analysis (https://doi.org/10.5194/acp-18-6223-2018). This reference will be replaced with a true citation of the method when it is available, this work is in preparation. 
-  
-  - Added two new data objects so all examples are valid, executable code. 
-  
-  - Removed all uses of \dontrun{} in preference for \donttest{} in the examples. This change required the inclusion of the extra data objects. There are examples which will take longer than five seconds to run. However, because they are surrounded by \donttest, they will not be run unless non-standard options are used. 
+This is a general update for the package with some additional functionality but was motivated due to check failures on the CRAN platforms. The CRAN failures have been addressed with adding tolerance to a unit test and moving the unit testing package (testthat) from an imported to a suggested package. 
 
 ## Test environments
 
-  - Local, Ubuntu 16.04.4 LTS, R 3.4.4
+  - Local, Ubuntu 16.04.4 LTS, R 3.5.1
   
   - Travis CI, Ubuntu 14.04.5 LTS, R 3.5.0
   
@@ -20,14 +14,7 @@ This is a resubmission to address failure of manual CRAN checks. I have:
 
 No errors or warnings, but one note. 
 
-  - `checking CRAN incoming feasibility ... NOTE`
-  
-    - This is the first submission of this package
-
 ## Downstream dependencies
 
-This is a new package and therefore has it has no downstream dependencies.
+This package has has no downstream dependencies.
 
-## Other comments
-
-This is a new package. I have followed the instructions outlined by Hadley Wickham's R packages book and have used the **devtools** package.
