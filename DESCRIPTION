@@ -28,10 +28,10 @@ Imports:
     ranger,
     stringr,
     strucchange,
-    testthat,
     tibble,
     viridis
 Suggests:
+    testthat,
     openair
 Encoding: UTF-8
 LazyData: true
