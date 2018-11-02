@@ -8,7 +8,7 @@
 #' 
 #' @seealso \code{\link{data_london}}
 #' 
-#' @format Data frame with 234 observations and 5 variables. The variables are:
+#' @format Tibble with 246 observations and 5 variables. The variables are:
 #' \code{date}, \code{date_end}, \code{site}, \code{site_name}, and 
 #' \code{value_predict}. The dates are in \code{POSIXct} format, the site 
 #' variables are characters and \code{value_predict} is numeric. 

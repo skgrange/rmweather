@@ -8,7 +8,7 @@
 #' 
 #' @param df Input data used to calculate \code{model}. 
 #' 
-#' @return Data frame. 
+#' @return Tibble. 
 #' 
 #' @author Stuart K. Grange
 #' 

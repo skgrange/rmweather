@@ -1,8 +1,8 @@
 Package: rmweather
 Type: Package
 Title: Tools to Conduct Meteorological Normalisation on Air Quality Data
-Version: 0.1.2
-Date: 2018-07-15
+Version: 0.1.202
+Date: 2018-01-02
 Authors@R: person("Stuart K.", "Grange", email = "stuart.grange@york.ac.uk", 
     role = c("cre", "aut"))
 Maintainer: Stuart K. Grange <stuart.grange@york.ac.uk>
@@ -10,8 +10,9 @@ Description: An integrated set of tools to allow data users to conduct
     meteorological normalisation on air quality data. This meteorological 
     normalisation technique uses predictive random forest models to remove 
     variation of pollutant concentrations so trends and interventions can be 
-    explored in a robust way. For an example, see Grange et al. (2018) 
-    <doi:10.5194/acp-18-6223-2018>.
+    explored in a robust way. For examples, see Grange et al. (2018) 
+    <doi:10.5194/acp-18-6223-2018> and Grange and Carslaw (2018) 
+    <doi:10.1016/j.scitotenv.2018.10.344>.
 URL: https://github.com/skgrange/rmweather
 BugReports: https://github.com/skgrange/rmweather/issues
 License: GPL-3 | file LICENSE
@@ -35,4 +36,4 @@ Suggests:
     openair
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0

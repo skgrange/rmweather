@@ -6,12 +6,13 @@
 concentrations using meteorological and time variables.}
 \usage{
 rmw_train_model(df, variables, n_trees = 300, mtry = NULL,
-  min_node_size = 5, keep_inbag = TRUE, n_cores = NA, verbose = FALSE)
+  min_node_size = 5, keep_inbag = TRUE, n_cores = NA,
+  verbose = FALSE)
 }
 \arguments{
-\item{df}{Input data frame after preparation with 
-\code{\link{rmw_prepare_data}}. \code{df} has a number of constraints which 
-will be checked for before modelling.}
+\item{df}{Input tibble after preparation with \code{\link{rmw_prepare_data}}.
+\code{df} has a number of constraints which will be checked for before
+modelling.}
 
 \item{variables}{Independent/explanatory variables used to predict 
 \code{"value"}.}

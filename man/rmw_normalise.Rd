@@ -4,8 +4,9 @@
 \alias{rmw_normalise}
 \title{Function to normalise a variable for "average" meteorological conditions.}
 \usage{
-rmw_normalise(model, df, variables = NA, n_samples = 300, replace = TRUE,
-  se = FALSE, aggregate = TRUE, n_cores = NA, verbose = FALSE)
+rmw_normalise(model, df, variables = NA, n_samples = 300,
+  replace = TRUE, se = FALSE, aggregate = TRUE, n_cores = NA,
+  verbose = FALSE)
 }
 \arguments{
 \item{model}{A ranger model object from \code{\link{rmw_train_model}}.}
@@ -32,7 +33,7 @@ is system's total minus one.}
 \item{verbose}{Should the function give messages?}
 }
 \value{
-Data frame.
+Tibble.
 }
 \description{
 Function to normalise a variable for "average" meteorological conditions.

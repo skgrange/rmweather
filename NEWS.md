@@ -1,3 +1,11 @@
+# rmweather 0.1.x
+
+  - Example data are now tibbles, not data frames
+
+  - Add citation file with two publications
+  
+  - Enhance description file to contain new publication
+
 # rmweather 0.1.2
 
   - Add tolerance to an R^2 unit test for some flavours of Linux used on the CRAN networks

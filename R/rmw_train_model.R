@@ -1,9 +1,9 @@
 #' Function to train a random forest model to predict (usually) pollutant
 #' concentrations using meteorological and time variables. 
 #' 
-#' @param df Input data frame after preparation with 
-#' \code{\link{rmw_prepare_data}}. \code{df} has a number of constraints which 
-#' will be checked for before modelling. 
+#' @param df Input tibble after preparation with \code{\link{rmw_prepare_data}}.
+#' \code{df} has a number of constraints which will be checked for before
+#' modelling. 
 #' 
 #' @param variables Independent/explanatory variables used to predict 
 #' \code{"value"}. 

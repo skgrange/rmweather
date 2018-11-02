@@ -15,7 +15,7 @@
 #' 
 #' @param verbose Should the function give messages? 
 #' 
-#' @return Data frame. 
+#' @return Tibble. 
 #' 
 #' @author Stuart K. Grange
 #' 
@@ -72,6 +72,9 @@ rmw_partial_dependencies <- function(model, df, variable, n_cores = NA,
       verbose = verbose
     )
   )
+  
+  # To tibble
+  df_predict <- as_tibble(df_predict)
   
   return(df_predict)
   

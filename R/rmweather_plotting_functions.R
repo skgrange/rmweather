@@ -1,7 +1,7 @@
 #' Function to plot partial dependencies after calculation by 
 #' \code{\link{rmw_partial_dependencies}}. 
 #' 
-#' @param df Data frame created by \code{\link{rmw_partial_dependencies}}. 
+#' @param df Tibble created by \code{\link{rmw_partial_dependencies}}. 
 #' 
 #' @author Stuart K. Grange
 #' 
@@ -77,7 +77,7 @@ rmw_plot_importance <- function(df, colour = "black") {
 #' Function to plot the test set and predicted set after
 #' \code{\link{rmw_predict_the_test_set}}. 
 #' 
-#' @param df Data frame created by \code{\link{rmw_predict_the_test_set}}. 
+#' @param df Tibble created by \code{\link{rmw_predict_the_test_set}}. 
 #' 
 #' @param bins Numeric vector giving number of bins in both vertical and 
 #' horizontal directions. 
@@ -120,7 +120,7 @@ rmw_plot_test_prediction <- function(df, bins = 30) {
 #' If the input data contains a standard error variable named \code{"se"}, 
 #' this will be plotted as a ribbon (+ and -) around the mean. 
 #' 
-#' @param df Data frame created by \code{\link{rmw_normalise}}. 
+#' @param df Tibble created by \code{\link{rmw_normalise}}. 
 #' 
 #' @param colour Colour for line geometry. 
 #' 

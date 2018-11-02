@@ -6,7 +6,7 @@ test_that("Example observational data", {
   df <- data_london
   
   # Test data frame
-  expect_identical(class(df), "data.frame")
+  expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
   expect_identical(ncol(df), 11L)
   expect_identical(class(df$date)[1], "POSIXct")
 
@@ -19,7 +19,7 @@ test_that("Example normalised data", {
   df <- data_london_normalised
   
   # Test data frame
-  expect_identical(class(df), "data.frame")
+  expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
   expect_identical(ncol(df), 5L)
   
   expect_true(names(df)[1] == "date")

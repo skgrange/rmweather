@@ -27,7 +27,7 @@
 #' @param fraction Fraction of the observations to make up the training set. 
 #' Default is 0.8, 80 \%.
 #'
-#' @return Data frame, the input data transformed ready for modelling with 
+#' @return Tibble, the input data transformed ready for modelling with 
 #' \strong{rmweather}. 
 #' 
 #' @author Stuart K. Grange
@@ -56,10 +56,8 @@ rmw_prepare_data <- function(df, value = "value", na.rm = FALSE, replace = FALSE
     rmw_check_data(prepared = FALSE) %>% 
     impute_values(na.rm = na.rm) %>% 
     add_date_variables(replace = replace) %>% 
-    split_into_sets(fraction = fraction)
-  
-  # Drop the tibble formatting, useful when groups are left over
-  if ("tbl" %in% class(df)) class(df) <- "data.frame"
+    split_into_sets(fraction = fraction) %>% 
+    ungroup()
   
   return(df)
   

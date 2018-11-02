@@ -23,7 +23,7 @@ the versions already contained in the data frame if they exist?}
 Default is 0.8, 80 \%.}
 }
 \value{
-Data frame, the input data transformed ready for modelling with 
+Tibble, the input data transformed ready for modelling with 
 \strong{rmweather}.
 }
 \description{

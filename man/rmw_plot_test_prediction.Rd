@@ -8,7 +8,7 @@
 rmw_plot_test_prediction(df, bins = 30)
 }
 \arguments{
-\item{df}{Data frame created by \code{\link{rmw_predict_the_test_set}}.}
+\item{df}{Tibble created by \code{\link{rmw_predict_the_test_set}}.}
 
 \item{bins}{Numeric vector giving number of bins in both vertical and 
 horizontal directions.}

@@ -8,7 +8,7 @@
 rmw_plot_partial_dependencies(df)
 }
 \arguments{
-\item{df}{Data frame created by \code{\link{rmw_partial_dependencies}}.}
+\item{df}{Tibble created by \code{\link{rmw_partial_dependencies}}.}
 }
 \value{
 ggplot2 plot with a point geometry.

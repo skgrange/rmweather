@@ -6,7 +6,7 @@
 #' 
 #' @author Stuart K. Grange
 #' 
-#' @param df Data frame from \code{\link{rmw_normalise}} to detect breakpoints 
+#' @param df Tibble from \code{\link{rmw_normalise}} to detect breakpoints 
 #' in. 
 #' 
 #' @param h Minimal segment size either given as fraction relative to the sample 
@@ -16,8 +16,8 @@
 #' @param n Number of breaks to detect. Default is maximum number allowed by
 #' \code{h}. 
 #' 
-#' @return Data frame with a \code{date} variable indicating where the 
-#' breakpoints are. 
+#' @return Tibble with a \code{date} variable indicating where the breakpoints 
+#' are. 
 #' 
 #' @examples 
 #' 
@@ -45,7 +45,7 @@ rmw_find_breakpoints <- function(df, h = 0.15, n = NULL) {
   )
   
   # Get dates from index and make data frame
-  df <- data.frame(date = df$date[x$breakpoints])
+  df <- data_frame(date = df$date[x$breakpoints])
   
   return(df)
   

@@ -8,7 +8,7 @@ based approach.}
 rmw_find_breakpoints(df, h = 0.15, n = NULL)
 }
 \arguments{
-\item{df}{Data frame from \code{\link{rmw_normalise}} to detect breakpoints 
+\item{df}{Tibble from \code{\link{rmw_normalise}} to detect breakpoints 
 in.}
 
 \item{h}{Minimal segment size either given as fraction relative to the sample 
@@ -19,8 +19,8 @@ segment.}
 \code{h}.}
 }
 \value{
-Data frame with a \code{date} variable indicating where the 
-breakpoints are.
+Tibble with a \code{date} variable indicating where the breakpoints 
+are.
 }
 \description{
 \code{rmw_find_breakpoints} will generally be applied to a data frame after

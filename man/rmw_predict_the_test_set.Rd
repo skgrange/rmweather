@@ -13,7 +13,7 @@ rmw_predict_the_test_set(model, df)
 \item{df}{Input data used to calculate \code{model}.}
 }
 \value{
-Data frame.
+Tibble.
 }
 \description{
 \code{rmw_predict_the_test_set} uses data withheld from the training of the 

@@ -17,7 +17,7 @@ rmw_model_importance(model, date_unix = TRUE)
 return?}
 }
 \value{
-Data frame.
+Tibble.
 }
 \description{
 Functions to extract model statistics from a model calculated with

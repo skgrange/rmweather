@@ -1,0 +1,33 @@
+citHeader("To cite rmweather in publications use one or both of:")
+
+bibentry(
+   bibtype = "Article",
+   title = "Random forest meteorological normalisation models for Swiss PM10 trend analysis",
+   author = personList(
+     as.person("Stuart K. Grange"), 
+     as.person("David C. Carslaw"),
+     as.person("Alastair C. Lewis"),
+     as.person("Eirini Boleti"),
+     as.person("Christoph Hueglin")
+    ),
+   journal = "Atmospheric Chemistry and Physics",
+   year = 2018,
+   volume = 18,
+   number = 9,
+   url = "https://www.atmos-chem-phys.net/18/6223/2018/",
+   doi = "https://doi.org/10.5194/acp-18-6223-2018",
+   note = "Trend analysis"
+)
+
+bibentry(
+   bibtype = "Article",
+   title = "Using meteorological normalisation to detect interventions in air quality time series",
+   author = personList(as.person("Stuart K. Grange"), as.person("David C. Carslaw")),
+   journal = "Science of The Total Environment",
+   year = 2018,
+   volume = 18,
+   number = 9,
+   url = "https://www.sciencedirect.com/science/article/pii/S004896971834244X",
+   doi = "https://doi.org/10.1016/j.scitotenv.2018.10.344",
+   note = "Intervention exploration"
+)

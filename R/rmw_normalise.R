@@ -25,7 +25,7 @@
 #' 
 #' @author Stuart K. Grange
 #' 
-#' @return Data frame. 
+#' @return Tibble. 
 #' 
 #' @seealso \code{\link{rmw_prepare_data}}, \code{\link{rmw_train_model}}
 #' 
@@ -95,8 +95,7 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
     df <- df %>% 
       group_by(date) %>% 
       dplyr::summarise_if(is.numeric, dplyr::funs(mean(., na.rm = TRUE))) %>% 
-      ungroup() %>% 
-      data.frame()
+      ungroup()
     
   }
   
@@ -145,20 +144,18 @@ rmw_normalise_worker <- function(index, model, df, variables, replace,
   if (identical(class(value_predict), "list")) {
     
     # With se
-    df <- data.frame(
+    df <- data_frame(
       date = df$date,
       value_predict = value_predict$predictions,
-      se = value_predict$se,
-      stringsAsFactors = FALSE
+      se = value_predict$se
     )
     
   } else {
     
     # Without se
-    df <- data.frame(
+    df <- data_frame(
       date = df$date,
-      value_predict = value_predict,
-      stringsAsFactors = FALSE
+      value_predict = value_predict
     )
     
   }

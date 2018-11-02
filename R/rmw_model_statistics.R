@@ -6,7 +6,7 @@
 #' @param date_unix Should the \code{date_unix} variable be included in the 
 #' return? 
 #' 
-#' @return Data frame. 
+#' @return Tibble. 
 #' 
 #' @author Stuart K. Grange
 #' 
@@ -25,7 +25,7 @@ rmw_model_statistics <- function(model) {
   stopifnot(class(model) == "ranger")
   
   # Build data frame
-  data.frame(
+  data_frame(
     n_trees = model$num.trees,
     mtry = model$mtry,
     min_node_size = model$min.node.size,
@@ -37,8 +37,7 @@ rmw_model_statistics <- function(model) {
     ), 
     count_samples = model$num.samples,
     prediction_error_mse = model$prediction.error,
-    r_squared = model$r.squared,
-    stringsAsFactors = FALSE
+    r_squared = model$r.squared
   )
   
 }
@@ -69,6 +68,9 @@ rmw_model_importance <- function(model, date_unix = TRUE) {
   
   # Add ranking
   df <- tibble::rowid_to_column(df, "rank")
+  
+  # To tibble
+  df <- as_tibble(df)
   
   return(df)
   

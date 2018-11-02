@@ -8,7 +8,7 @@
 rmw_plot_normalised(df, colour = "#6B186EFF")
 }
 \arguments{
-\item{df}{Data frame created by \code{\link{rmw_normalise}}.}
+\item{df}{Tibble created by \code{\link{rmw_normalise}}.}
 
 \item{colour}{Colour for line geometry.}
 }

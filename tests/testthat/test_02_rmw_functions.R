@@ -13,7 +13,7 @@ test_that("Test data preparation function", {
   df <- rmw_prepare_data(df)
   
   # Test data frame
-  expect_identical(class(df), "data.frame")
+  expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
   expect_identical(ncol(df), 16L)
   expect_identical(class(df$date)[1], "POSIXct")
   
@@ -31,12 +31,12 @@ test_that("Test data preparation function with custom arguments", {
   
   expect_identical(
     class(rmw_prepare_data(data_london, value = "nox", na.rm = TRUE)), 
-    "data.frame"
+    c("tbl_df", "tbl", "data.frame")
   )
   
   expect_identical(
     class(rmw_prepare_data(data_london, value = "nox", replace = TRUE)), 
-    "data.frame"
+    c("tbl_df", "tbl", "data.frame")
   )
   
 })
@@ -72,8 +72,8 @@ test_that("Test training function", {
   df_performance <- rmw_model_statistics(model)
   
   # 
-  expect_identical(class(df_importance), "data.frame")
-  expect_identical(class(df_performance), "data.frame")
+  expect_identical(class(df_importance), c("tbl_df", "tbl", "data.frame"))
+  expect_identical(class(df_performance), c("tbl_df", "tbl", "data.frame"))
   
   # Plot
   expect_identical(class(rmw_plot_importance(df_importance)), c("gg", "ggplot"))
@@ -82,7 +82,7 @@ test_that("Test training function", {
   df_predict <- rmw_predict_the_test_set(model = model, df = df)
   plot_test <- rmw_plot_test_prediction(df_predict)
   
-  expect_identical(class(df_predict), "data.frame")
+  expect_identical(class(df_predict), c("tbl_df", "tbl", "data.frame"))
   expect_identical(class(plot_test), c("gg", "ggplot"))
   
   # Is this needed? 
@@ -124,7 +124,7 @@ test_that("Test normalising function", {
   )
   
   # Check 
-  expect_identical(class(df_normalise), "data.frame")
+  expect_identical(class(df_normalise), c("tbl_df", "tbl", "data.frame"))
   expect_identical(names(df_normalise), c("date", "value_predict"))
   expect_identical(class(df$date)[1], "POSIXct")
   
@@ -165,7 +165,7 @@ test_that("Test normalising function with standard error calculation", {
   )
   
   # Check 
-  expect_identical(class(df_normalise), "data.frame")
+  expect_identical(class(df_normalise), c("tbl_df", "tbl", "data.frame"))
   expect_identical(names(df_normalise), c("date", "value_predict", "se"))
   expect_identical(class(df$date)[1], "POSIXct")
   
@@ -272,6 +272,6 @@ test_that("Test `rmw_clip` function", {
   df <- rmw_clip(list_normalised$normalised)
   
   # Check
-  expect_identical(class(df), "data.frame")
+  expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
   
 })
