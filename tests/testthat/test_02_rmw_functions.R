@@ -65,7 +65,7 @@ test_that("Test training function", {
   
   # Test model return
   expect_identical(class(model), "ranger")
-  expect_equal(model$r.squared, 0.4184627, tolerance = 0.1)
+  expect_equal(model$r.squared, 0.4184627, tolerance = 0.2)
   
   # Extract things from model
   df_importance <- rmw_model_importance(model)
@@ -166,7 +166,7 @@ test_that("Test normalising function with standard error calculation", {
   
   # Check 
   expect_identical(class(df_normalise), c("tbl_df", "tbl", "data.frame"))
-  expect_identical(names(df_normalise), c("date", "value_predict", "se"))
+  expect_identical(names(df_normalise), c("date", "se", "value_predict"))
   expect_identical(class(df$date)[1], "POSIXct")
   
 })
@@ -198,9 +198,13 @@ test_that("Test `rmw_do_all` function", {
   expect_identical(class(list_normalised), "list")
   
   # Check types
+  list_types <- purrr::map(list_normalised, class) %>% 
+    purrr::map_chr(`[[`, 1) %>% 
+    unname()
+  
   expect_identical(
-    unname(purrr::map_chr(list_normalised, class)),
-    c("data.frame", "ranger", "integer", "data.frame", "data.frame")
+    list_types,
+    c("tbl_df", "ranger", "integer", "tbl_df", "tbl_df")
   )
   
 })
@@ -238,9 +242,13 @@ test_that("Test `rmw_do_all` function and use varable_sample argument", {
   expect_identical(class(list_normalised), "list")
   
   # Check types
+  list_types <- purrr::map(list_normalised, class) %>% 
+    purrr::map_chr(`[[`, 1) %>% 
+    unname()
+  
   expect_identical(
-    unname(purrr::map_chr(list_normalised, class)),
-    c("data.frame", "ranger", "integer", "data.frame", "data.frame")
+    list_types,
+    c("tbl_df", "ranger", "integer", "tbl_df", "tbl_df")
   )
   
 })

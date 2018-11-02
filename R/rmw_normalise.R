@@ -146,8 +146,8 @@ rmw_normalise_worker <- function(index, model, df, variables, replace,
     # With se
     df <- data_frame(
       date = df$date,
-      value_predict = value_predict$predictions,
-      se = value_predict$se
+      se = value_predict$se,
+      value_predict = value_predict$predictions
     )
     
   } else {
