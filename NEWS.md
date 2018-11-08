@@ -1,4 +1,4 @@
-# rmweather 0.1.x
+# rmweather 0.1.3
 
   - Example data are now tibbles, not data frames
 

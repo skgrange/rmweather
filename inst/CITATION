@@ -1,4 +1,4 @@
-citHeader("To cite rmweather in publications use one or both of:")
+citHeader("To cite rmweather in publications please use:")
 
 bibentry(
    bibtype = "Article",
@@ -14,9 +14,10 @@ bibentry(
    year = 2018,
    volume = 18,
    number = 9,
+   pages = "6223--6239",
    url = "https://www.atmos-chem-phys.net/18/6223/2018/",
    doi = "https://doi.org/10.5194/acp-18-6223-2018",
-   note = "Trend analysis"
+   note = "Trend analysis example"
 )
 
 bibentry(
@@ -24,10 +25,10 @@ bibentry(
    title = "Using meteorological normalisation to detect interventions in air quality time series",
    author = personList(as.person("Stuart K. Grange"), as.person("David C. Carslaw")),
    journal = "Science of The Total Environment",
-   year = 2018,
-   volume = 18,
-   number = 9,
+   year = 2019,
+   volume = 653,
+   pages =  "578--588",
    url = "https://www.sciencedirect.com/science/article/pii/S004896971834244X",
    doi = "https://doi.org/10.1016/j.scitotenv.2018.10.344",
-   note = "Intervention exploration"
+   note = "Intervention exploration example"
 )
