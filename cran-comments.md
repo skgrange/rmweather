@@ -12,7 +12,17 @@ This is a minor package update for the package with some minor additional functi
 
 ## R CMD check results
 
-`0 errors | 0 warnings | 0 notes`
+0 errors ✔ | 0 warnings ✔ | 1 note ✖
+
+A false positive by the spell checker (a proper noun in the description field): 
+
+```
+* checking CRAN incoming feasibility ... NOTE
+
+Possibly mis-spelled words in DESCRIPTION:
+  Carslaw (15:51)
+Maintainer: 'Stuart K. Grange <stuart.grange@york.ac.uk>'
+```
 
 ## Downstream dependencies
 
