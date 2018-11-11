@@ -1,6 +1,6 @@
 ## New package version
 
-This is a minor package update for the package with some minor additional functionality and the addition of new citation information.   
+This is a minor package update for the package with some minor additional functionality and the addition of new citation information in the form of a new journal article.   
 
 ## Test environments
 
@@ -23,6 +23,10 @@ Possibly mis-spelled words in DESCRIPTION:
   Carslaw (15:51)
 Maintainer: 'Stuart K. Grange <stuart.grange@york.ac.uk>'
 ```
+
+## R checks
+
+This package is passing on all test environments, with the exception of `r-oldrel-windows-ix86+x86_64`. The failure has been tracked to the dependent lubridate package and the compilation process on these older systems (see https://cran.r-project.org/web/checks/check_results_lubridate.html). 
 
 ## Downstream dependencies
 
