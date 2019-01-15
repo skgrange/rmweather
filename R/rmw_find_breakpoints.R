@@ -45,7 +45,7 @@ rmw_find_breakpoints <- function(df, h = 0.15, n = NULL) {
   )
   
   # Get dates from index and make data frame
-  df <- data_frame(date = df$date[x$breakpoints])
+  df <- tibble(date = df$date[x$breakpoints])
   
   return(df)
   

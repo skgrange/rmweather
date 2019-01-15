@@ -1,3 +1,7 @@
+# rmweather 0.1.x
+
+  - Replace deprecated `data_frame` with `tibble`
+
 # rmweather 0.1.3
 
   - Example data are now tibbles, not data frames

@@ -144,7 +144,7 @@ rmw_normalise_worker <- function(index, model, df, variables, replace,
   if (identical(class(value_predict), "list")) {
     
     # With se
-    df <- data_frame(
+    df <- tibble(
       date = df$date,
       se = value_predict$se,
       value_predict = value_predict$predictions
@@ -153,7 +153,7 @@ rmw_normalise_worker <- function(index, model, df, variables, replace,
   } else {
     
     # Without se
-    df <- data_frame(
+    df <- tibble(
       date = df$date,
       value_predict = value_predict
     )

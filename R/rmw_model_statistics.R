@@ -25,7 +25,7 @@ rmw_model_statistics <- function(model) {
   stopifnot(class(model) == "ranger")
   
   # Build data frame
-  data_frame(
+  tibble(
     n_trees = model$num.trees,
     mtry = model$mtry,
     min_node_size = model$min.node.size,

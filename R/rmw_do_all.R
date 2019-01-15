@@ -127,7 +127,7 @@ rmw_do_all <- function(df, variables, variables_sample = NA, n_trees = 300,
   date_post_normalise <- as.numeric(lubridate::now())
   
   # Build timing data frame
-  df_times <- data_frame(
+  df_times <- tibble(
     hostname = as.character(Sys.info()["nodename"]),
     date_start,
     date_post_training,
