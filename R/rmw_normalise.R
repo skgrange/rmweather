@@ -94,7 +94,7 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
     
     df <- df %>% 
       group_by(date) %>% 
-      dplyr::summarise_if(is.numeric, dplyr::funs(mean(., na.rm = TRUE))) %>% 
+      dplyr::summarise_if(is.numeric, ~mean(., na.rm = TRUE)) %>% 
       ungroup()
     
   }

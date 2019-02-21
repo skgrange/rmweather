@@ -1,6 +1,8 @@
 # rmweather 0.1.x
 
   - Replace deprecated `data_frame` with `tibble`
+  
+  - Replace deprecated `funs` with `~`
 
 # rmweather 0.1.3
 
