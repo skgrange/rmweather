@@ -36,7 +36,7 @@
 rmw_predict <- function(model, df = NA, se = FALSE, n_cores = NULL, 
                         verbose = FALSE) {
   
-  if (class(df) != "data.frame" && is.na(df[1])) {
+  if ("data.frame" %in% class(df) && identical(df[1], NA)) {
     
     x <- model$predictions
     

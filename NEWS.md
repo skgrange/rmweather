@@ -3,6 +3,10 @@
   - Replace deprecated `data_frame` with `tibble`
   
   - Replace deprecated `funs` with `~`
+  
+  - Allow `rmw_plot_test_prediction` to not fix axes, useful for facetting after the plot has been generated
+  
+  - Minor logic change to `rmw_predict` to handle tibble's non-dropping behaviour
 
 # rmweather 0.1.3
 

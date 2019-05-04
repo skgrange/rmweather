@@ -82,25 +82,20 @@ rmw_plot_importance <- function(df, colour = "black") {
 #' @param bins Numeric vector giving number of bins in both vertical and 
 #' horizontal directions. 
 #' 
+#' @param coord_equal Should axes be forced to be equal? 
+#' 
 #' @author Stuart K. Grange
 #' 
 #' @return ggplot2 plot with a hex geometry.
 #' 
 #' @export
-rmw_plot_test_prediction <- function(df, bins = 30) {
-  
-  # Get axes limits
-  min_values <- min(c(df$value, df$value_predict), na.rm = TRUE)
-  max_values <- max(c(df$value, df$value_predict), na.rm = TRUE)
+rmw_plot_test_prediction <- function(df, bins = 30, coord_equal = TRUE) {
   
   # Plot
   plot <- ggplot2::ggplot(df, ggplot2::aes(value, value_predict)) + 
     ggplot2::geom_hex(bins = bins) +
     ggplot2::geom_abline(slope = 1, intercept = 0) + 
-    ggplot2::coord_equal() + 
     ggplot2::theme_minimal() +
-    ggplot2::ylim(min_values, max_values) + 
-    ggplot2::xlim(min_values, max_values) +
     viridis::scale_fill_viridis(
       option = "inferno",
       begin = 0.3,
@@ -108,6 +103,20 @@ rmw_plot_test_prediction <- function(df, bins = 30) {
     ) + 
     ggplot2::xlab("Observed") + 
     ggplot2::ylab("Predicted")
+  
+  # Fix axes
+  if (coord_equal) {
+    
+    # Get axes limits
+    min_values <- min(c(df$value, df$value_predict), na.rm = TRUE)
+    max_values <- max(c(df$value, df$value_predict), na.rm = TRUE)
+    
+    plot <- plot +
+      ggplot2::ylim(min_values, max_values) + 
+      ggplot2::xlim(min_values, max_values) +
+      ggplot2::coord_equal()
+    
+  }
   
   return(plot)
   

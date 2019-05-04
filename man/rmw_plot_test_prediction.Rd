@@ -5,13 +5,15 @@
 \title{Function to plot the test set and predicted set after
 \code{\link{rmw_predict_the_test_set}}.}
 \usage{
-rmw_plot_test_prediction(df, bins = 30)
+rmw_plot_test_prediction(df, bins = 30, coord_equal = TRUE)
 }
 \arguments{
 \item{df}{Tibble created by \code{\link{rmw_predict_the_test_set}}.}
 
 \item{bins}{Numeric vector giving number of bins in both vertical and 
 horizontal directions.}
+
+\item{coord_equal}{Should axes be forced to be equal?}
 }
 \value{
 ggplot2 plot with a hex geometry.
