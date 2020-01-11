@@ -1,6 +1,7 @@
 # **rmweather** <a href='https://github.com/skgrange/rmweather'><img src='man/figures/logo.png' align="right" height="131.5" /></a>
 
 [![Build Status](https://travis-ci.org/skgrange/rmweather.svg?branch=master)](https://travis-ci.org/skgrange/rmweather)
+[![Lifecycle Status](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)
 [![CRAN status](https://www.r-pkg.org/badges/version/rmweather)](https://cran.r-project.org/package=rmweather)
 [![CRAN log](https://cranlogs.r-pkg.org/badges/last-week/rmweather?color=brightgreen)](https://cran.r-project.org/package=rmweather)
 
