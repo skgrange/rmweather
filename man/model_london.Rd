@@ -5,7 +5,9 @@
 \alias{model_london}
 \title{Example \strong{ranger} random forest model for the \strong{rmweather} 
 package.}
-\format{A ranger object, a named list with 14 elements.}
+\format{
+A ranger object, a named list with 14 elements.
+}
 \usage{
 model_london
 }

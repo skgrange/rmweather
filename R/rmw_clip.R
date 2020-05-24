@@ -27,8 +27,9 @@ rmw_clip <- function(df, seconds = 31536000 / 2) {
   df <- rmw_check_data(df, prepared = FALSE)
   
   # Value check
-  if (!"value_predict" %in% names(df)) 
+  if (!"value_predict" %in% names(df)) {
     stop("`value_predict` is not present in input...", call. = FALSE)
+  }
   
   # Get min and max
   date_start <- min(df$date)

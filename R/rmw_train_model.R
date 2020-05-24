@@ -60,11 +60,13 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
   if (verbose) message(str_date_formatted(), ": Checking input data...")
   
   # Extra checks
-  if (anyDuplicated(variables) != 0) 
-    stop("`variables` contains duplicate elements...", call. = FALSE)
+  if (anyDuplicated(variables) != 0) {
+    stop("`variables` contains duplicate elements.", call. = FALSE)
+  }
   
-  if (!all(variables %in% names(df))) 
-    stop("`variables` given are not within input data frame...", call. = FALSE)
+  if (!all(variables %in% names(df))) {
+    stop("`variables` given are not within input data frame.", call. = FALSE)
+  }
   
   # Standard checks
   df <- rmw_check_data(df, prepared = TRUE)
@@ -76,7 +78,8 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
            !!variables)
   
   # Default logic
-  n_cores <- ifelse(is.na(n_cores), n_cores_default(), n_cores)
+  n_cores <- as.integer(n_cores)
+  n_cores <- if_else(is.na(n_cores), n_cores_default(), n_cores)
   
   if (verbose) message(str_date_formatted(), ": Model training started...")
   

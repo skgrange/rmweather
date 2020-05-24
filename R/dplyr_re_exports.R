@@ -2,7 +2,7 @@
 #'
 #' @importFrom dplyr select rename mutate filter arrange distinct summarise 
 #'     do group_by ungroup rowwise do left_join inner_join everything bind_rows 
-#'     pull tibble as_tibble
+#'     pull tibble as_tibble if_else
 NULL
 
 

@@ -4,8 +4,7 @@
 \alias{rmw_predict}
 \title{Function to predict using a \strong{ranger} random forest.}
 \usage{
-rmw_predict(model, df = NA, se = FALSE, n_cores = NULL,
-  verbose = FALSE)
+rmw_predict(model, df = NA, se = FALSE, n_cores = NULL, verbose = FALSE)
 }
 \arguments{
 \item{model}{A \strong{ranger} model object from \code{rmw_train_model}.}

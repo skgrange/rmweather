@@ -6,10 +6,21 @@
 concentrations using meteorological and time variables and then immediately
 normalise a variable for "average" meteorological conditions.}
 \usage{
-rmw_do_all(df, variables, variables_sample = NA, n_trees = 300,
-  min_node_size = 5, mtry = NULL, keep_inbag = TRUE,
-  n_samples = 300, replace = TRUE, se = FALSE, aggregate = TRUE,
-  n_cores = NA, verbose = FALSE)
+rmw_do_all(
+  df,
+  variables,
+  variables_sample = NA,
+  n_trees = 300,
+  min_node_size = 5,
+  mtry = NULL,
+  keep_inbag = TRUE,
+  n_samples = 300,
+  replace = TRUE,
+  se = FALSE,
+  aggregate = TRUE,
+  n_cores = NA,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{df}{Input data frame after preparation with 

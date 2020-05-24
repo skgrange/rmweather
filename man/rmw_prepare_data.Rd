@@ -4,8 +4,13 @@
 \alias{rmw_prepare_data}
 \title{Function to prepare a data frame for modelling with \strong{rmweather}.}
 \usage{
-rmw_prepare_data(df, value = "value", na.rm = FALSE, replace = FALSE,
-  fraction = 0.8)
+rmw_prepare_data(
+  df,
+  value = "value",
+  na.rm = FALSE,
+  replace = FALSE,
+  fraction = 0.8
+)
 }
 \arguments{
 \item{df}{Input data frame. Generally a time series of air quality data with
@@ -37,7 +42,7 @@ randomly split the input into training and testing sets, and rename the
 dependent variable to \code{"value"}. The \code{date} variable will also be 
 used to calculate new variables such as \code{date_unix}, \code{day_julian}, 
 \code{weekday}, and \code{hour} which can be used as independent variables. 
-These attributes are needed for other \strong{rmweather} functions to operate.
+These attributes are needed for other \strong{rmweather} functions to operate. 
 
 Use \code{set.seed} in an R session to keep results reproducible.
 }

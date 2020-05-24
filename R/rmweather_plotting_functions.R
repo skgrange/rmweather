@@ -11,8 +11,12 @@
 rmw_plot_partial_dependencies <- function(df) {
   
   # Check for variable names
-  if (!all(c("variable", "value", "partial_dependency") %in% names(df)))
-    stop("Input must have 'variable', 'value', and 'partial_dependency' variables...")
+  if (!all(c("variable", "value", "partial_dependency") %in% names(df))) {
+    stop(
+      "Input must have 'variable', 'value', and 'partial_dependency' variables.",
+      call. = FALSE
+    )
+  }
   
   plot <- df %>% 
     ggplot2::ggplot(ggplot2::aes(value, partial_dependency)) + 
@@ -43,12 +47,10 @@ rmw_plot_importance <- function(df, colour = "black") {
   
   # Check input
   if (!all(c("rank", "variable", "importance") %in% names(df))) {
-    
     stop(
-      "Data frame must contain `rank`, `variable`, and `importance` variables...", 
+      "Data frame must contain `rank`, `variable`, and `importance` variables.", 
       call. = FALSE
     )
-    
   }
   
   # Plot
@@ -161,7 +163,7 @@ rmw_plot_normalised <- function(df, colour = "#6B186EFF") {
     
   }
   
-  # Overlay line  
+  # Overlay line
   plot <- plot + 
     ggplot2::geom_line(
       ggplot2::aes(date, value_predict), colour = colour

@@ -5,9 +5,16 @@
 \title{Function to train a random forest model to predict (usually) pollutant
 concentrations using meteorological and time variables.}
 \usage{
-rmw_train_model(df, variables, n_trees = 300, mtry = NULL,
-  min_node_size = 5, keep_inbag = TRUE, n_cores = NA,
-  verbose = FALSE)
+rmw_train_model(
+  df,
+  variables,
+  n_trees = 300,
+  mtry = NULL,
+  min_node_size = 5,
+  keep_inbag = TRUE,
+  n_cores = NA,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{df}{Input tibble after preparation with \code{\link{rmw_prepare_data}}.

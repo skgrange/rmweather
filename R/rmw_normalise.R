@@ -53,7 +53,8 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
   stopifnot(class(model) == "ranger")
   
   # Default logic for cpu cores
-  n_cores <- ifelse(is.na(n_cores), n_cores_default(), n_cores)
+  n_cores <- as.integer(n_cores)
+  n_cores <- if_else(is.na(n_cores), n_cores_default(), n_cores)
   
   # Use all variables except the trend term
   if (is.na(variables[1])) {
@@ -67,8 +68,9 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
   }
   
   # Sample the time series
-  if (verbose)
+  if (verbose) {
     message(str_date_formatted(), ": Sampling and predicting ", n_samples, " times...")
+  }
   
   # Do
   df <- seq_len(n_samples) %>% 

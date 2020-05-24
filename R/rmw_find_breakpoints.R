@@ -31,7 +31,7 @@ rmw_find_breakpoints <- function(df, h = 0.15, n = NULL) {
   df <- rmw_check_data(df, prepared = FALSE)
   
   # Switch to a common variable name
-  names(df) <- ifelse(names(df) == "value_predict", "value", names(df))
+  names(df) <- if_else(names(df) == "value_predict", "value", names(df))
   
   # Another check
   stopifnot("value" %in% names(df))

@@ -49,15 +49,17 @@ rmw_partial_dependencies <- function(model, df, variable, n_cores = NA,
                                      verbose = FALSE) {
   
   # Check, predict is a generic function and needs to be loaded
-  if (!"package:ranger" %in% search())
-    stop("The ranger package is not loaded...", call. = FALSE)
+  if (!"package:ranger" %in% search()) {
+    stop("The ranger package is not loaded.", call. = FALSE)
+  }
     
   # Check inputs
   df <- rmw_check_data(df, prepared = TRUE)
   stopifnot(class(model) == "ranger")
   
   # Default logic for cpu cores
-  n_cores <- ifelse(is.na(n_cores), n_cores_default(), n_cores)
+  n_cores <- as.integer(n_cores)
+  n_cores <- if_else(is.na(n_cores), n_cores_default(), n_cores)
   
   # Predict all variables if not given
   if (is.na(variable[1])) variable <- model$forest$independent.variable.names
@@ -96,15 +98,16 @@ rmw_partial_dependencies_worker <- function(model, df, variable, n_cores,
   
   # Alter names and add variable
   df_predict <- df_predict %>% 
-    setNames(c("value", "partial_dependency")) %>% 
+    purrr::set_names(c("value", "partial_dependency")) %>% 
     mutate(variable = !!variable) %>% 
     select(variable, 
            value, 
            partial_dependency)
   
   # Catch factors, usually weekday
-  if ("factor" %in% class(df_predict$value)) 
+  if ("factor" %in% class(df_predict$value)) {
     df_predict$value <- as.integer(df_predict$value)
+  }
   
   return(df_predict)
   

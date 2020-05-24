@@ -5,8 +5,7 @@
 \title{Function to calculate partial dependencies after training with 
 \strong{rmweather}.}
 \usage{
-rmw_partial_dependencies(model, df, variable, n_cores = NA,
-  verbose = FALSE)
+rmw_partial_dependencies(model, df, variable, n_cores = NA, verbose = FALSE)
 }
 \arguments{
 \item{model}{A ranger model object from \code{\link{rmw_train_model}}.}

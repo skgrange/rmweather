@@ -48,8 +48,9 @@ rmw_prepare_data <- function(df, value = "value", na.rm = FALSE, replace = FALSE
                              fraction = 0.8) {
   
   # Check
-  if (!value %in% names(df))
-    stop("`value` is not within input data frame...", call. = FALSE)
+  if (!value %in% names(df)) {
+    stop("`value` is not within input data frame.", call. = FALSE)
+  }
   
   df <- df %>% 
     rename(value = !!value) %>% 
@@ -82,15 +83,14 @@ add_date_variables <- function(df, replace) {
     # Add variables if they do not exist
     # Add date variables
     if (!"date_unix" %in% names) df$date_unix <- as.numeric(df$date)
-    
     if (!"day_julian" %in% names) df$day_julian <- lubridate::yday(df$date)
-    
     # if (!"month" %in% names) df$month <- lubridate::month(df$date)
     # if (!"week" %in% names) df$week <- lubridate::week(df$date)
     
-    # Own function  
-    if (!"weekday" %in% names) 
+    # An internal package's function  
+    if (!"weekday" %in% names) {
       df$weekday <- wday_monday(df$date, as.factor = TRUE)
+    }
     
     if (!"hour" %in% names) df$hour <- lubridate::hour(df$date)
     
@@ -156,28 +156,36 @@ rmw_check_data <- function(df, prepared) {
   # Get data names
   names <- names(df)
   
-  if (!"date" %in% names) 
-    stop("Input must contain a `date` variable...", call. = FALSE)
+  if (!"date" %in% names) {
+    stop("Input must contain a `date` variable.", call. = FALSE)
+  }
   
-  if (!"POSIXct" %in% class(df$date)[1]) 
-    stop("`date` variable needs to be a parsed date (POSIXct)...", call. = FALSE)
+  if (!"POSIXct" %in% class(df$date)[1]) {
+    stop("`date` variable needs to be a parsed date (POSIXct).", call. = FALSE)
+  }
   
-  if (anyNA(df$date)) stop("`date` must not contain missing (NA) values...", call. = FALSE)
+  if (anyNA(df$date)) {
+    stop("`date` must not contain missing (NA) values.", call. = FALSE)
+  }
   
   # More checks for prepared data
   if (prepared) {
     
-    if (!"set" %in% names) 
-      stop("Input must contain a `set` variable...", call. = FALSE)
+    if (!"set" %in% names) {
+      stop("Input must contain a `set` variable.", call. = FALSE)
+    }
     
-    if (!all(unique(df$set) %in% c("training", "testing")))
-      stop("`set` can only take the values `training` and `testing`...", call. = FALSE)
+    if (!all(unique(df$set) %in% c("training", "testing"))) {
+      stop("`set` can only take the values `training` and `testing`.", call. = FALSE)
+    }
     
-    if (!"value" %in% names) 
-      stop("Input must contain a `value` variable...", call. = FALSE)
+    if (!"value" %in% names) {
+      stop("Input must contain a `value` variable.", call. = FALSE)
+    }
     
-    if (!"date_unix" %in% names) 
-      stop("Input must contain a `date_unix` variable...", call. = FALSE)
+    if (!"date_unix" %in% names) {
+      stop("Input must contain a `date_unix` variable.", call. = FALSE)
+    }
     
   }
 

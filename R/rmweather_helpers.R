@@ -21,11 +21,9 @@ wday_monday <- function(x, as.factor = FALSE) {
 
 
 mode_average <- function(x, na.rm = FALSE) {
-  
   if (na.rm) x <- na.omit(x)
   ux <- unique(x)
   ux[which.max(tabulate(match(x, ux)))]
-  
 }
 
 
@@ -57,8 +55,11 @@ str_date_formatted <- function(date = NA, time_zone = TRUE,
 #' @param logical_cores Should logical cores be included in the core count? 
 #' 
 #' @export
-system_cpu_core_count <- function(logical_cores = TRUE) 
-  parallel::detectCores(logical = logical_cores)
+system_cpu_core_count <- function(logical_cores = TRUE) {
+  x <- as.integer(parallel::detectCores(logical = logical_cores))
+  if (is.na(x[1])) x <- 1L
+  return(x)
+}
 
 
 n_cores_default <- function() {
@@ -68,13 +69,9 @@ n_cores_default <- function() {
   
   # Different logic for well resourced systems
   if (x < 16) {
-    
     x <- x - 1L
-    
   } else {
-    
     x <- 16L
-    
   }
   
   return(x)
