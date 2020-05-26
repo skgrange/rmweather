@@ -1,14 +1,19 @@
 ## New package version
 
-This is a minor package update for the package with some minor additional functionality and the addition of new citation information in the form of a new journal article.   
+This is a minor package update submission with the primary changes relating to replacing depricated functions.     
 
 ## Test environments
 
-  - Local, Ubuntu 18.04.1 LTS, R 3.5.1
+  - Local, Ubuntu 18.04.1 LTS, R 3.6.3
   
-  - Travis CI, Ubuntu 14.04.5 LTS, R 3.5.1
+  - Travis CI, Ubuntu 16.04.6 LTS, R 3.6.2
   
   - [win-builder](https://win-builder.r-project.org/), Windows Server 2008, (R-release and R-devel)
+  
+  - R-Hub
+    - Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+    - Ubuntu Linux 16.04 LTS, R-release, GCC
+    - Fedora Linux, R-devel, clang, gfortran
 
 ## R CMD check results
 

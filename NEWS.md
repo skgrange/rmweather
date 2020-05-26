@@ -1,4 +1,4 @@
-# rmweather 0.1.x
+# rmweather 0.1.4
 
   - Replace deprecated `data_frame` with `tibble`
   
