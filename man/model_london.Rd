@@ -6,7 +6,7 @@
 \title{Example \strong{ranger} random forest model for the \strong{rmweather} 
 package.}
 \format{
-A ranger object, a named list with 14 elements.
+A ranger object, a named list with 16 elements.
 }
 \usage{
 model_london

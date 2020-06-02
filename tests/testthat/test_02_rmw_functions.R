@@ -4,13 +4,9 @@ test_that("Test data preparation function", {
   
   # Load example data
   df <- data_london
-    
-  # No "value" in data frame
-  expect_error(rmw_prepare_data(df))
   
   # Change name
-  df <- rename(df, value = no2)
-  df <- rmw_prepare_data(df)
+  df <- rmw_prepare_data(filter(df, variable == "no2"))
   
   # Test data frame
   expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
@@ -29,16 +25,24 @@ test_that("Test data preparation function", {
 
 test_that("Test data preparation function with custom arguments", {
   
-  expect_identical(
-    class(rmw_prepare_data(data_london, value = "nox", na.rm = TRUE)), 
-    c("tbl_df", "tbl", "data.frame")
-  )
+  df <- data_london %>% 
+    filter(variable == "no2") %>% 
+    rmw_prepare_data(na.rm = TRUE) 
   
-  expect_identical(
-    class(rmw_prepare_data(data_london, value = "nox", replace = TRUE)), 
-    c("tbl_df", "tbl", "data.frame")
-  )
+  expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
   
+  df <- data_london %>% 
+    filter(variable == "no2") %>% 
+    rmw_prepare_data(replace = TRUE) 
+  
+  expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
+  
+  df <- data_london %>% 
+    filter(variable == "no2") %>% 
+    rmw_prepare_data(fraction = 0.5) 
+  
+  expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
+
 })
 
 
@@ -49,7 +53,7 @@ test_that("Test training function", {
   
   # Get data
   df <- data_london %>% 
-    rename(value = no2) %>% 
+    filter(variable == "no2") %>% 
     rmw_prepare_data()
   
   # Use standard variables but minimal defaults, testing execution, not performance...
@@ -65,7 +69,7 @@ test_that("Test training function", {
   
   # Test model return
   expect_identical(class(model), "ranger")
-  expect_equal(model$r.squared, 0.4184627, tolerance = 0.2)
+  expect_equal(model$r.squared, 0.1620433, tolerance = 0.2)
   
   # Extract things from model
   df_importance <- rmw_model_importance(model)
@@ -98,7 +102,7 @@ test_that("Test normalising function", {
   
   # Get data
   df <- data_london %>% 
-    rename(value = no2) %>% 
+    filter(variable == "no2") %>% 
     rmw_prepare_data()
   
   # Use standard variables but minimal defaults, testing execution, not performance...
@@ -138,7 +142,7 @@ test_that("Test normalising function with standard error calculation", {
   
   # Get data
   df <- data_london %>% 
-    rename(value = no2) %>% 
+    filter(variable == "no2") %>% 
     rmw_prepare_data()
   
   # Use standard variables but minimal defaults, testing execution, not performance...
@@ -179,7 +183,7 @@ test_that("Test `rmw_do_all` function", {
   
   # Get data
   df <- data_london %>% 
-    rename(value = no2) %>% 
+    filter(variable == "no2") %>% 
     rmw_prepare_data()
   
   # Do
@@ -210,14 +214,14 @@ test_that("Test `rmw_do_all` function", {
 })
 
 
-test_that("Test `rmw_do_all` function and use varable_sample argument", {
+test_that("Test `rmw_do_all` function and use variables_sample argument", {
   
   # Keep it reproducible
   set.seed(123)
   
   # Get data, use nox to be different
   df <- data_london %>% 
-    rename(value = nox) %>% 
+    filter(variable == "nox") %>% 
     rmw_prepare_data()
   
   variables <- c(
@@ -261,7 +265,7 @@ test_that("Test `rmw_clip` function", {
   
   # Get data
   df <- data_london %>% 
-    rename(value = no2) %>% 
+    filter(variable == "no2") %>% 
     rmw_prepare_data()
   
   # Do

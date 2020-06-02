@@ -1,4 +1,4 @@
-#' Function to ``clip'' the edges of a normalised time series after being 
+#' Function to "clip" the edges of a normalised time series after being 
 #' produced with \code{\link{rmw_normalise}}. 
 #' 
 #' \code{rmw_clip} helps if the random forest model behaves strangely at the 

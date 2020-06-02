@@ -10,7 +10,7 @@
 #' 
 #' @seealso \code{\link{data_london}}, \code{\link{rmw_train_model}}
 #' 
-#' @format A ranger object, a named list with 14 elements. 
+#' @format A ranger object, a named list with 16 elements. 
 #' 
 #' @examples 
 #' 

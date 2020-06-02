@@ -23,13 +23,20 @@
 #' 
 #' \donttest{
 #' 
+#' # Load packages
+#' library(dplyr)
 #' # Ranger package needs to be loaded
 #' library(ranger)
+#' 
+#' # Prepare example data
+#' data_london_prepared <- data_london %>% 
+#'   filter(variable == "no2") %>% 
+#'   rmw_prepare_data()
 #' 
 #' # Calculate partial dependencies for wind speed
 #' data_partial <- rmw_partial_dependencies(
 #'   model = model_london, 
-#'   df = rmw_prepare_data(data_london, value = "no2"), 
+#'   df = data_london_prepared, 
 #'   variable = "ws", 
 #'   verbose = TRUE
 #' )
@@ -37,7 +44,7 @@
 #' # Calculate partial dependencies for all independent variables used in model
 #' data_partial <- rmw_partial_dependencies(
 #'   model = model_london, 
-#'   df = rmw_prepare_data(data_london, value = "no2"), 
+#'   df = data_london_prepared, 
 #'   variable = NA, 
 #'   verbose = TRUE
 #' )
@@ -99,6 +106,7 @@ rmw_partial_dependencies_worker <- function(model, df, variable, n_cores,
   # Alter names and add variable
   df_predict <- df_predict %>% 
     purrr::set_names(c("value", "partial_dependency")) %>% 
+    as_tibble() %>% 
     mutate(variable = !!variable) %>% 
     select(variable, 
            value, 

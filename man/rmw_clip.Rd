@@ -2,7 +2,7 @@
 % Please edit documentation in R/rmw_clip.R
 \name{rmw_clip}
 \alias{rmw_clip}
-\title{Function to ``clip'' the edges of a normalised time series after being 
+\title{Function to "clip" the edges of a normalised time series after being 
 produced with \code{\link{rmw_normalise}}.}
 \usage{
 rmw_clip(df, seconds = 31536000/2)

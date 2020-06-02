@@ -5,11 +5,11 @@
 \alias{data_london}
 \title{Example observational data for the \strong{rmweather} package.}
 \format{
-Tibble with 7473 observations and 11 variables. The variables are:
-\code{date}, \code{date_end}, \code{site}, \code{site_name}, \code{no2}, 
-\code{nox}, \code{air_temp}, \code{atmospheric_pressure}, \code{rh}, 
-\code{wd}, and \code{ws}. The dates are in \code{POSIXct} format, the site 
-variables are characters and all other variables are numeric.
+Tibble with 15676 observations and 11 variables. The variables are:
+\code{date}, \code{date_end}, \code{site}, \code{site_name}, \code{value}, 
+\code{air_temp}, \code{atmospheric_pressure}, \code{rh}, \code{wd}, and 
+\code{ws}. The dates are in \code{POSIXct} format, the site variables are 
+characters and all other variables are numeric.
 }
 \usage{
 data_london

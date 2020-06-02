@@ -33,10 +33,21 @@
 #' 
 #' \donttest{
 #' 
+#' # Load package
+#' library(dplyr)
+#' 
+#' # Keep things reproducible
+#' set.seed(123)
+#' 
+#' # Prepare example data
+#' data_london_prepared <- data_london %>% 
+#'   filter(variable == "no2") %>% 
+#'   rmw_prepare_data()
+#' 
 #' # Normalise the example no2 data
 #' data_normalised <- rmw_normalise(
 #'   model_london, 
-#'   df = rmw_prepare_data(data_london, value = "no2"), 
+#'   df = data_london_prepared, 
 #'   n_samples = 300,
 #'   verbose = TRUE
 #' )

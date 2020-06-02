@@ -30,13 +30,20 @@ Tibble.
 
 \donttest{
 
+# Load packages
+library(dplyr)
 # Ranger package needs to be loaded
 library(ranger)
+
+# Prepare example data
+data_london_prepared <- data_london \%>\% 
+  filter(variable == "no2") \%>\% 
+  rmw_prepare_data()
 
 # Calculate partial dependencies for wind speed
 data_partial <- rmw_partial_dependencies(
   model = model_london, 
-  df = rmw_prepare_data(data_london, value = "no2"), 
+  df = data_london_prepared, 
   variable = "ws", 
   verbose = TRUE
 )
@@ -44,7 +51,7 @@ data_partial <- rmw_partial_dependencies(
 # Calculate partial dependencies for all independent variables used in model
 data_partial <- rmw_partial_dependencies(
   model = model_london, 
-  df = rmw_prepare_data(data_london, value = "no2"), 
+  df = data_london_prepared, 
   variable = NA, 
   verbose = TRUE
 )

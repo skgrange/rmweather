@@ -27,17 +27,25 @@ Function to predict using a \strong{ranger} random forest.
 }
 \examples{
 
+# Load package
+library(dplyr)
+
+# Prepare example data
+data_london_prepared <- data_london \%>\% 
+  filter(variable == "no2") \%>\% 
+  rmw_prepare_data()
+
 # Make a prediction with the examples
 vector_prediction <- rmw_predict(
   model_london, 
-  df = rmw_prepare_data(data_london, value = "no2")
+  df = data_london_prepared
 )
 
 
 # Make a prediction with standard errors too
 list_prediction <- rmw_predict(
   model_london, 
-  df = rmw_prepare_data(data_london, value = "no2"),
+  df = data_london_prepared,
   se = TRUE
 )
  
