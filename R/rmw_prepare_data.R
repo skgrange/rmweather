@@ -37,11 +37,16 @@
 #' 
 #' @examples 
 #' 
+#' # Load package
+#' library(dplyr)
+#' 
 #' # Keep things reproducible
 #' set.seed(123)
 #'
-#' # Prepare example data for modelling 
-#' data_london_prepared <- rmw_prepare_data(data_london, value = "no2")
+#' # Prepare example data for modelling, only use no2 data here
+#' data_london_prepared <- data_london %>% 
+#'   filter(variable == "no2") %>% 
+#'   rmw_prepare_data()
 #' 
 #' @export
 rmw_prepare_data <- function(df, value = "value", na.rm = FALSE, replace = FALSE,

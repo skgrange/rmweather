@@ -3,6 +3,3 @@ sudo: required
 warnings_are_errors: true
 cache: packages
 
-r_packages:
-  - devtools
-

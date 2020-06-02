@@ -51,11 +51,16 @@ concentrations using meteorological and time variables.
 
 \donttest{
 
+# Load package
+library(dplyr)
+
 # Keep things reproducible
 set.seed(123)
 
 # Prepare example data
-data_london_prepared <- rmw_prepare_data(data_london, value = "no2")
+data_london_prepared <- data_london \%>\% 
+  filter(variable == "no2") \%>\% 
+  rmw_prepare_data()
 
 # Calculate a model using common meteorological and time variables
 model <- rmw_train_model(

@@ -14,16 +14,24 @@
 #' 
 #' @examples
 #' 
+#' # Load package
+#' library(dplyr)
+#' 
+#' # Prepare example data
+#' data_london_prepared <- data_london %>% 
+#'   filter(variable == "no2") %>% 
+#'   rmw_prepare_data()
+#' 
 #' # Use the test set for prediction
 #' rmw_predict_the_test_set(
 #'   model_london, 
-#'   df = rmw_prepare_data(data_london, value = "no2")
+#'   df = data_london_prepared
 #' )
 #' 
 #' # Predict, then produce a hex plot of the predictions
 #' rmw_predict_the_test_set(
 #'   model_london, 
-#'   df = rmw_prepare_data(data_london, value = "no2")
+#'   df = data_london_prepared
 #' ) %>% 
 #'   rmw_plot_test_prediction()
 #' 
