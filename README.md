@@ -24,7 +24,7 @@ To install the development version of **rmweather**, the [**devtools**](https://
 
 ```
 # Load helper package
-library(devtools)
+library(remotes)
 
 # Install rmweather
 install_github("skgrange/rmweather")
