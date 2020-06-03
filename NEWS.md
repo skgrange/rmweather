@@ -1,8 +1,8 @@
 # rmweather 0.1.5
 
-  - Minor changes to improve compatibility with dplyr 1.0.0
+  - Minor changes to improve compatibility with dplyr 1.0.0.
   
-  - Update package's data and alter format where pollutants are in a "long" format
+  - Update package's data and alter format where pollutants are in a "long" format.
 
 # rmweather 0.1.4
 
