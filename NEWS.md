@@ -1,3 +1,7 @@
+# rmweather 0.1.51
+
+  - Correct a failing unit test for some Linux distributions. 
+
 # rmweather 0.1.5
 
   - Minor changes to improve compatibility with dplyr 1.0.0.

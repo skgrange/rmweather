@@ -1,10 +1,10 @@
 ## New package version
 
-This is a minor package update to fix a `donttest` example error due to the release of dplyr 1.0.0. 
+This is a minor package update to fix a failing unit test on some Linux distributions on CRAN.
 
 ## Test environments
 
-  - Local, Ubuntu 18.04.1 LTS, R 4.0.0
+  - Local, Ubuntu 18.04.1 LTS, R 4.0.1
   
   - Travis CI, Ubuntu 16.04.6 LTS, R 4.0.0
   
@@ -21,4 +21,3 @@ Depending on checking settings, I can get 1 NOTE where three examples take longe
 ## Downstream dependencies
 
 This package has has no downstream dependencies.
-
