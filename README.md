@@ -49,7 +49,7 @@ head(data_london)
 # Only use data with valid wind speeds, no2 will become the dependent variable
 data_london_prepared <- data_london %>% 
   filter(variable == "no2",
-  !is.na(ws)) %>% 
+         !is.na(ws)) %>% 
   rmw_prepare_data(na.rm = TRUE)
 
 # Grow/train a random forest model and then create a meteorological normalised trend 
