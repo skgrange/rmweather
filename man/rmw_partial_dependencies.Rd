@@ -5,7 +5,14 @@
 \title{Function to calculate partial dependencies after training with 
 \strong{rmweather}.}
 \usage{
-rmw_partial_dependencies(model, df, variable, n_cores = NA, verbose = FALSE)
+rmw_partial_dependencies(
+  model,
+  df,
+  variable,
+  training_only = TRUE,
+  n_cores = NA,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{model}{A ranger model object from \code{\link{rmw_train_model}}.}
@@ -15,8 +22,11 @@ rmw_partial_dependencies(model, df, variable, n_cores = NA, verbose = FALSE)
 
 \item{variable}{Vector of variables to calculate partial dependencies for.}
 
-\item{n_cores}{Number of CPU cores to use for the model calculation. Default
-is system's total minus one.}
+\item{training_only}{Should only the training set be used for prediction? The
+default is \code{TRUE}.}
+
+\item{n_cores}{Number of CPU cores to use for the model calculation. The 
+default is system's total minus one.}
 
 \item{verbose}{Should the function give messages?}
 }

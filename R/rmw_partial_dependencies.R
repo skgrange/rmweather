@@ -10,8 +10,11 @@
 #' 
 #' @param variable Vector of variables to calculate partial dependencies for. 
 #' 
-#' @param n_cores Number of CPU cores to use for the model calculation. Default
-#' is system's total minus one. 
+#' @param training_only Should only the training set be used for prediction? The
+#' default is \code{TRUE}. 
+#' 
+#' @param n_cores Number of CPU cores to use for the model calculation. The 
+#' default is system's total minus one.
 #' 
 #' @param verbose Should the function give messages? 
 #' 
@@ -52,8 +55,8 @@
 #' }
 #' 
 #' @export
-rmw_partial_dependencies <- function(model, df, variable, n_cores = NA, 
-                                     verbose = FALSE) {
+rmw_partial_dependencies <- function(model, df, variable, training_only = TRUE, 
+                                     n_cores = NA, verbose = FALSE) {
   
   # Check, predict is a generic function and needs to be loaded
   if (!"package:ranger" %in% search()) {
@@ -71,14 +74,21 @@ rmw_partial_dependencies <- function(model, df, variable, n_cores = NA,
   # Predict all variables if not given
   if (is.na(variable[1])) variable <- model$forest$independent.variable.names
   
+  # Message to user
+  if (verbose) {
+    message(
+      str_date_formatted(), ": Predicting `", length(variable), "` variable(s)..."
+    )
+  }
+  
   df_predict <- purrr::map_dfr(
     variable, 
     ~rmw_partial_dependencies_worker(
       model = model,
       df = df, 
       variable = .x,
-      n_cores = n_cores,
-      verbose = verbose
+      training_only = training_only,
+      n_cores = n_cores
     )
   )
   
@@ -90,16 +100,19 @@ rmw_partial_dependencies <- function(model, df, variable, n_cores = NA,
 }
 
 
-rmw_partial_dependencies_worker <- function(model, df, variable, n_cores, 
-                                            verbose) {
+rmw_partial_dependencies_worker <- function(model, df, variable, training_only, 
+                                            n_cores) {
   
-  if (verbose) message(str_date_formatted(), ": Predicting `", variable, "`...")
+  # Filter only to training set
+  if (training_only) {
+    df <- filter(df, set == "training")
+  }
   
   # Predict
   df_predict <- pdp::partial(
     model,
     pred.var = variable,
-    train = filter(df, set == "training"),
+    train = df,
     num.threads = n_cores
   )
   
@@ -108,9 +121,9 @@ rmw_partial_dependencies_worker <- function(model, df, variable, n_cores,
     purrr::set_names(c("value", "partial_dependency")) %>% 
     as_tibble() %>% 
     mutate(variable = !!variable) %>% 
-    select(variable, 
-           value, 
-           partial_dependency)
+    relocate(variable, 
+             value, 
+             partial_dependency)
   
   # Catch factors, usually weekday
   if ("factor" %in% class(df_predict$value)) {
