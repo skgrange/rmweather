@@ -5,7 +5,7 @@ if (getRversion() >= "2.15.1") {
   # What variables are causing issues?
   variables <- c(
     ".", "value_predict", "set", "importance", "variable", "value", 
-    "partial_dependency", "rowid", "se"
+    "partial_dependency", "rowid", "se", "resampled_set", "observations"
   )
   
   # Squash the notes
