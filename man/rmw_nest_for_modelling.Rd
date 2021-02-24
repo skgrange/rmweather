@@ -48,7 +48,8 @@ data_london \%>\%
  
 }
 \seealso{
-\code{\link{rmw_prepare_data}}
+\code{\link{rmw_prepare_data}}, \code{\link{rmw_model_nested_sets}}, 
+\code{\link{rmw_predict_nested_sets}}
 }
 \author{
 Stuart K. Grange

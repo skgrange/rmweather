@@ -10,7 +10,7 @@ rmw_model_nested_sets(
   n_trees = 10,
   mtry = NULL,
   min_node_size = 5,
-  n_cores = NA,
+  n_cores = NULL,
   verbose = FALSE
 )
 }
@@ -26,8 +26,7 @@ the (rounded down) square root of the number variables.}
 
 \item{min_node_size}{Minimal node size.}
 
-\item{n_cores}{Number of CPU cores to use for the model calculation. Default 
-is system's total minus one.}
+\item{n_cores}{Number of CPU cores to use for the model calculations.}
 
 \item{verbose}{Should the function give messages?}
 }
@@ -38,7 +37,8 @@ Nested tibble.
 Function to train random forest models using a nested tibble.
 }
 \seealso{
-\code{\link{rmw_nest_for_modelling}}, \code{\link{rmw_train_model}}
+\code{\link{rmw_nest_for_modelling}}, 
+\code{\link{rmw_predict_nested_sets}}, \code{\link{rmw_train_model}}
 }
 \author{
 Stuart K. Grange

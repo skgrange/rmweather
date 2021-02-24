@@ -44,10 +44,16 @@
 rmw_predict <- function(model, df = NA, se = FALSE, n_cores = NULL, 
                         verbose = FALSE) {
   
+  # Message to user
+  if (verbose) {
+    message(
+      str_date_formatted(), 
+      ": Predicting using `", model$num.independent.variables, "` variables..."
+    )
+  }
+  
   if ("data.frame" %in% class(df) && identical(df[1], NA)) {
-    
     x <- model$predictions
-    
   } else {
     
     if (se) {

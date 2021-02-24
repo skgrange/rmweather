@@ -11,12 +11,12 @@
 #' 
 #' @param min_node_size Minimal node size.
 #' 
-#' @param n_cores Number of CPU cores to use for the model calculation. Default 
-#' is system's total minus one.
+#' @param n_cores Number of CPU cores to use for the model calculations.
 #' 
 #' @param verbose Should the function give messages?
 #' 
-#' @seealso \code{\link{rmw_nest_for_modelling}}, \code{\link{rmw_train_model}}
+#' @seealso \code{\link{rmw_nest_for_modelling}}, 
+#' \code{\link{rmw_predict_nested_sets}}, \code{\link{rmw_train_model}}
 #' 
 #' @return Nested tibble. 
 #' 
@@ -24,7 +24,8 @@
 #' 
 #' @export
 rmw_model_nested_sets <- function(df_nest, variables, n_trees = 10, mtry = NULL, 
-                                  min_node_size = 5, n_cores = NA, verbose = FALSE) {
+                                  min_node_size = 5, n_cores = NULL,
+                                  verbose = FALSE) {
   
   # Check input
   if (!"observations" %in% names(df_nest)) {

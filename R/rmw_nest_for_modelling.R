@@ -21,7 +21,8 @@
 #' 
 #' @return Nested tibble. 
 #' 
-#' @seealso \code{\link{rmw_prepare_data}}
+#' @seealso \code{\link{rmw_prepare_data}}, \code{\link{rmw_model_nested_sets}}, 
+#' \code{\link{rmw_predict_nested_sets}}
 #' 
 #' @examples 
 #' 
@@ -43,7 +44,7 @@ rmw_nest_for_modelling <- function(df, by = "resampled_set", n = 1,
   n <- as.integer(n)
   stopifnot(!is.na(n))
   
-  # Add a resampled_set to by if it does not exist
+  # Add resampled_set to by if it does not exist
   if (!"resampled_set" %in% by) by <- c("resampled_set", by)
 
   # Replicate table if needed
@@ -65,7 +66,7 @@ rmw_nest_for_modelling <- function(df, by = "resampled_set", n = 1,
   }
   
   # Nest the tibble
-  df_nested <- df_sampled %>% 
+  df_nest <- df_sampled %>% 
     dplyr::nest_by(across(dplyr::all_of(by)),
                    .key = "observations") %>% 
     mutate(
@@ -75,6 +76,6 @@ rmw_nest_for_modelling <- function(df, by = "resampled_set", n = 1,
     )
   )
   
-  return(df_nested)
+  return(df_nest)
   
 }
