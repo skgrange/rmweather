@@ -10,7 +10,7 @@ rmw_model_nested_sets(
   n_trees = 10,
   mtry = NULL,
   min_node_size = 5,
-  n_cores = NULL,
+  n_cores = NA,
   verbose = FALSE
 )
 }

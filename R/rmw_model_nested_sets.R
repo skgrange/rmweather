@@ -24,7 +24,7 @@
 #' 
 #' @export
 rmw_model_nested_sets <- function(df_nest, variables, n_trees = 10, mtry = NULL, 
-                                  min_node_size = 5, n_cores = NULL,
+                                  min_node_size = 5, n_cores = NA,
                                   verbose = FALSE) {
   
   # Check input
