@@ -8,7 +8,7 @@ if (getRversion() >= "2.15.1") {
     "partial_dependency", "rowid", "se", "resampled_set", "observations", 
     "model", "predictions", "COE", "MB", "NMB", "RMSE", "default",
     "normalised_root_mean_squared_error", "r", "r_squared", 
-    "root_mean_squared_error"
+    "root_mean_squared_error", "partial_dependencies"
   )
   
   # Squash the notes
