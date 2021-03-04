@@ -89,8 +89,6 @@ add_date_variables <- function(df, replace) {
     # Add date variables
     if (!"date_unix" %in% names) df$date_unix <- as.numeric(df$date)
     if (!"day_julian" %in% names) df$day_julian <- lubridate::yday(df$date)
-    # if (!"month" %in% names) df$month <- lubridate::month(df$date)
-    # if (!"week" %in% names) df$week <- lubridate::week(df$date)
     
     # An internal package's function  
     if (!"weekday" %in% names) {
@@ -131,11 +129,11 @@ impute_values <- function(df, na.rm) {
 split_into_sets <- function(df, fraction) {
   
   # Add row number
-  df <- tibble::rowid_to_column(df) 
+  df <- tibble::rowid_to_column(df)
   
   # Sample to get training set
   df_training <- df %>% 
-    dplyr::sample_frac(fraction) %>% 
+    dplyr::slice_sample(prop = fraction) %>% 
     mutate(set = "training")
   
   # Remove training set from input to get testing set
@@ -146,8 +144,7 @@ split_into_sets <- function(df, fraction) {
   # Bind again
   df_split <- df_training %>% 
     bind_rows(df_testing) %>% 
-    select(set,
-           everything()) %>% 
+    relocate(set) %>% 
     select(-rowid) %>% 
     arrange(date)
   

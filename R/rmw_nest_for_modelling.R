@@ -44,6 +44,11 @@ rmw_nest_for_modelling <- function(df, by = "resampled_set", n = 1,
   n <- as.integer(n)
   stopifnot(!is.na(n))
   
+  # A check, this keyword causes issues in the splitting function
+  if ("fraction" %in% names(df)) {
+    stop("Input cannot contain a variable called `fraction`.", call. = FALSE)
+  }
+  
   # Add resampled_set to by if it does not exist
   if (!"resampled_set" %in% by) by <- c("resampled_set", by)
 
