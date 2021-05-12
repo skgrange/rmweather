@@ -123,7 +123,7 @@ Grange, S. K., Lee, J. D., Drysdale, W. S., Lewis, A. C., Hueglin, C., Emmenegge
 
 Wang, Y., Wen, Y., Wang, Y., Zhang, S., Zhang, K. M., Zheng, H., Xing, J., Wu, Y., and Hao, J. (2020). [Four-Month Changes in Air Quality during and after the COVID-19 Lockdown in Six Megacities in China](https://doi.org/10.1021/acs.estlett.0c00605). *Environmental Science and Technology Letters* 7.11, pp. 802--808.
 
-Fenech, S., Aquilina, N. J., Ryan, V. (2021) [COVID-19-Related Changes in NO2 and O3 Concentrations and Associated Health Effects in Malta](https://www.frontiersin.org/articles/10.3389/frsc.2021.631280/full). *Frontiers in Sustainable Cities* 3.631280, pp. 1--12. 
+Fenech, S., Aquilina, N. J., Ryan, V. (2021) [COVID-19-Related Changes in NO<sub>2</sub> and O<sub>3</sub> Concentrations and Associated Health Effects in Malta](https://www.frontiersin.org/articles/10.3389/frsc.2021.631280/full). *Frontiers in Sustainable Cities* 3.631280, pp. 1--12. 
 
 Shi, Z., Song, C., Liu, B., Lu, G., Xu, J., Van Vu, T., Elliott, R. J. R., Li, W., Bloss, W. J., and Harrison, R. M. (2021).
 [Abrupt but smaller than expected changes in surface air quality attributable to COVID-19 lockdowns](http://advances.sciencemag.org/content/7/3/eabd6696.abstract). *Science Advances* 7.3, eabd6696.
