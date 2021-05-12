@@ -113,6 +113,21 @@ Grange, S. K., Carslaw, D. C., Lewis, A. C., Boleti, E., and Hueglin, C. (2018).
   
 Grange, S. K. and Carslaw, D. C. (2019). [Using meteorological normalisation to detect interventions in air quality time series](http://www.sciencedirect.com/science/article/pii/S004896971834244X). *Science of The Total Environment* 653, pp. 578--588.
 
+## The use of **rmweather** for prediction or counterfactual/business as usual scenarios
+
+A second usage of **rmweather** became established in 2020 to help researchers quantify the effects of the COVID-19 related restrictions on air quality. Briefly, the approach involves the training of random forest models to explain pollutant concentrations based on meteorological and time variables for a training period, say, between 2018 and 2019. After the training period, the model is used in predictive-mode using the experienced meteorological conditions. The predicted time series can be thought of as a counterfactual or business-as-usual (BAU) scenario which the observed time series can be compared with. Critically, an approach like this accounts for the meteorological conditions observed in 2020, which in many locations was unusual and complicates simple analyses. The meteorological sampling and normalisation step is not required for this analysis, but this has been confused in the literature. 
+
+### Examples of counterfactural modelling
+
+Grange, S. K., Lee, J. D., Drysdale, W. S., Lewis, A. C., Hueglin, C., Emmenegger, L., and Carslaw, D. C. (2021). [COVID-19 lockdowns highlight a risk of increasing ozone pollution in European urban areas](https://acp.copernicus.org/articles/21/4169/2021/). *Atmospheric Chemistry and Physics* 21.5, pp. 4169--4185.
+
+Wang, Y., Wen, Y., Wang, Y., Zhang, S., Zhang, K. M., Zheng, H., Xing, J., Wu, Y., and Hao, J. (2020). [Four-Month Changes in Air Quality during and after the COVID-19 Lockdown in Six Megacities in China](https://doi.org/10.1021/acs.estlett.0c00605). *Environmental Science and Technology Letters* 7.11, pp. 802--808.
+
+Fenech, S., Aquilina, N. J., Ryan, V. (2021) [COVID-19-Related Changes in NO2 and O3 Concentrations and Associated Health Effects in Malta](https://www.frontiersin.org/articles/10.3389/frsc.2021.631280/full). *Frontiers in Sustainable Cities* 3.631280, pp. 1--12. 
+
+Shi, Z., Song, C., Liu, B., Lu, G., Xu, J., Van Vu, T., Elliott, R. J. R., Li, W., Bloss, W. J., and Harrison, R. M. (2021).
+[Abrupt but smaller than expected changes in surface air quality attributable to COVID-19 lockdowns](http://advances.sciencemag.org/content/7/3/eabd6696.abstract). *Science Advances* 7.3, eabd6696.
+
 ## See also
 
   - [**ranger**](https://github.com/imbs-hl/ranger)
