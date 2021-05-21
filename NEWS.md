@@ -1,3 +1,8 @@
+
+  - Add nested tibble functions to help with running multiple models
+  
+  - Allow the use of 0 samples in `rmw_do_all`
+
 # rmweather 0.1.51
 
   - Correct a failing unit test for some Linux distributions. 

@@ -83,32 +83,39 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
     message(str_date_formatted(), ": Sampling and predicting ", n_samples, " times...")
   }
   
-  # Do
-  df <- seq_len(n_samples) %>% 
-    purrr::map_dfr(
-      ~rmw_normalise_worker(
-        index = .x,
-        model = model,
-        df = df,
-        variables = variables,
-        replace = replace,
-        se = se,
-        n_cores = n_cores,
-        n_samples = n_samples,
-        verbose = verbose
-      ),
-      .id = "n_sample"
-    )
-  
-  # Aggregate predictions
-  if (aggregate) {
+  # If no samples are passed
+  if (n_samples == 0) {
+    df <- tibble()
+  } else {
+   
+    # Do
+    df <- seq_len(n_samples) %>% 
+      purrr::map_dfr(
+        ~rmw_normalise_worker(
+          index = .x,
+          model = model,
+          df = df,
+          variables = variables,
+          replace = replace,
+          se = se,
+          n_cores = n_cores,
+          n_samples = n_samples,
+          verbose = verbose
+        ),
+        .id = "n_sample"
+      )
     
-    if (verbose) message(str_date_formatted(), ": Aggregating predictions...")
-    
-    df <- df %>% 
-      group_by(date) %>% 
-      dplyr::summarise_if(is.numeric, ~mean(., na.rm = TRUE)) %>% 
-      ungroup()
+    # Aggregate predictions
+    if (aggregate) {
+      
+      if (verbose) message(str_date_formatted(), ": Aggregating predictions...")
+      
+      df <- df %>% 
+        group_by(date) %>% 
+        dplyr::summarise_if(is.numeric, ~mean(., na.rm = TRUE)) %>% 
+        ungroup()
+      
+    }
     
   }
   

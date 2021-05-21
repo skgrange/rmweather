@@ -129,7 +129,7 @@ rmw_do_all <- function(df, variables, variables_sample = NA, n_trees = 300,
   # Get date
   date_post_normalise <- as.numeric(lubridate::now())
   
-  # Build timing data frame
+  # Build timing tibble
   df_times <- tibble(
     hostname = as.character(Sys.info()["nodename"]),
     date_start,
@@ -140,7 +140,7 @@ rmw_do_all <- function(df, variables, variables_sample = NA, n_trees = 300,
            time_elapsed_normalising = date_post_normalise - date_post_training,
            time_elapsed_total = date_post_normalise - date_start)
   
-  # Create list
+  # Create named list
   list_normalisation <- list(
     observations = df,
     model = model,

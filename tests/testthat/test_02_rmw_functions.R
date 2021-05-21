@@ -127,10 +127,19 @@ test_that("Test normalising function", {
     n_cores = 1
   )
   
+  # Pass zero samples, an edge case
+  df_normalise_zero <- rmw_normalise(
+    model = model, 
+    df = df,
+    n_samples = 0,
+    n_cores = 1
+  )
+  
   # Check 
   expect_identical(class(df_normalise), c("tbl_df", "tbl", "data.frame"))
   expect_identical(names(df_normalise), c("date", "value_predict"))
   expect_identical(class(df$date)[1], "POSIXct")
+  expect_identical(nrow(df_normalise_zero), 0L)
   
 })
 
