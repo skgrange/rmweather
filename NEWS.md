@@ -1,7 +1,10 @@
+# rmweather xxx
 
   - Add nested tibble functions to help with running multiple models
   
   - Allow the use of 0 samples in `rmw_do_all`
+  
+  - Enhance `rmw_calculate_model_errors` to return further error statistics
 
 # rmweather 0.1.51
 
