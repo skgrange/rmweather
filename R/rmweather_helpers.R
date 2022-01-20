@@ -54,10 +54,16 @@ str_date_formatted <- function(date = NA, time_zone = TRUE,
 #' 
 #' @param logical_cores Should logical cores be included in the core count? 
 #' 
+#' @param max_cores Should the return have a maximum value? This can be useful 
+#' when there are very many cores and logic is being built. 
+#' 
 #' @export
-system_cpu_core_count <- function(logical_cores = TRUE) {
+system_cpu_core_count <- function(logical_cores = TRUE, max_cores = NA) {
   x <- as.integer(parallel::detectCores(logical = logical_cores))
-  if (is.na(x[1])) x <- 1L
+  if (!is.na(max_cores)) {
+    max_cores <- as.integer(max_cores)
+    x <- if_else(x >= max_cores, max_cores, x) 
+  }
   return(x)
 }
 

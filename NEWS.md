@@ -5,6 +5,8 @@
   - Allow the use of 0 samples in `rmw_do_all`
   
   - Enhance `rmw_calculate_model_errors` to return further error statistics
+  
+  - Add `max_cores` argument to `system_cpu_core_count`
 
 # rmweather 0.1.51
 
