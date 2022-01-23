@@ -7,6 +7,8 @@
   - Enhance `rmw_calculate_model_errors` to return further error statistics
   
   - Add `max_cores` argument to `system_cpu_core_count`
+  
+  - Add `rmw_predict_nested_sets_by_year`
 
 # rmweather 0.1.51
 
