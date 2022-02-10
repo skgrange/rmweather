@@ -7,7 +7,8 @@
 rmw_calculate_model_errors(
   df,
   value_model = "value_predict",
-  value_observed = "value"
+  value_observed = "value",
+  as_long = FALSE
 )
 }
 \arguments{
@@ -16,6 +17,9 @@ rmw_calculate_model_errors(
 \item{value_model}{The modelled/predicted variable in \code{"df"}.}
 
 \item{value_observed}{The observed variable in \code{"df"}.}
+
+\item{as_long}{Should the returned tibble be in "long" format? This is useful
+for plotting.}
 }
 \value{
 Tibble.

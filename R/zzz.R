@@ -9,7 +9,7 @@ if (getRversion() >= "2.15.1") {
     "model", "predictions", "COE", "MB", "NMB", "RMSE", "default",
     "normalised_root_mean_squared_error", "r", "r_squared", 
     "root_mean_squared_error", "partial_dependencies", "IOA", "MGE", "NMGE",
-    "year_met", "date_unix", "n_sample"
+    "year_met", "date_unix", "n_sample", "group"
   )
   
   # Squash the notes

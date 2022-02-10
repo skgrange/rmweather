@@ -174,12 +174,12 @@ predict_using_a_met_year_prediction_worker <- function(model, df, year_met,
     dplyr::bind_cols(df_met_replicate) %>% 
     mutate(date_unix = as.numeric(date))
   
-  # Predict the concentrations on 
+  # Predict the concentrations on sampled set
   value_predict <- rmweather::rmw_predict(
     model, df = df_bind, n_cores = n_cores, verbose = FALSE
   )
   
-  # The set
+  # Build the tibble return
   df <- df_bind %>% 
     select(date) %>% 
     mutate(value_predict = !!value_predict)

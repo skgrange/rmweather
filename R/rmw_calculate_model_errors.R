@@ -6,13 +6,17 @@
 #' 
 #' @param value_observed The observed variable in \code{"df"}. 
 #' 
+#' @param as_long Should the returned tibble be in "long" format? This is useful
+#' for plotting. 
+#' 
 #' @author Stuart K. Grange
 #' 
 #' @return Tibble. 
 #' 
 #' @export
 rmw_calculate_model_errors <- function(df, value_model = "value_predict", 
-                                       value_observed = "value") {
+                                       value_observed = "value", 
+                                       as_long = FALSE) {
   
   # Check input
   if (!all(c(value_model, value_observed) %in% names(df))) {
@@ -26,7 +30,7 @@ rmw_calculate_model_errors <- function(df, value_model = "value_predict",
     mean(na.rm = TRUE)
   
   # Use openair to do the calculations and do some cleaning afterwards
-  df %>% 
+  df <- df %>% 
     openair::modStats(
       mod = value_model, obs = value_observed, 
       statistic = c("MB", "NMB", "MGE", "NMGE", "RMSE", "r", "COE", "IOA")
@@ -48,5 +52,15 @@ rmw_calculate_model_errors <- function(df, value_model = "value_predict",
     relocate(r_squared,
              .after = r) %>% 
     as_tibble()
+  
+  # Make data longer if desired
+  if (as_long) {
+    df <- df %>% 
+      mutate(group = 1L) %>% 
+      tidyr::pivot_longer(-group, names_to = "statistic") %>% 
+      select(-group)
+  }
+  
+  return(df)
   
 }
