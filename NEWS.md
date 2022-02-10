@@ -9,6 +9,10 @@
   - Add `max_cores` argument to `system_cpu_core_count`
   
   - Add `rmw_predict_nested_sets_by_year`
+  
+  - Add `as_long` argument to `rmw_calculate_model_errors`
+  
+    - **tidyr** has been added as an import for this functionality
 
 # rmweather 0.1.51
 
