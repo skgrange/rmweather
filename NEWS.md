@@ -1,5 +1,7 @@
 # rmweather xxx
 
+  - Add name tags to the `NULL` functions
+
   - Add nested tibble functions to help with running multiple models
   
   - Allow the use of 0 samples in `rmw_do_all`
