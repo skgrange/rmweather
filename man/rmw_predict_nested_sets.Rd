@@ -10,6 +10,8 @@ rmw_predict_nested_sets(
   se = FALSE,
   n_cores = NULL,
   keep_vectors = FALSE,
+  model_errors = FALSE,
+  as_long = TRUE,
   verbose = FALSE
 )
 }
@@ -24,6 +26,12 @@ rmw_predict_nested_sets(
 is usually not needed because these vectors have been added to the 
 \code{observations} variable.}
 
+\item{model_errors}{Should model error statistics between the observed and 
+predicted values be calculated and returned?}
+
+\item{as_long}{For when \code{model_errors} is \code{TRUE}, should the model 
+error unit be returned in "long format"?}
+
 \item{verbose}{Should the function give messages?}
 }
 \value{
@@ -35,7 +43,8 @@ tibble.
 }
 \seealso{
 \code{\link{rmw_nest_for_modelling}}, 
-\code{\link{rmw_model_nested_sets}}, \code{\link{rmw_predict}}
+\code{\link{rmw_model_nested_sets}}, \code{\link{rmw_predict}}, 
+\code{\link{rmw_calculate_model_errors}}
 }
 \author{
 Stuart K. Grange

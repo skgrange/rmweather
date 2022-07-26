@@ -11,10 +11,17 @@
 #' is usually not needed because these vectors have been added to the 
 #' \code{observations} variable.
 #' 
+#' @param model_errors Should model error statistics between the observed and 
+#' predicted values be calculated and returned? 
+#' 
+#' @param as_long For when \code{model_errors} is \code{TRUE}, should the model 
+#' error unit be returned in "long format"? 
+#' 
 #' @param verbose Should the function give messages? 
 #' 
 #' @seealso \code{\link{rmw_nest_for_modelling}}, 
-#' \code{\link{rmw_model_nested_sets}}, \code{\link{rmw_predict}}
+#' \code{\link{rmw_model_nested_sets}}, \code{\link{rmw_predict}}, 
+#' \code{\link{rmw_calculate_model_errors}}
 #' 
 #' @author Stuart K. Grange
 #' 
@@ -22,7 +29,8 @@
 #' 
 #' @export
 rmw_predict_nested_sets <- function(df_nest, se = FALSE, n_cores = NULL, 
-                                    keep_vectors = FALSE, verbose = FALSE) {
+                                    keep_vectors = FALSE, model_errors = FALSE, 
+                                    as_long = TRUE, verbose = FALSE) {
   
   # Check input
   if (!all(c("observations", "model") %in% names(df_nest))) {
@@ -74,6 +82,17 @@ rmw_predict_nested_sets <- function(df_nest, se = FALSE, n_cores = NULL,
   # Drop prediction vectors, not usually needed after being put into observations
   if (!keep_vectors) {
     df_nest <- select(df_nest, -predictions)
+  }
+  
+  # Calculate the errors between the observed and predicted values in the desired
+  # format
+  if (model_errors) {
+    df_nest <- df_nest %>% 
+      mutate(
+        model_errors = list(
+          rmw_calculate_model_errors(observations, as_long = as_long)
+        )
+      )
   }
   
   return(df_nest)
