@@ -29,6 +29,17 @@ rmw_calculate_model_errors <- function(df, value_model = "value_predict",
     pull() %>% 
     mean(na.rm = TRUE)
   
+  # Calculate counts of value pairs
+  df_select <- df %>% 
+    select(!!value_model,
+           !!value_observed)
+  
+  # All observations passed to the function
+  n_all <- nrow(df_select)
+  # Only observations that are paired and therefore can be used to calculate
+  # other statistics
+  n <- nrow(tidyr::drop_na(df_select))
+  
   # Use openair to do the calculations and do some cleaning afterwards
   df <- df %>% 
     openair::modStats(
@@ -45,7 +56,9 @@ rmw_calculate_model_errors <- function(df, value_model = "value_predict",
            index_of_agreement = IOA) %>% 
     mutate(
       normalised_root_mean_squared_error = root_mean_squared_error / !!mean_observed,
-      r_squared = r ^ 2
+      r_squared = r ^ 2,
+      n_all = !!n_all,
+      n = !!n
     ) %>% 
     relocate(normalised_root_mean_squared_error,
              .after = root_mean_squared_error) %>% 

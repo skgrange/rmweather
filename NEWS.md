@@ -1,5 +1,7 @@
 # rmweather xxx
 
+  - Make `rmw_calculate_model_errors` calculate `n` and `n_all`
+
   - Add name tags to the `NULL` functions
 
   - Add nested tibble functions to help with running multiple models

@@ -20,7 +20,7 @@ install.packages("rmweather")
 
 ## Development version
 
-To install the development version of **rmweather**, the [**devtools**](https://github.com/hadley/devtools) package will need to be installed first. Then:
+To install the development version of **rmweather**, the [**remotes**](https://github.com/hadley/remotes) package will need to be installed first. Then:
 
 ```
 # Load helper package
