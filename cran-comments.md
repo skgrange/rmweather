@@ -2,7 +2,7 @@
 
 This is a package update to include extra functionality to allow users to use nested tibbles in their modelling pipeline.
 
-## Resubmissiom
+## Resubmission
 
 This is also a resubmission after a 301 URL error was found in the previous version.
 
@@ -22,7 +22,7 @@ This is also a resubmission after a 301 URL error was found in the previous vers
 
 Depending on checking settings, I can get 1 NOTE where three examples take longer than five seconds to run. All three examples have been wrapped in `donttest` so will not be run during routine testing. 
 
-### An intemnitant issue
+### An intermittent issue
 
 On one `rhub` system, the note below was raised: 
 
