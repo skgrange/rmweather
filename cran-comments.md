@@ -1,6 +1,10 @@
 ## New package version
 
-This is a package update to include some extra functionality to allow users to use nested tibbles in their modelling pipeline.
+This is a package update to include some extra functionality to allow users to use nested tibbles in their modelling pipeline. 
+
+## Resubmissiom
+
+This is also a resubmission after a 301 URL error was found in the previous version.
 
 ## Test environments
 
