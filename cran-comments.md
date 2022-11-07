@@ -1,6 +1,6 @@
 ## New package version
 
-This is a package update to include some extra functionality to allow users to use nested tibbles in their modelling pipeline. 
+This is a package update to include extra functionality to allow users to use nested tibbles in their modelling pipeline.
 
 ## Resubmissiom
 
@@ -21,6 +21,20 @@ This is also a resubmission after a 301 URL error was found in the previous vers
 ```
 
 Depending on checking settings, I can get 1 NOTE where three examples take longer than five seconds to run. All three examples have been wrapped in `donttest` so will not be run during routine testing. 
+
+### An intemnitant issue
+
+On one `rhub` system, the note below was raised: 
+
+```
+Found the following (possibly) invalid URLs:
+  URL: https://www.sciencedirect.com/science/article/pii/S004896971834244X
+    From: inst/CITATION
+    Status: 403
+    Message: Forbidden
+```
+
+This URL has been checked and is not forbidden for non-automated browsers but seems to be forbidden with tools such as `wget`.
 
 ## Downstream dependencies
 
