@@ -15,7 +15,7 @@ bibentry(
    volume = 18,
    number = 9,
    pages = "6223--6239",
-   url = "https://www.atmos-chem-phys.net/18/6223/2018/",
+   url = "https://acp.copernicus.org/articles/18/6223/2018",
    doi = "10.5194/acp-18-6223-2018",
    note = "Trend analysis example"
 )
