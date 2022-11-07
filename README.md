@@ -1,7 +1,7 @@
 # **rmweather** <a href='https://github.com/skgrange/rmweather'><img src='man/figures/logo.png' align="right" height="131.5" /></a>
 
 [![Build Status](https://travis-ci.org/skgrange/rmweather.svg?branch=master)](https://travis-ci.org/skgrange/rmweather)
-[![Lifecycle Status](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)
+[![Lifecycle Status](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN status](https://www.r-pkg.org/badges/version/rmweather)](https://cran.r-project.org/package=rmweather)
 [![CRAN log](https://cranlogs.r-pkg.org/badges/last-week/rmweather?color=brightgreen)](https://cran.r-project.org/package=rmweather)
 
@@ -20,7 +20,7 @@ install.packages("rmweather")
 
 ## Development version
 
-To install the development version of **rmweather**, the [**remotes**](https://github.com/hadley/remotes) package will need to be installed first. Then:
+To install the development version of **rmweather**, the [**remotes**](https://github.com/r-lib/remotes) package will need to be installed first. Then:
 
 ```
 # Load helper package
@@ -109,7 +109,7 @@ The meteorologically normalised trend produced is below.
 
 For usage examples see: 
 
-Grange, S. K., Carslaw, D. C., Lewis, A. C., Boleti, E., and Hueglin, C. (2018). [Random forest meteorological normalisation models for Swiss PM<sub>10</sub> trend analysis](https://www.atmos-chem-phys.net/18/6223/2018/). *Atmospheric Chemistry and Physics* 18.9, pp. 6223--6239.
+Grange, S. K., Carslaw, D. C., Lewis, A. C., Boleti, E., and Hueglin, C. (2018). [Random forest meteorological normalisation models for Swiss PM<sub>10</sub> trend analysis](https://acp.copernicus.org/articles/18/6223/2018/). *Atmospheric Chemistry and Physics* 18.9, pp. 6223--6239.
   
 Grange, S. K. and Carslaw, D. C. (2019). [Using meteorological normalisation to detect interventions in air quality time series](http://www.sciencedirect.com/science/article/pii/S004896971834244X). *Science of The Total Environment* 653, pp. 578--588.
 
@@ -126,7 +126,7 @@ Wang, Y., Wen, Y., Wang, Y., Zhang, S., Zhang, K. M., Zheng, H., Xing, J., Wu, Y
 Fenech, S., Aquilina, N. J., Ryan, V. (2021) [COVID-19-Related Changes in NO<sub>2</sub> and O<sub>3</sub> Concentrations and Associated Health Effects in Malta](https://www.frontiersin.org/articles/10.3389/frsc.2021.631280/full). *Frontiers in Sustainable Cities* 3.631280, pp. 1--12. 
 
 Shi, Z., Song, C., Liu, B., Lu, G., Xu, J., Van Vu, T., Elliott, R. J. R., Li, W., Bloss, W. J., and Harrison, R. M. (2021).
-[Abrupt but smaller than expected changes in surface air quality attributable to COVID-19 lockdowns](http://advances.sciencemag.org/content/7/3/eabd6696.abstract). *Science Advances* 7.3, eabd6696.
+[Abrupt but smaller than expected changes in surface air quality attributable to COVID-19 lockdowns](https://www.science.org/doi/full/10.1126/sciadv.abd6696). *Science Advances* 7.3, eabd6696.
 
 ## See also
 

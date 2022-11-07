@@ -5,6 +5,7 @@
 cran-comments.md
 
 # 
-^README\.Rmd$
-^NEWS\.Rmd$
+README.md
+NEWS.md
+
 

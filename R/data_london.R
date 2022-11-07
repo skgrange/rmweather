@@ -5,11 +5,11 @@
 #' London Heathrow, a major airport located 23 km west of Central London.
 #' 
 #' The NO2 and NOx observations are sourced from the European Commission Air 
-#' Quality e-Reporting \href{http://cdr.eionet.europa.eu/gb/eu/aqd/e1a/}{repository}
+#' Quality e-Reporting \href{https://cdr.eionet.europa.eu/gb/eu/aqd/e1a/}{repository}
 #' which can be freely shared with acknowledgement of the source. The 
 #' meteorological data are sourced from the Integrated Surface Data (ISD) 
 #' database which cannot be redistributed for commercial purposes and are bound 
-#' to the \href{http://www.wmo.int/pages/prog/hwrp/documents/wmo_827_enCG-XII-Res40.pdf}{WMO Resolution 40 Policy}. 
+#' to the \href{https://www.weather.gov/media/im/wmo_827_enCG-XII-Res40.pdf}{WMO Resolution 40 Policy}. 
 # 
 #' @author Stuart K. Grange
 #' 

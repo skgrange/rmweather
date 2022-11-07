@@ -1,4 +1,4 @@
-# rmweather xxx
+# rmweather 0.2.04
 
   - Make `rmw_calculate_model_errors` calculate `n` and `n_all`
 

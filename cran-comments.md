@@ -1,12 +1,12 @@
 ## New package version
 
-This is a minor package update to fix a failing unit test on some Linux distributions on CRAN.
+This is a package update to include some extra functionality to allow users to use nested tibbles in their modelling pipeline.
 
 ## Test environments
 
-  - Local, Ubuntu 18.04.1 LTS, R 4.0.1
+  - Local, Ubuntu 20.04.5 LTS, R 4.2.2
   
-  - Travis CI, Ubuntu 16.04.6 LTS, R 4.0.0
+  - `check_rhub`, Windows Server 2022, R-devel, 64 bit, Ubuntu Linux 20.04.1 LTS, R-release, Fedora Linux, R-devel
   
   - [win-builder](https://win-builder.r-project.org/), Windows Server 2008, (R-release and R-devel)
 
