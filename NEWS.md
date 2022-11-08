@@ -1,4 +1,4 @@
-# rmweather 0.2.04
+# rmweather 0.2.4
 
   - Make `rmw_calculate_model_errors` calculate `n` and `n_all`
 
@@ -64,7 +64,7 @@
 
 # rmweather 0.1.1
 
-  - Resubmisison after failure to pass CRAN's manual checks 
+  - Resubmission after failure to pass CRAN's manual checks 
   
     - Expanded the package's description and added a reference which uses the method to conduct an example analysis (https://doi.org/10.5194/acp-18-6223-2018)
     

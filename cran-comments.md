@@ -4,7 +4,7 @@ This is a package update to include extra functionality to allow users to use ne
 
 ## Resubmission
 
-This is also a resubmission after a 301 URL error was found in the previous version.
+This is also a resubmission after there were leading zeros in the version number of the previous submission. 
 
 ## Test environments
 
