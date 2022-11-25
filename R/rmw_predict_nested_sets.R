@@ -17,11 +17,14 @@
 #' @param as_long For when \code{model_errors} is \code{TRUE}, should the model 
 #' error unit be returned in "long format"? 
 #' 
+#' @param partial Should the model's partial dependencies also be calculated? 
+#' This will increase the execution time of the function. 
+#' 
 #' @param verbose Should the function give messages? 
 #' 
 #' @seealso \code{\link{rmw_nest_for_modelling}}, 
 #' \code{\link{rmw_model_nested_sets}}, \code{\link{rmw_predict}}, 
-#' \code{\link{rmw_calculate_model_errors}}
+#' \code{\link{rmw_calculate_model_errors}}, \code{\link{rmw_partial_dependencies}}
 #' 
 #' @author Stuart K. Grange
 #' 
@@ -30,7 +33,8 @@
 #' @export
 rmw_predict_nested_sets <- function(df_nest, se = FALSE, n_cores = NULL, 
                                     keep_vectors = FALSE, model_errors = FALSE, 
-                                    as_long = TRUE, verbose = FALSE) {
+                                    as_long = TRUE, partial = FALSE, 
+                                    verbose = FALSE) {
   
   # Check input
   if (!all(c("observations", "model") %in% names(df_nest))) {
@@ -91,6 +95,23 @@ rmw_predict_nested_sets <- function(df_nest, se = FALSE, n_cores = NULL,
       mutate(
         model_errors = list(
           rmw_calculate_model_errors(observations, as_long = as_long)
+        )
+      )
+  }
+  
+  # Calculate partial dependencies if desired
+  if (partial) {
+    df_nest <- df_nest %>% 
+      mutate(
+        partial = list(
+          rmw_partial_dependencies(
+            model, 
+            observations, 
+            variable = NA,
+            training_only = TRUE,
+            n_cores = if_else(is.null(n_cores), NA, n_cores),
+            verbose = verbose
+          )
         )
       )
   }

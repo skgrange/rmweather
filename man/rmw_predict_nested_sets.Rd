@@ -12,6 +12,7 @@ rmw_predict_nested_sets(
   keep_vectors = FALSE,
   model_errors = FALSE,
   as_long = TRUE,
+  partial = FALSE,
   verbose = FALSE
 )
 }
@@ -32,6 +33,9 @@ predicted values be calculated and returned?}
 \item{as_long}{For when \code{model_errors} is \code{TRUE}, should the model 
 error unit be returned in "long format"?}
 
+\item{partial}{Should the model's partial dependencies also be calculated? 
+This will increase the execution time of the function.}
+
 \item{verbose}{Should the function give messages?}
 }
 \value{
@@ -44,7 +48,7 @@ tibble.
 \seealso{
 \code{\link{rmw_nest_for_modelling}}, 
 \code{\link{rmw_model_nested_sets}}, \code{\link{rmw_predict}}, 
-\code{\link{rmw_calculate_model_errors}}
+\code{\link{rmw_calculate_model_errors}}, \code{\link{rmw_partial_dependencies}}
 }
 \author{
 Stuart K. Grange

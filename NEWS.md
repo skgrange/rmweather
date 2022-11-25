@@ -1,3 +1,11 @@
+# rmweather 0.x.x
+
+  - Include other usage mode in package description and add a citation
+
+  - Enhance `rmw_predict_nested_sets` to allow for the calculation of partial dependencies if desired with a new `partial` argument
+
+  - Enhance `rmw_partial_dependencies` to allow for control of number of predictions with a new `resolution` argument
+
 # rmweather 0.2.4
 
   - Make `rmw_calculate_model_errors` calculate `n` and `n_all`

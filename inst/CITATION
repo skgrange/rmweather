@@ -32,3 +32,25 @@ bibentry(
    doi = "10.1016/j.scitotenv.2018.10.344",
    note = "Intervention exploration example"
 )
+
+bibentry(
+   bibtype = "Article",
+   title = "COVID-19 lockdowns highlight a risk of increasing ozone pollution in European urban areas",
+   author = personList(
+     as.person("Stuart K. Grange"), 
+     as.person("James D. Lee"),
+     as.person("Will S. Drysdale"),
+     as.person("Alastair C. Lewis"),
+     as.person("Christoph Hueglin"),
+     as.person("Lukas Emmenegger"),
+     as.person("David C. Carslaw")
+   ),
+   journal = "Atmospheric Chemistry and Physics",
+   year = 2021,
+   volume = 21,
+   number = 5,
+   pages =  "4169--4185",
+   url = "https://acp.copernicus.org/articles/21/4169/2021",
+   doi = "10.5194/acp-2020-1171",
+   note = "Counterfatual or businness as usual (BAU) example"
+)
