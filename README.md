@@ -1,13 +1,12 @@
 # **rmweather** <a href='https://github.com/skgrange/rmweather'><img src='man/figures/logo.png' align="right" height="131.5" /></a>
 
-[![Build Status](https://travis-ci.org/skgrange/rmweather.svg?branch=master)](https://travis-ci.org/skgrange/rmweather)
 [![Lifecycle Status](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN status](https://www.r-pkg.org/badges/version/rmweather)](https://cran.r-project.org/package=rmweather)
 [![CRAN log](https://cranlogs.r-pkg.org/badges/last-week/rmweather?color=brightgreen)](https://cran.r-project.org/package=rmweather)
 
 ## Introduction
 
-**rmweather** is an R package to conduct meteorological/weather normalisation on air quality so trends and interventions can be investigated in a robust way. For those who are aware of my previous research, **rmweather** is the "Mk.II" package of [**normalweatherr**](https://github.com/skgrange/normalweatherr). **rmweather** does less than **normalweatherr**, but it is much faster and easier to use. 
+**rmweather** is an R package to conduct meteorological/weather normalisation on air quality so trends and interventions can be investigated in a robust way. For those who are aware of my previous research, **rmweather** is the "Mk.II" package of [**normalweatherr**](https://github.com/skgrange/normalweatherr). **rmweather** does less than **normalweatherr**, but it is faster and easier to use. 
 
 ## Installation
 
@@ -34,7 +33,7 @@ install_github("skgrange/rmweather")
 
 **rmweather** contains example data from London which can be used to show the meteorological normalisation procedure. The example data are daily means of NO<sub>2</sub> and NO<sub>x</sub> observations at London Marylebone Road. The accompanying surface meteorological data are from London Heathrow, a major airport located 23 km west of Central London. 
 
-Most of **rmweather**'s functions begin with `rmw_` so are easy to track and find help for. In this example, we have used **dplyr** and the pipe (`%>%` and pronounced as "then") for clarity. The example takes about a couple of minutes on my (laptop) system and the model has an *R<sup>2</sup>* value of 77 %. 
+Most of **rmweather**'s functions begin with `rmw_` so are easy to track and find help for. In this example, we have used **dplyr** and the pipe (`%>%` and pronounced as "then") for clarity. The example takes about 30 seconds on my (laptop) system and the model has an *R<sup>2</sup>* value of 76 %. 
 
 ```
 # Load packages

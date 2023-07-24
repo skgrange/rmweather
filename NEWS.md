@@ -5,6 +5,14 @@
   - Enhance `rmw_predict_nested_sets` to allow for the calculation of partial dependencies if desired with a new `partial` argument
 
   - Enhance `rmw_partial_dependencies` to allow for control of number of predictions with a new `resolution` argument
+  
+  - Move all messaging to the **cli** messaging
+  
+  - Add `keep_samples` to `rmw_normalise`
+  
+  - Move to **purrr**'s `map` and `list_rbind` method rather than `map_dfr`
+  
+  - `rmw_normalise`'s `n_sample` return will now be an integer
 
 # rmweather 0.2.4
 
