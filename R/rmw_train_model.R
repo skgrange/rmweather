@@ -83,7 +83,9 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
   n_cores <- as.integer(n_cores)
   n_cores <- if_else(is.na(n_cores), n_cores_default(), n_cores)
   
-  if (verbose) message(str_date_formatted(), ": Growing the forest...")
+  if (verbose) {
+    cli::cli_alert_info("{str_date_formatted()}: Growing the forest...")
+  }
   
   # Train the model/grow the forest
   model <- ranger::ranger(

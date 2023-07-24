@@ -71,7 +71,7 @@ rmw_predict_nested_sets_by_year_worker <- function(model, df, variables,
   
   # Two levels of iteration here, pass the year_met to be sampled n times
   df_predict <- years_met %>% 
-    purrr::map_dfr(
+    purrr::map(
       ~predict_using_a_met_year_worker(
         model = model,
         df = df,
@@ -81,10 +81,9 @@ rmw_predict_nested_sets_by_year_worker <- function(model, df, variables,
         aggregate = aggregate,
         n_cores = n_cores,
         verbose = verbose
-      ),
-      .id = "year_met"
+      )
     ) %>% 
-    mutate(year_met = as.integer(year_met))
+    purrr::list_rbind(names_to = "year_met")
   
   return(df_predict)
   
@@ -95,13 +94,10 @@ predict_using_a_met_year_worker <- function(model, df, year_met,
                                             variables, n_samples, aggregate, 
                                             n_cores, verbose) {
   
-  # A message to user
+  # A message to users
   if (verbose) {
-    message(
-      str_date_formatted(), 
-      ": Sampling and predicting using `", 
-      year_met, 
-      "` observations..."
+    cli::cli_alert_info(
+      "{str_date_formatted()}: Sampling and predicting using `{year_met}`'s observations... "
     )
   }
   
@@ -110,18 +106,17 @@ predict_using_a_met_year_worker <- function(model, df, year_met,
   index <- purrr::set_names(index, index)
   
   # Do the sampling n times (from n_samples)
-  df <- purrr::map_dfr(
-    index,
-    ~predict_using_a_met_year_prediction_worker(
-      model = model,
-      df = df,
-      year_met = year_met,
-      variables = variables,
-      n_cores = n_cores
-    ),
-    .id = "n_sample"
-  ) %>% 
-    mutate(n_sample = as.integer(n_sample))
+  df <- index %>% 
+    purrr::map(
+      ~predict_using_a_met_year_prediction_worker(
+        model = model,
+        df = df,
+        year_met = year_met,
+        variables = variables,
+        n_cores = n_cores
+      )
+    ) %>% 
+    purrr::list_rbind(names_to = "n_sample")
   
   # Aggregate the predictions
   if (aggregate) {

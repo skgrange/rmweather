@@ -89,12 +89,10 @@ add_date_variables <- function(df, replace) {
     # Add date variables
     if (!"date_unix" %in% names) df$date_unix <- as.numeric(df$date)
     if (!"day_julian" %in% names) df$day_julian <- lubridate::yday(df$date)
-    
     # An internal package's function  
     if (!"weekday" %in% names) {
       df$weekday <- wday_monday(df$date, as.factor = TRUE)
     }
-    
     if (!"hour" %in% names) df$hour <- lubridate::hour(df$date)
     
   }

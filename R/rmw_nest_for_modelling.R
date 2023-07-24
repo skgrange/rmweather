@@ -58,7 +58,10 @@ rmw_nest_for_modelling <- function(df, by = "resampled_set", n = 1,
     df_sampled <- mutate(df, resampled_set = 1L)
   } else {
     # Reproduce tibble n times
-    df_sampled <- purrr::map_dfr(1:n, ~df, .id = "resampled_set") %>% 
+    df_sampled <- n %>% 
+      seq_len() %>% 
+      purrr::map(~df) %>% 
+      purrr::list_rbind(names_to = "resampled_set") %>% 
       mutate(resampled_set = as.integer(resampled_set))
   }
   

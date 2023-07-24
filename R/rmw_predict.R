@@ -46,9 +46,8 @@ rmw_predict <- function(model, df = NA, se = FALSE, n_cores = NULL,
   
   # Message to user
   if (verbose) {
-    message(
-      str_date_formatted(), 
-      ": Predicting using `", model$num.independent.variables, "` variables..."
+    cli::cli_alert_info(
+      "{str_date_formatted()}: Predicting using `{model$num.independent.variables}` variables..."
     )
   }
   

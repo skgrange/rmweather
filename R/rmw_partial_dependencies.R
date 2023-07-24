@@ -77,26 +77,28 @@ rmw_partial_dependencies <- function(model, df, variable, training_only = TRUE,
   n_cores <- if_else(is.na(n_cores), n_cores_default(), n_cores)
   
   # Predict all variables if not given
-  if (is.na(variable[1])) variable <- model$forest$independent.variable.names
+  if (is.na(variable[1])) {
+    variable <- model$forest$independent.variable.names
+  }
   
   # Message to user
   if (verbose) {
-    message(
-      str_date_formatted(), ": Predicting `", length(variable), "` variable(s)..."
-    )
+    cli::cli_alert_info("{str_date_formatted()}: Predicting `{length(variable)}` variable{?s}...")
   }
   
-  df_predict <- purrr::map_dfr(
-    variable, 
-    ~rmw_partial_dependencies_worker(
-      model = model,
-      df = df, 
-      variable = .x,
-      training_only = training_only,
-      resolution = resolution,
-      n_cores = n_cores
-    )
-  ) %>% 
+  # Calculate the partial dependencies
+  df_predict <- variable %>% 
+    purrr::map(
+      ~rmw_partial_dependencies_worker(
+        model = model,
+        df = df, 
+        variable = .x,
+        training_only = training_only,
+        resolution = resolution,
+        n_cores = n_cores
+      )
+    ) %>% 
+    purrr::list_rbind() %>% 
     as_tibble()
   
   return(df_predict)
