@@ -24,10 +24,7 @@
 #' @param n_cores Number of CPU cores to use for the model predictions. Default
 #' is system's total minus one. 
 #' 
-#' @param verbose Should the function give messages? 
-#' 
-#' @param progress Should a progress bar be displayed? \code{progress} can also
-#' be a string that will act as the title for the progress bar. 
+#' @param verbose Should the function give messages and display a progress bar? 
 #' 
 #' @author Stuart K. Grange
 #' 
@@ -63,8 +60,7 @@
 #' @export
 rmw_normalise <- function(model, df, variables = NA, n_samples = 300, 
                           replace = TRUE, se = FALSE, aggregate = TRUE, 
-                          keep_samples = FALSE, n_cores = NA, verbose = FALSE,
-                          progress = FALSE) {
+                          keep_samples = FALSE, n_cores = NA, verbose = FALSE) {
   
   # Check inputs
   df <- rmw_check_data(df, prepared = TRUE)
@@ -102,9 +98,8 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
     df <- tibble()
   } else {
     
-    # Do
-    df <- n_samples %>% 
-      seq_len() %>% 
+    # Do, not piping seq_len due to a package check note
+    df <- seq_len(n_samples) %>% 
       purrr::map(
         ~rmw_normalise_worker(
           index = .x,
@@ -117,7 +112,7 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
           n_samples = n_samples,
           keep_samples = keep_samples
         ),
-        .progress = progress
+        .progress = verbose
       ) %>% 
       purrr::list_rbind(names_to = "n_sample")
     

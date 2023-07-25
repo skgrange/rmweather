@@ -14,8 +14,7 @@ rmw_normalise(
   aggregate = TRUE,
   keep_samples = FALSE,
   n_cores = NA,
-  verbose = FALSE,
-  progress = FALSE
+  verbose = FALSE
 )
 }
 \arguments{
@@ -43,10 +42,7 @@ sampled/shuffled observations be kept?}
 \item{n_cores}{Number of CPU cores to use for the model predictions. Default
 is system's total minus one.}
 
-\item{verbose}{Should the function give messages?}
-
-\item{progress}{Should a progress bar be displayed? \code{progress} can also
-be a string that will act as the title for the progress bar.}
+\item{verbose}{Should the function give messages and display a progress bar?}
 }
 \value{
 Tibble.
