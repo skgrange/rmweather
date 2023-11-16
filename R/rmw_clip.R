@@ -28,7 +28,7 @@ rmw_clip <- function(df, seconds = 31536000 / 2) {
   
   # Value check
   if (!"value_predict" %in% names(df)) {
-    stop("`value_predict` is not present in input...", call. = FALSE)
+    cli::cli_abort("`value_predict` is not present in input.")
   }
   
   # Get min and max
@@ -41,10 +41,9 @@ rmw_clip <- function(df, seconds = 31536000 / 2) {
   
   # Invalidate value_predict
   df <- df %>% 
-    mutate(value_predict = ifelse(
-      date <= date_start_plus | date >= date_end_minus, 
-      NA, 
-      value_predict
+    mutate(
+      value_predict = ifelse(
+        date <= date_start_plus | date >= date_end_minus, NA, value_predict
       )
     )
   

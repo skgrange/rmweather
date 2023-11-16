@@ -24,7 +24,8 @@
 #' 
 #' @seealso \code{\link{rmw_nest_for_modelling}}, 
 #' \code{\link{rmw_model_nested_sets}}, \code{\link{rmw_predict}}, 
-#' \code{\link{rmw_calculate_model_errors}}, \code{\link{rmw_partial_dependencies}}
+#' \code{\link{rmw_calculate_model_errors}}, 
+#' \code{\link{rmw_partial_dependencies}}
 #' 
 #' @author Stuart K. Grange
 #' 
@@ -38,7 +39,7 @@ rmw_predict_nested_sets <- function(df_nest, se = FALSE, n_cores = NULL,
   
   # Check input
   if (!all(c("observations", "model") %in% names(df_nest))) {
-    stop("Input requires `observations` and `model` variables.", call. = FALSE)
+    cli::cli_abort("Input requires `observations` and `model` variables.")
   }
   
   # Make the predictions, the return will be a vector
@@ -99,7 +100,8 @@ rmw_predict_nested_sets <- function(df_nest, se = FALSE, n_cores = NULL,
       )
   }
   
-  # Calculate partial dependencies if desired
+  # Calculate partial dependencies if desired, standard ifslse needed for NULL
+  # logic
   if (partial) {
     df_nest <- df_nest %>% 
       mutate(
@@ -109,7 +111,7 @@ rmw_predict_nested_sets <- function(df_nest, se = FALSE, n_cores = NULL,
             observations, 
             variable = NA,
             training_only = TRUE,
-            n_cores = if_else(is.null(n_cores), NA, n_cores),
+            n_cores = ifelse(is.null(n_cores), NA, n_cores),
             verbose = verbose
           )
         )

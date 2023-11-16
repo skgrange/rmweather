@@ -32,7 +32,7 @@ rmw_predict_nested_partial_dependencies <- function(df_nest,
   
   # Check input
   if (!all(c("observations", "model") %in% names(df_nest))) {
-    stop("Input requires `observations` and `model` variables.", call. = FALSE)
+    cli::cli_abort("Input requires `observations` and `model` variables.")
   }
   
   # Predict the partial dependencies

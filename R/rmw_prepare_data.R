@@ -54,7 +54,7 @@ rmw_prepare_data <- function(df, value = "value", na.rm = FALSE, replace = FALSE
   
   # Check
   if (!value %in% names(df)) {
-    stop("`value` is not within input data frame.", call. = FALSE)
+    cli::cli_abort("`value` is not within input data frame.")
   }
   
   df <- df %>% 
@@ -157,34 +157,34 @@ rmw_check_data <- function(df, prepared) {
   names <- names(df)
   
   if (!"date" %in% names) {
-    stop("Input must contain a `date` variable.", call. = FALSE)
+    cli::cli_abort("Input must contain a `date` variable.")
   }
   
   if (!"POSIXct" %in% class(df$date)[1]) {
-    stop("`date` variable needs to be a parsed date (POSIXct).", call. = FALSE)
+    cli::cli_abort("`date` variable needs to be a parsed date (POSIXct).")
   }
   
   if (anyNA(df$date)) {
-    stop("`date` must not contain missing (NA) values.", call. = FALSE)
+    cli::cli_abort("`date` must not contain missing (NA) values.")
   }
   
   # More checks for prepared data
   if (prepared) {
     
     if (!"set" %in% names) {
-      stop("Input must contain a `set` variable.", call. = FALSE)
+      cli::cli_abort("Input must contain a `set` variable.")
     }
     
     if (!all(unique(df$set) %in% c("training", "testing"))) {
-      stop("`set` can only take the values `training` and `testing`.", call. = FALSE)
+      cli::cli_abort("`set` can only take the values `training` and `testing`.")
     }
     
     if (!"value" %in% names) {
-      stop("Input must contain a `value` variable.", call. = FALSE)
+      cli::cli_abort("Input must contain a `value` variable.")
     }
     
     if (!"date_unix" %in% names) {
-      stop("Input must contain a `date_unix` variable.", call. = FALSE)
+      cli::cli_abort("Input must contain a `date_unix` variable.")
     }
     
   }

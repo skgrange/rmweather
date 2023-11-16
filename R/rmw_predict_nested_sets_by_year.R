@@ -29,7 +29,7 @@ rmw_predict_nested_sets_by_year <- function(df_nest, variables = NA,
   
   # Check input
   if (!all(c("observations", "model") %in% names(df_nest))) {
-    stop("Input requires `observations` and `model` variables.", call. = FALSE)
+    cli::cli_abort("Input requires `observations` and `model` variables.")
   }
   
   # Add normalised set to nested input

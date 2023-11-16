@@ -12,10 +12,7 @@ rmw_plot_partial_dependencies <- function(df) {
   
   # Check for variable names
   if (!all(c("variable", "value", "partial_dependency") %in% names(df))) {
-    stop(
-      "Input must have 'variable', 'value', and 'partial_dependency' variables.",
-      call. = FALSE
-    )
+    cli::cli_abort("Input must have `variable`, `value`, and `partial_dependency` variables.")
   }
   
   plot <- df %>% 
@@ -47,10 +44,7 @@ rmw_plot_importance <- function(df, colour = "black") {
   
   # Check input
   if (!all(c("rank", "variable", "importance") %in% names(df))) {
-    stop(
-      "Data frame must contain `rank`, `variable`, and `importance` variables.", 
-      call. = FALSE
-    )
+    cli::cli_abort("Data frame must contain `rank`, `variable`, and `importance` variables.")
   }
   
   # Plot

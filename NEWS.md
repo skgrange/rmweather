@@ -13,6 +13,10 @@
   - Move to **purrr**'s `map` and `list_rbind` method rather than `map_dfr`
   
   - `rmw_normalise`'s `n_sample` return will now be an integer
+  
+  - Move all errors to `cli_abort`
+  
+  - Move back to the base `ifelse` rather than `dplyr::if_else` due to `NULL` logic
 
 # rmweather 0.2.4
 

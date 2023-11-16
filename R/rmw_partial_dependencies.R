@@ -65,7 +65,9 @@ rmw_partial_dependencies <- function(model, df, variable, training_only = TRUE,
   
   # Check, predict is a generic function and needs to be loaded
   if (!"package:ranger" %in% search()) {
-    stop("The ranger package is not loaded.", call. = FALSE)
+    cli::cli_abort(
+      "The ranger package is not loaded and is required for this function."
+    )
   }
     
   # Check inputs

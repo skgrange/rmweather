@@ -48,7 +48,8 @@ tibble.
 \seealso{
 \code{\link{rmw_nest_for_modelling}}, 
 \code{\link{rmw_model_nested_sets}}, \code{\link{rmw_predict}}, 
-\code{\link{rmw_calculate_model_errors}}, \code{\link{rmw_partial_dependencies}}
+\code{\link{rmw_calculate_model_errors}}, 
+\code{\link{rmw_partial_dependencies}}
 }
 \author{
 Stuart K. Grange

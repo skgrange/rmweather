@@ -29,7 +29,7 @@ rmw_model_nested_sets <- function(df_nest, variables, n_trees = 10, mtry = NULL,
   
   # Check input
   if (!"observations" %in% names(df_nest)) {
-    stop("Nested input must contain an `observations` variable.", call. = FALSE)
+    cli::cli_abort("Nested input must contain an `observations` variable.")
   }
   
   # Do

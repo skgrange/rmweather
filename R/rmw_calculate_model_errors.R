@@ -20,7 +20,7 @@ rmw_calculate_model_errors <- function(df, value_model = "value_predict",
   
   # Check input
   if (!all(c(value_model, value_observed) %in% names(df))) {
-    stop("`value_model` or `value_observed` not found in the input.", call. = FALSE)
+    cli::cli_abort("`value_model` or `value_observed` not found in the input.")
   }
   
   # Get observed mean for extra calculation

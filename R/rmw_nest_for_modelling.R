@@ -46,7 +46,7 @@ rmw_nest_for_modelling <- function(df, by = "resampled_set", n = 1,
   
   # A check, this keyword causes issues in the splitting function
   if ("fraction" %in% names(df)) {
-    stop("Input cannot contain a variable called `fraction`.", call. = FALSE)
+    cli::cli_abort("Input cannot contain a variable called `fraction`.")
   }
   
   # Add resampled_set to by if it does not exist
@@ -67,10 +67,7 @@ rmw_nest_for_modelling <- function(df, by = "resampled_set", n = 1,
   
   # Check if all variables are there
   if (!all(by %in% names(df_sampled))) {
-    stop(
-      "The variables requested for nesting are not contained in the input.", 
-      call. = FALSE
-    )
+    cli::cli_abort("The variables requested for nesting are not contained in the input.")
   }
   
   # Nest the tibble

@@ -63,11 +63,11 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
   
   # Check arguments
   if (anyDuplicated(variables) != 0) {
-    stop("`variables` contains duplicate elements.", call. = FALSE)
+    cli::cli_abort("`variables` contains duplicate elements.")
   }
   
   if (!all(variables %in% names(df))) {
-    stop("`variables` given are not within input data frame.", call. = FALSE)
+    cli::cli_abort("`variables` given are not within input data frame.")
   }
   
   # Check input dataset
