@@ -1,4 +1,4 @@
-# rmweather 0.x.x
+# rmweather 0.2.5
 
   - Include other usage mode in package description and add a citation
 
@@ -6,7 +6,7 @@
 
   - Enhance `rmw_partial_dependencies` to allow for control of number of predictions with a new `resolution` argument
   
-  - Move all messaging to the **cli** messaging
+  - Move all messaging to the **cli** package
   
   - Add `keep_samples` to `rmw_normalise`
   
@@ -16,7 +16,7 @@
   
   - Move all errors to `cli_abort`
   
-  - Move back to the base `ifelse` rather than `dplyr::if_else` due to `NULL` logic
+  - Move back to the base `ifelse` rather than `dplyr::if_else` due an operation on a `NULL` that was causing an error
 
 # rmweather 0.2.4
 

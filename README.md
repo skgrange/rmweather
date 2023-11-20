@@ -10,7 +10,7 @@
 
 ## Installation
 
-**rmweather** is aviable from CRAN and can be installed in the normal way: 
+**rmweather** is available from CRAN and can be installed in the normal way: 
 
 ```
 # Install rmweather from CRAN

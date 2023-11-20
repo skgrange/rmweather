@@ -1,14 +1,10 @@
 ## New package version
 
-This is a package update to include extra functionality to allow users to use nested tibbles in their modelling pipeline.
-
-## Resubmission
-
-This is also a resubmission after there were leading zeros in the version number of the previous submission. 
+This is a package update to fix a few minor issues and to move all messaging to the **cli** package. 
 
 ## Test environments
 
-  - Local, Ubuntu 20.04.5 LTS, R 4.2.2
+  - Local, Ubuntu 22.04 LTS, R 4.3.2
   
   - `check_rhub`, Windows Server 2022, R-devel, 64 bit, Ubuntu Linux 20.04.1 LTS, R-release, Fedora Linux, R-devel
   
