@@ -3,7 +3,7 @@ citHeader("To cite rmweather in publications please use:")
 bibentry(
    bibtype = "Article",
    title = "Random forest meteorological normalisation models for Swiss PM10 trend analysis",
-   author = personList(
+   author = c(
      as.person("Stuart K. Grange"), 
      as.person("David C. Carslaw"),
      as.person("Alastair C. Lewis"),
@@ -23,7 +23,7 @@ bibentry(
 bibentry(
    bibtype = "Article",
    title = "Using meteorological normalisation to detect interventions in air quality time series",
-   author = personList(as.person("Stuart K. Grange"), as.person("David C. Carslaw")),
+   author = c(as.person("Stuart K. Grange"), as.person("David C. Carslaw")),
    journal = "Science of The Total Environment",
    year = 2019,
    volume = 653,
@@ -36,7 +36,7 @@ bibentry(
 bibentry(
    bibtype = "Article",
    title = "COVID-19 lockdowns highlight a risk of increasing ozone pollution in European urban areas",
-   author = personList(
+   author = c(
      as.person("Stuart K. Grange"), 
      as.person("James D. Lee"),
      as.person("Will S. Drysdale"),
@@ -50,7 +50,7 @@ bibentry(
    volume = 21,
    number = 5,
    pages =  "4169--4185",
-   url = "https://acp.copernicus.org/articles/21/4169/2021",
+   url = "https://acp.copernicus.org/articles/21/4169/2021/",
    doi = "10.5194/acp-2020-1171",
    note = "Counterfatual or businness as usual (BAU) example"
 )
