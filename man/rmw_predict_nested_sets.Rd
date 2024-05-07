@@ -13,7 +13,8 @@ rmw_predict_nested_sets(
   model_errors = FALSE,
   as_long = TRUE,
   partial = FALSE,
-  verbose = FALSE
+  verbose = FALSE,
+  progress = FALSE
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ error unit be returned in "long format"?}
 This will increase the execution time of the function.}
 
 \item{verbose}{Should the function give messages?}
+
+\item{progress}{Should a progress bar be displayed?}
 }
 \value{
 Nested tibble.

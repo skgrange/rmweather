@@ -6,6 +6,9 @@
 #' 
 #' @param value_observed The observed variable in \code{"df"}. 
 #' 
+#' @param testing_only Should only the testing set be used for the calculation 
+#' of errors? 
+#' 
 #' @param as_long Should the returned tibble be in "long" format? This is useful
 #' for plotting. 
 #' 
@@ -16,11 +19,16 @@
 #' @export
 rmw_calculate_model_errors <- function(df, value_model = "value_predict", 
                                        value_observed = "value", 
-                                       as_long = FALSE) {
+                                       testing_only = TRUE, as_long = FALSE) {
   
   # Check input
   if (!all(c(value_model, value_observed) %in% names(df))) {
     cli::cli_abort("`value_model` or `value_observed` not found in the input.")
+  }
+  
+  # Filter only to testing set 
+  if (testing_only && "set" %in% names(df)) {
+    df <- filter(df, set == "testing")
   }
   
   # Get observed mean for extra calculation

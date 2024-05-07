@@ -11,7 +11,8 @@ rmw_model_nested_sets(
   mtry = NULL,
   min_node_size = 5,
   n_cores = NA,
-  verbose = FALSE
+  verbose = FALSE,
+  progress = FALSE
 )
 }
 \arguments{
@@ -29,6 +30,8 @@ the (rounded down) square root of the number variables.}
 \item{n_cores}{Number of CPU cores to use for the model calculations.}
 
 \item{verbose}{Should the function give messages?}
+
+\item{progress}{Should a progress bar be displayed?}
 }
 \value{
 Nested tibble.

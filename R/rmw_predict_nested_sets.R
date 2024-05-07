@@ -22,6 +22,8 @@
 #' 
 #' @param verbose Should the function give messages? 
 #' 
+#' @param progress Should a progress bar be displayed?
+#' 
 #' @seealso \code{\link{rmw_nest_for_modelling}}, 
 #' \code{\link{rmw_model_nested_sets}}, \code{\link{rmw_predict}}, 
 #' \code{\link{rmw_calculate_model_errors}}, 
@@ -35,42 +37,35 @@
 rmw_predict_nested_sets <- function(df_nest, se = FALSE, n_cores = NULL, 
                                     keep_vectors = FALSE, model_errors = FALSE, 
                                     as_long = TRUE, partial = FALSE, 
-                                    verbose = FALSE) {
+                                    verbose = FALSE, progress = FALSE) {
   
   # Check input
   if (!all(c("observations", "model") %in% names(df_nest))) {
     cli::cli_abort("Input requires `observations` and `model` variables.")
   }
   
-  # Make the predictions, the return will be a vector
-  df_nest <- df_nest %>% 
-    mutate(
-      predictions = list(
-        rmw_predict(
-          model, observations, se = se, n_cores = n_cores, verbose = verbose
-        )
-      )
+  # Make the predictions
+  if (verbose) {
+    cli::cli_alert_info(
+      "{str_date_formatted()}: Predicting with `{nrow(df_nest)}` model{?s}..."
     )
+  }
   
-  # Add prediction vector(s) to observations
-  if (!se) {
-    
-    # No standard error
+  # Use the vectors directly and put into a tibble
+  df_predictions <- purrr::map2(
+    df_nest$model, 
+    df_nest$observations,
+    ~rmw_predict(
+      model = .x, df = .y, se = se, n_cores = n_cores, verbose = FALSE
+    ),
+    .progress = progress
+  ) %>% 
+    tibble(predictions = .)
+  
+  # Bind the predictions and add the predictions to the observations variable
+  if (se) {
     df_nest <- df_nest %>% 
-      mutate(
-        observations = list(
-          mutate(
-            observations, 
-            value_predict = predictions,
-            value_delta = value - value_predict
-          )
-        )
-      )
-    
-  } else {
-    
-    # With standard error
-    df_nest <- df_nest %>% 
+      dplyr::bind_cols(df_predictions) %>% 
       mutate(
         observations = list(
           mutate(
@@ -81,7 +76,18 @@ rmw_predict_nested_sets <- function(df_nest, se = FALSE, n_cores = NULL,
           )
         )
       )
-    
+  } else {
+    df_nest <- df_nest %>% 
+      dplyr::bind_cols(df_predictions) %>% 
+      mutate(
+        observations = list(
+          mutate(
+            observations, 
+            value_predict = predictions,
+            value_delta = value - value_predict
+          )
+        )
+      )
   }
   
   # Drop prediction vectors, not usually needed after being put into observations
@@ -92,15 +98,22 @@ rmw_predict_nested_sets <- function(df_nest, se = FALSE, n_cores = NULL,
   # Calculate the errors between the observed and predicted values in the desired
   # format
   if (model_errors) {
+    if (verbose) {
+      cli::cli_alert_info(
+        "{str_date_formatted()}: Calculating model error statistics..."
+      )
+    }
     df_nest <- df_nest %>% 
       mutate(
         model_errors = list(
-          rmw_calculate_model_errors(observations, as_long = as_long)
+          rmw_calculate_model_errors(
+            observations, testing_only = TRUE, as_long = as_long
+          )
         )
       )
   }
   
-  # Calculate partial dependencies if desired, standard ifslse needed for NULL
+  # Calculate partial dependencies if desired, standard ifelse needed for NULL
   # logic
   if (partial) {
     df_nest <- df_nest %>% 

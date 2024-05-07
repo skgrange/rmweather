@@ -8,6 +8,7 @@ rmw_calculate_model_errors(
   df,
   value_model = "value_predict",
   value_observed = "value",
+  testing_only = TRUE,
   as_long = FALSE
 )
 }
@@ -17,6 +18,9 @@ rmw_calculate_model_errors(
 \item{value_model}{The modelled/predicted variable in \code{"df"}.}
 
 \item{value_observed}{The observed variable in \code{"df"}.}
+
+\item{testing_only}{Should only the testing set be used for the calculation 
+of errors?}
 
 \item{as_long}{Should the returned tibble be in "long" format? This is useful
 for plotting.}
