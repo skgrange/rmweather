@@ -15,6 +15,8 @@
 #' 
 #' @param verbose Should the function give messages? 
 #' 
+#' @param progress Should a progress bar be displayed?
+#' 
 #' @author Stuart K. Grange
 #' 
 #' @seealso \code{\link{rmw_nest_for_modelling}}, 
@@ -28,27 +30,39 @@ rmw_predict_nested_partial_dependencies <- function(df_nest,
                                                     n_cores = NA,
                                                     training_only = TRUE,
                                                     rename = FALSE,
-                                                    verbose = FALSE) {
+                                                    verbose = FALSE,
+                                                    progress = FALSE) {
   
   # Check input
   if (!all(c("observations", "model") %in% names(df_nest))) {
     cli::cli_abort("Input requires `observations` and `model` variables.")
   }
   
-  # Predict the partial dependencies
-  df_nest <- df_nest %>% 
-    mutate(
-      partial_dependencies = list(
-        rmw_partial_dependencies(
-          model, 
-          observations, 
-          variable = variables,
-          training_only = training_only,
-          n_cores = n_cores,
-          verbose = verbose
-        ) 
-      )
+  # Calculate the partial dependencies
+  if (verbose) {
+    cli::cli_alert_info(
+      "{str_date_formatted()}: Calculating partial dependencies for `{nrow(df_nest)}` model{?s}..."
     )
+  }
+  
+  # Use the vectors directly and put into a tibble
+  df_partial_dependencies <- purrr::map2(
+    df_nest$model,
+    df_nest$observations,
+    ~rmw_partial_dependencies(
+      model = .x,
+      df = .y,
+      variable = variables,
+      training_only = training_only,
+      n_cores = n_cores,
+      verbose = FALSE
+    ),
+    .progress = progress
+  ) %>% 
+    tibble(partial_dependencies = .)
+  
+  # Bind the partial dependencies to the nested tibble
+  df_nest <- dplyr::bind_cols(df_nest, df_partial_dependencies)
   
   # Rename the variable within partial dependencies unit
   if (rename) {

@@ -11,7 +11,8 @@ rmw_predict_nested_partial_dependencies(
   n_cores = NA,
   training_only = TRUE,
   rename = FALSE,
-  verbose = FALSE
+  verbose = FALSE,
+  progress = FALSE
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ the generic \code{"variable"} name be renamed to \code{"variable_model"}.
 This is useful when \code{"variable"} has been used as a pollutant identifier.}
 
 \item{verbose}{Should the function give messages?}
+
+\item{progress}{Should a progress bar be displayed?}
 }
 \value{
 Nested tibble.

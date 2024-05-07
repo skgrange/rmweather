@@ -49,7 +49,7 @@ rmw_normalise_nested_sets <- function(df_nest, variables = NA, n_samples = 10,
   # Normalise the time series
   if (verbose) {
     cli::cli_alert_info(
-      "{str_date_formatted()}: Normalising `{nrow(df_nest)}` time series..."
+      "{str_date_formatted()}: Normalising with `{nrow(df_nest)}` model{?s}..."
     )
   }
   

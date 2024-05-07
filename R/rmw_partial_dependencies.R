@@ -72,7 +72,7 @@ rmw_partial_dependencies <- function(model, df, variable, training_only = TRUE,
     
   # Check inputs
   df <- rmw_check_data(df, prepared = TRUE)
-  stopifnot(class(model) == "ranger")
+  stopifnot(inherits(model, "ranger"))
   
   # Default logic for cpu cores
   n_cores <- as.integer(n_cores)
@@ -85,7 +85,9 @@ rmw_partial_dependencies <- function(model, df, variable, training_only = TRUE,
   
   # Message to user
   if (verbose) {
-    cli::cli_alert_info("{str_date_formatted()}: Predicting `{length(variable)}` variable{?s}...")
+    cli::cli_alert_info(
+      "{str_date_formatted()}: Predicting `{length(variable)}` variable{?s}..."
+    )
   }
   
   # Calculate the partial dependencies

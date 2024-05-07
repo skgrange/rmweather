@@ -2,7 +2,7 @@ Package: rmweather
 Type: Package
 Title: Tools to Conduct Meteorological Normalisation and Counterfactual 
     Modelling for Air Quality Data
-Version: 0.2.52
+Version: 0.2.53
 Date: 2024-05-07
 Authors@R: person("Stuart K.", "Grange", email = "stuart.grange@york.ac.uk", 
     role = c("cre", "aut"), comment = c(ORCID = "0000-0003-4093-3596"))
