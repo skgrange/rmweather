@@ -21,10 +21,10 @@
 #' @export
 rmw_model_statistics <- function(model) {
   
-  # Check
-  stopifnot(class(model) == "ranger")
+  # Check class of object
+  stopifnot(inherits(model, "ranger"))
   
-  # Build data frame
+  # Build tibble form some things in the model
   tibble(
     n_trees = model$num.trees,
     mtry = model$mtry,
@@ -52,8 +52,8 @@ rmw_model_statistics <- function(model) {
 #' @export
 rmw_model_importance <- function(model, date_unix = TRUE) {
   
-  # Check
-  stopifnot(class(model) == "ranger")
+  # Check class of object
+  stopifnot(inherits(model, "ranger"))
   
   # Get vector and clean
   vector_importance <- ranger::importance(model)
@@ -64,7 +64,9 @@ rmw_model_importance <- function(model, date_unix = TRUE) {
   df <- arrange(df, -importance)
   
   # Drop date_unix before ranking
-  if (!date_unix) df <- filter(df, variable != "date_unix")
+  if (!date_unix) {
+    df <- filter(df, variable != "date_unix")
+  }
   
   # Add ranking
   df <- tibble::rowid_to_column(df, "rank")

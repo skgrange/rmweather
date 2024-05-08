@@ -64,7 +64,7 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
   
   # Check inputs
   df <- rmw_check_data(df, prepared = TRUE)
-  stopifnot(class(model) == "ranger")
+  stopifnot(inherits(model, "ranger"))
   
   # Default logic for cpu cores
   n_cores <- as.integer(n_cores)
@@ -94,7 +94,7 @@ rmw_normalise <- function(model, df, variables = NA, n_samples = 300,
   }
   
   # If no samples are passed
-  if (n_samples == 0) {
+  if (n_samples == 0L) {
     df <- tibble()
   } else {
     
