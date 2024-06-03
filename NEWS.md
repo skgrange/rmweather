@@ -1,3 +1,11 @@
+# rmweather 0.2.6
+
+  - Add progress bars to several nested functions
+  
+  - Add `rmw_normalise_nested_sets`
+  
+  - Change default of model error calculations to only use test set
+
 # rmweather 0.2.5
 
   - Include other usage mode in package description and add a citation

@@ -138,7 +138,7 @@ rmw_partial_dependencies_worker <- function(model, df, variable, training_only,
   
   # Catch factors, usually weekday
   if ("factor" %in% class(df_predict$value)) {
-    df_predict$value <- as.integer(df_predict$value)
+    df_predict$value <- as.integer(as.character(df_predict$value))
   }
   
   return(df_predict)
