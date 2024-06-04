@@ -1,5 +1,7 @@
 # rmweather 0.2.6
 
+  - Move to GitHub actions with R-hub v2 for testing
+
   - Add progress bars to several nested functions
   
   - Add `rmw_normalise_nested_sets`

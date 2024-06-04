@@ -4,11 +4,9 @@ This is a package update to fix a few minor issues and to move messaging and pro
 
 ## Test environments
 
-  - Local, Ubuntu 22.04 LTS, R 4.3.2
+  - Local, Ubuntu 22.04.4 LTS, R 4.4.0
   
-  - `check_rhub`, Windows Server 2022, R-devel, 64 bit, Ubuntu Linux 20.04.1 LTS, R-release, Fedora Linux, R-devel
-  
-  - [win-builder](https://win-builder.r-project.org/), Windows Server 2022, (R-release and R-devel)
+  - `rhub::rhub_check`, ubuntu-latest, macos-13, macos-latest, windows-latest, Fedora Linux 38 (R-devel), Ubuntu 22.04.4 LTS (R-4.4.0)
 
 ## R CMD check results
 
@@ -16,7 +14,7 @@ This is a package update to fix a few minor issues and to move messaging and pro
 0 errors ✓ | 0 warnings ✓ | 0 notes ✓
 ```
 
-Depending on checking settings, I can get 1 NOTE where three examples take longer than five seconds to run. All three examples have been wrapped in `donttest` so will not be run during routine testing. 
+Depending on the checking settings, I can get 1 NOTE where three examples take longer than five seconds to run. All three examples have been wrapped in `donttest` so will not be run during routine testing. 
 
 ### False positive results
 
@@ -39,33 +37,6 @@ Possibly misspelled words in DESCRIPTION:
 ```
 
 These are not mistakes.
-
-#### Other notes
-
-Again, on a Windows system, this note can be raised: 
-
-```
-Found the following (possibly) invalid URLs:
-  URL: https://www.sciencedirect.com/science/article/pii/S004896971834244X
-    From: inst/CITATION
-    Status: 403
-    Message: Forbidden
-```
-
-This URL has been checked and is not forbidden for non-automated browsers but seems to be forbidden (at least at times) with tools such as `wget`.
-
-Yet again, on a Windows system, these notes can be raised: 
-
-```
-* checking for non-standard things in the check directory ... NOTE
-Found the following files/directories:
-  ''NULL''
-* checking for detritus in the temp directory ... NOTE
-Found the following files/directories:
-  'lastMiKTeXException'
-```
-
-These are a specific issues related to the rhub service (see [here](https://github.com/r-hub/rhub/issues/503)) and are not related to the package itself and cannot be replicated elsewhere. 
 
 ## Downstream dependencies
 

@@ -1,11 +1,10 @@
-# Ignore travis config file
-^\.travis\.yml$
-
 # Comments for CRAN submission
 cran-comments.md
 
-# 
+# Files that are useful for users
 README.md
 NEWS.md
 
+# For github action testing
+.github
 
