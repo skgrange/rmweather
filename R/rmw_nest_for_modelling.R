@@ -58,8 +58,7 @@ rmw_nest_for_modelling <- function(df, by = "resampled_set", n = 1,
     df_sampled <- mutate(df, resampled_set = 1L)
   } else {
     # Reproduce tibble n times
-    df_sampled <- n %>% 
-      seq_len() %>% 
+    df_sampled <- seq_len(n) %>% 
       purrr::map(~df) %>% 
       purrr::list_rbind(names_to = "resampled_set") %>% 
       mutate(resampled_set = as.integer(resampled_set))
@@ -67,7 +66,9 @@ rmw_nest_for_modelling <- function(df, by = "resampled_set", n = 1,
   
   # Check if all variables are there
   if (!all(by %in% names(df_sampled))) {
-    cli::cli_abort("The variables requested for nesting are not contained in the input.")
+    cli::cli_abort(
+      "The variables requested for nesting are not contained in the input."
+    )
   }
   
   # Nest the tibble

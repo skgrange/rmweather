@@ -1,3 +1,7 @@
+# rmweather 0.2.x
+
+  - Change `seq_len` pipeline in `rmw_nest_for_modelling` to avoid installation note
+
 # rmweather 0.2.6
 
   - Move to GitHub actions with R-hub v2 for testing
