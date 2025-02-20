@@ -1,6 +1,8 @@
-# rmweather 0.2.x
+# rmweather 0.2.62
 
   - Change `seq_len` pipeline in `rmw_nest_for_modelling` to avoid installation note
+  
+  - Update author and maintainer email address because the old email address is no longer active
 
 # rmweather 0.2.6
 

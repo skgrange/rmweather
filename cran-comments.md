@@ -1,12 +1,12 @@
 ## New package version
 
-This is a package update to add a function and move messaging and progress bars to the **cli** package. 
+This is a package update to update the email address for the author and maintainer of the package. Please note that the old email address (`stuart.grange@york.ac.uk`) is no longer active and cannot be reached. 
 
 ## Test environments
 
-  - Local, Ubuntu 22.04.4 LTS, R 4.4.0
+  - Local, Ubuntu 22.04.4 LTS, R 4.4.2
   
-  - `rhub::rhub_check`, ubuntu-latest, macos-13, macos-latest, windows-latest, Fedora Linux 38 (R-devel), Ubuntu 22.04.4 LTS (R-4.4.0)
+  - `rhub::rhub_check`, ubuntu-latest, macos-13, macos-latest, macos-arm64, windows-latest, Fedora Linux 38 (R-devel), Ubuntu 22.04.5 LTS (R-4.4.2), Ubuntu 22.04.5 LTS (R-4.4.3 beta (2025-02-18 r87748))
 
 ## R CMD check results
 
