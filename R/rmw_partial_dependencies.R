@@ -18,7 +18,7 @@
 #' 
 #' @param resolution The number of points that should be predicted for each 
 #' independent variable. If left as \code{NULL}, a default sequence will be 
-#' generated. See \code{\link{partial}} for details. 
+#' generated. See \code{\link[pdp]{partial}} for details. 
 #' 
 #' @param verbose Should the function give messages? 
 #' 

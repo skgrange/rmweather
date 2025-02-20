@@ -3,6 +3,8 @@
   - Change `seq_len` pipeline in `rmw_nest_for_modelling` to avoid installation note
   
   - Update author and maintainer email address because the old email address is no longer active
+  
+  - Fix documentation link to include `package::function` notation to avoid a build note. 
 
 # rmweather 0.2.6
 

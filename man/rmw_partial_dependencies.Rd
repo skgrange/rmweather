@@ -28,7 +28,7 @@ default is \code{TRUE}.}
 
 \item{resolution}{The number of points that should be predicted for each 
 independent variable. If left as \code{NULL}, a default sequence will be 
-generated. See \code{\link{partial}} for details.}
+generated. See \code{\link[pdp]{partial}} for details.}
 
 \item{n_cores}{Number of CPU cores to use for the model calculation. The 
 default is system's total minus one.}
