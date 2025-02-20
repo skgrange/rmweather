@@ -15,7 +15,7 @@ bibentry(
    volume = 18,
    number = 9,
    pages = "6223--6239",
-   url = "https://acp.copernicus.org/articles/18/6223/2018/",
+   url = "https://doi.org/10.5194/acp-18-6223-2018",
    doi = "10.5194/acp-18-6223-2018",
    note = "Trend analysis example"
 )
@@ -28,7 +28,7 @@ bibentry(
    year = 2019,
    volume = 653,
    pages =  "578--588",
-   url = "https://www.sciencedirect.com/science/article/pii/S004896971834244X",
+   url = "https://doi.org/10.1016/j.scitotenv.2018.10.344",
    doi = "10.1016/j.scitotenv.2018.10.344",
    note = "Intervention exploration example"
 )
@@ -50,7 +50,7 @@ bibentry(
    volume = 21,
    number = 5,
    pages =  "4169--4185",
-   url = "https://acp.copernicus.org/articles/21/4169/2021/",
+   url = "https://doi.org/10.5194/acp-21-4169-2021",
    doi = "10.5194/acp-2020-1171",
    note = "Counterfactual or businness as usual (BAU) example"
 )
