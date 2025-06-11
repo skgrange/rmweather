@@ -75,19 +75,20 @@ test_that("Test training function", {
   df_importance <- rmw_model_importance(model)
   df_performance <- rmw_model_statistics(model)
   
-  # 
+  # Test
   expect_identical(class(df_importance), c("tbl_df", "tbl", "data.frame"))
   expect_identical(class(df_performance), c("tbl_df", "tbl", "data.frame"))
   
-  # Plot
-  expect_identical(class(rmw_plot_importance(df_importance)), c("gg", "ggplot"))
+  # Importance plot
+  expect_true(ggplot2::is_ggplot(rmw_plot_importance(df_importance)))
   
-  #
+  # Test predictions
   df_predict <- rmw_predict_the_test_set(model = model, df = df)
   plot_test <- rmw_plot_test_prediction(df_predict)
   
+  # The tests
   expect_identical(class(df_predict), c("tbl_df", "tbl", "data.frame"))
-  expect_identical(class(plot_test), c("gg", "ggplot"))
+  expect_true(ggplot2::is_ggplot(plot_test))
   
   # Is this needed? 
   rm(.Random.seed, envir = globalenv())

@@ -1,3 +1,7 @@
+# rmweather 0.2.xx
+
+  - Update method for *ggplot* tests for an upcoming *ggplot* release. 
+
 # rmweather 0.2.62
 
   - Change `seq_len` pipeline in `rmw_nest_for_modelling` to avoid installation note
