@@ -4,9 +4,9 @@ This is a package update to update tests for the upcoming **ggplot2** release.
 
 ## Test environments
 
-  - Local, Ubuntu 22.04.4 LTS, R 4.4.2
+  - Local, Ubuntu 22.04.4 LTS, R 4.5.1
   
-  - `rhub::rhub_check`, ubuntu-latest, macos-13, macos-latest, macos-arm64, windows-latest, Fedora Linux 38 (R-devel), Ubuntu 22.04.5 LTS (R-4.4.2), Ubuntu 22.04.5 LTS (R-4.4.3 beta (2025-02-18 r87748))
+  - `rhub::rhub_check`, ubuntu-latest, macos-13, macos-latest, macos-arm64, windows-latest, Fedora Linux 38 (R-devel), Ubuntu 22.04.5 LTS (R-4.5.1), Ubuntu 22.04.5 LTS (R version 4.6.0)
 
 ## R CMD check results
 
