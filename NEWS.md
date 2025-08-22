@@ -1,4 +1,4 @@
-# rmweather 0.2.xx
+# rmweather 0.2.63
 
   - Update method for *ggplot* tests for an upcoming *ggplot* release. 
 

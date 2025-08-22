@@ -1,8 +1,6 @@
 ## New package version
 
-This is a package update to update the email address for the author and maintainer of the package. Please note that the old email address (`stuart.grange@york.ac.uk`) is no longer active and cannot be reached. 
-
-This is resubmission after CRAN feedback where the URLs in the citation file have been switched to those using DOIs to avoid a build note. 
+This is a package update to update tests for the upcoming **ggplot2** release. 
 
 ## Test environments
 
