@@ -11,6 +11,12 @@
 #' 
 #' @param min_node_size Minimal node size.
 #' 
+#' @param importance The variable importance mode. 
+#' 
+#' @param splitrule The splitting rule. The default is \code{"variance"} but 
+#' the options are: \code{"extratrees"}, \code{"maxstat"}, \code{"beta"} and 
+#' \code{"poisson"}.
+#' 
 #' @param n_cores Number of CPU cores to use for the model calculations.
 #' 
 #' @param verbose Should the function give messages?
@@ -26,7 +32,8 @@
 #' 
 #' @export
 rmw_model_nested_sets <- function(df_nest, variables, n_trees = 10, mtry = NULL, 
-                                  min_node_size = 5, n_cores = NA,
+                                  min_node_size = 5, importance = "permutation", 
+                                  splitrule = "variance", n_cores = NA,
                                   verbose = FALSE, progress = FALSE) {
   
   # Check input
@@ -51,6 +58,8 @@ rmw_model_nested_sets <- function(df_nest, variables, n_trees = 10, mtry = NULL,
         n_trees = n_trees,
         mtry = mtry,
         min_node_size = min_node_size,
+        importance = importance,
+        splitrule = splitrule,
         n_cores = n_cores,
         verbose = FALSE
       ),

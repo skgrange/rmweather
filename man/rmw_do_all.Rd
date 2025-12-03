@@ -13,6 +13,8 @@ rmw_do_all(
   n_trees = 300,
   min_node_size = 5,
   mtry = NULL,
+  importance = "permutation",
+  splitrule = "variance",
   keep_inbag = TRUE,
   n_samples = 300,
   replace = TRUE,
@@ -41,6 +43,12 @@ exception of \code{date_unix}, the trend term (see
 
 \item{mtry}{Number of variables to possibly split at in each node. Default is 
 the (rounded down) square root of the number variables.}
+
+\item{importance}{The variable importance mode.}
+
+\item{splitrule}{The splitting rule. The default is \code{"variance"} but 
+the options are: \code{"extratrees"}, \code{"maxstat"}, \code{"beta"} and 
+\code{"poisson"}.}
 
 \item{keep_inbag}{Should in-bag data be kept in the \strong{ranger} model 
 object? This needs to be \code{TRUE} if standard errors are to be calculated

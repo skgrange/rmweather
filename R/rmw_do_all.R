@@ -17,9 +17,15 @@
 #' exception of \code{date_unix}, the trend term (see 
 #' \code{\link{rmw_normalise}}).
 #' 
-#' @param n_trees Number of trees to grow to make up the forest. 
+#' @param n_trees Number of trees to grow to make up the forest.
 #' 
-#' @param min_node_size Minimal node size. 
+#' @param min_node_size Minimal node size.
+#' 
+#' @param importance The variable importance mode.
+#' 
+#' @param splitrule The splitting rule. The default is \code{"variance"} but 
+#' the options are: \code{"extratrees"}, \code{"maxstat"}, \code{"beta"} and 
+#' \code{"poisson"}.
 #' 
 #' @param mtry Number of variables to possibly split at in each node. Default is 
 #' the (rounded down) square root of the number variables.
@@ -80,9 +86,11 @@
 #' 
 #' @export
 rmw_do_all <- function(df, variables, variables_sample = NA, n_trees = 300, 
-                       min_node_size = 5, mtry = NULL, keep_inbag = TRUE,
-                       n_samples = 300, replace = TRUE, se = FALSE, 
-                       aggregate = TRUE, n_cores = NA, verbose = FALSE) {
+                       min_node_size = 5, mtry = NULL, 
+                       importance = "permutation", splitrule = "variance", 
+                       keep_inbag = TRUE, n_samples = 300, replace = TRUE, 
+                       se = FALSE, aggregate = TRUE, n_cores = NA, 
+                       verbose = FALSE) {
   
   # Check inputs
   if (se && !keep_inbag) {
@@ -97,8 +105,10 @@ rmw_do_all <- function(df, variables, variables_sample = NA, n_trees = 300,
     df,
     variables = variables,
     n_trees = n_trees,
-    mtry = mtry,
     min_node_size = min_node_size,
+    mtry = mtry,
+    importance = importance,
+    splitrule = splitrule,
     keep_inbag = keep_inbag,
     n_cores = n_cores,
     verbose = verbose

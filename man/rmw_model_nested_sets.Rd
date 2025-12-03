@@ -10,6 +10,8 @@ rmw_model_nested_sets(
   n_trees = 10,
   mtry = NULL,
   min_node_size = 5,
+  importance = "permutation",
+  splitrule = "variance",
   n_cores = NA,
   verbose = FALSE,
   progress = FALSE
@@ -26,6 +28,12 @@ rmw_model_nested_sets(
 the (rounded down) square root of the number variables.}
 
 \item{min_node_size}{Minimal node size.}
+
+\item{importance}{The variable importance mode.}
+
+\item{splitrule}{The splitting rule. The default is \code{"variance"} but 
+the options are: \code{"extratrees"}, \code{"maxstat"}, \code{"beta"} and 
+\code{"poisson"}.}
 
 \item{n_cores}{Number of CPU cores to use for the model calculations.}
 

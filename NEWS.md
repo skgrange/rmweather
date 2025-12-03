@@ -1,3 +1,7 @@
+# rmweather 0.2.xx
+
+  - Pass `importance` and `splitrule` arguments to training functions to allow for users to change these arguments. The defaults remain the same. 
+
 # rmweather 0.2.63
 
   - Update method for **ggplot** tests for an upcoming **ggplot** release. 

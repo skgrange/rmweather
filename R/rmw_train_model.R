@@ -15,6 +15,12 @@
 #' 
 #' @param min_node_size Minimal node size. 
 #' 
+#' @param importance The variable importance mode. 
+#' 
+#' @param splitrule The splitting rule. The default is \code{"variance"} but 
+#' the options are: \code{"extratrees"}, \code{"maxstat"}, \code{"beta"} and 
+#' \code{"poisson"}.
+#' 
 #' @param keep_inbag Should in-bag data be kept in the \strong{ranger} model 
 #' object? This needs to be \code{TRUE} if standard errors are to be calculated
 #' when predicting with the model. 
@@ -58,8 +64,9 @@
 #' 
 #' @export
 rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
-                            min_node_size = 5, keep_inbag = TRUE, n_cores = NA, 
-                            verbose = FALSE) {
+                            min_node_size = 5, importance = "permutation", 
+                            splitrule = "variance", keep_inbag = TRUE, 
+                            n_cores = NA, verbose = FALSE) {
   
   # Check arguments
   if (anyDuplicated(variables) != 0) {
@@ -92,15 +99,15 @@ rmw_train_model <- function(df, variables, n_trees = 300, mtry = NULL,
     value ~ ., 
     data = df,
     write.forest = TRUE,
-    importance = "permutation",
-    verbose = verbose,
+    importance = importance,
     num.trees = n_trees,
     mtry = mtry,
     min.node.size = min_node_size,
-    splitrule = "variance", 
+    splitrule = splitrule, 
     seed = NULL,
     keep.inbag = keep_inbag,
-    num.threads = n_cores
+    num.threads = n_cores,
+    verbose = verbose
   )
   
   return(model)

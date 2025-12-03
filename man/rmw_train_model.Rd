@@ -11,6 +11,8 @@ rmw_train_model(
   n_trees = 300,
   mtry = NULL,
   min_node_size = 5,
+  importance = "permutation",
+  splitrule = "variance",
   keep_inbag = TRUE,
   n_cores = NA,
   verbose = FALSE
@@ -30,6 +32,12 @@ modelling.}
 the (rounded down) square root of the number variables.}
 
 \item{min_node_size}{Minimal node size.}
+
+\item{importance}{The variable importance mode.}
+
+\item{splitrule}{The splitting rule. The default is \code{"variance"} but 
+the options are: \code{"extratrees"}, \code{"maxstat"}, \code{"beta"} and 
+\code{"poisson"}.}
 
 \item{keep_inbag}{Should in-bag data be kept in the \strong{ranger} model 
 object? This needs to be \code{TRUE} if standard errors are to be calculated
